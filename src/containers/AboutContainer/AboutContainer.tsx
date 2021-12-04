@@ -1,3 +1,4 @@
+import Highlighter from "../../components/Highlighter/Highlighter";
 import UtilContainer from "../../components/UtilContainer/UtilContainer";
 
 const AboutContainer = () => {
@@ -8,14 +9,16 @@ const AboutContainer = () => {
           <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 via-purple-600 to-purple-500">
             About
           </div>
-          <div>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            unde maiores dolores architecto quas corporis provident dolor porro
-            consectetur nobis veniam animi sequi fuga fugiat quasi, consequuntur
+          <div className="leading-relaxed text-lg">
+            Lorem,<Highlighter> ipsum </Highlighter>dolor sit amet consectetur
+            adipisicing elit. Ducimus unde maiores dolores architecto quas
+            corporis provident dolor porro consectetur nobis veniam animi sequiz
+            <Highlighter> fuga fugiat quasi </Highlighter>, consequuntur
             nostrum, harum velit! Lorem ipsum, dolor sit amet consectetur
             adipisicing elit. Blanditiis ducimus minus enim ipsam sit vitae
-            animi quasi facere cupiditate. Soluta provident mollitia commodi
-            similique fugit amet quam quas in doloribus!
+            animi quasi facere cupiditate. Soluta
+            <Highlighter> provident </Highlighter>mollitia commodi similique
+            fugit amet quam quas in doloribus!
           </div>
         </div>
       </div>
