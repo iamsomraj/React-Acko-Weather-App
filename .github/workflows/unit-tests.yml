@@ -1,4 +1,4 @@
-name: React-Unit-Tests
+name: Testing
 
 on:
   push:
