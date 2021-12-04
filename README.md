@@ -156,7 +156,7 @@ These following API end-points are used in React-Acko-Weather-App
 
 **Question:** Why have not you used Docker Hub as mentioned in the mail?
 
-**Answer:** I have very little knowledge about Docker. Also, I have not used it, myself. In this time span, I wanted to focus on the application functionality itself. However, I have used `github-actions` on this application for `Continous Integration and Continous Deployment`. 
+**Answer:** I have very little knowledge about Docker. Also, I have not used it, myself. In this time span, I wanted to focus on the application functionality itself.
 
 **Question:** Why have you chosen this specific `5 Day / 3 Hour Forecast` API
  from [Open Weather Map API](https://openweathermap.org/forecast5)?
