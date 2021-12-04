@@ -13,7 +13,7 @@ const FooterMain: React.FC = () => {
   return (
     <div className="lg:flex justify-between space-y-12 lg:space-y-0">
       <div className="flex flex-col justify-center">
-        <h4 className="mb-4 font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r text-teal-500">
+        <h4 data-testid="form-heading-element" className="mb-4 font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r text-teal-500">
           Get our monthly updates
         </h4>
         <form
