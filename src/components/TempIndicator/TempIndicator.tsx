@@ -16,6 +16,10 @@ const TempIndicator: React.FC<ITempIndicatorProps> = ({ val, index }) => {
         <span className={`block h-3 w-3 rounded-full bg-green-500`}></span>
       );
     }
+
+    if (val > 25) {
+      return <span className={`block h-3 w-3 rounded-full bg-red-500`}></span>;
+    }
   }
 
   return <span className={`block h-3 w-3 rounded-full bg-yellow-500`}></span>;
