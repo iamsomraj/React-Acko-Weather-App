@@ -27,6 +27,7 @@ React-Acko-Weather-App is a forecast viewer application. When you use the Check 
 - Unit Tests for testing UI
 - No Redundant API Calls
 - Complete Data Processing within the Application from Single API Call
+- 15+ Reusable React Typescript Components
 
 ## Status of CI/CD Setup
 
