@@ -20,6 +20,8 @@ const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
       Visibility: item.visibility,
       Humidity: item.main.humidity,
       Pressure: item.main.pressure,
+      "Wind Speed": item.wind.speed,
+      "Cloud Cover": item.clouds.all,
     };
   });
 
