@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { IDayTimeSelectorProps } from "../../types";
-import Spinner from "../Spinner/Spinner";
 import Table from "../Table/Table";
 
 const DayTimeSelector: React.FC<IDayTimeSelectorProps> = ({ forecast }) => {
