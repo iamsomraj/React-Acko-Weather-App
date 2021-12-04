@@ -23,15 +23,15 @@ const data = {
     },
     {
       isPrimary: false,
-      path: addPath("check-weather"),
-      text: "Weather",
-      container: WeatherContainer,
-    },
-    {
-      isPrimary: true,
       path: addPath("terms"),
       text: "Terms",
       container: TermsContainer,
+    },
+    {
+      isPrimary: true,
+      path: addPath("check-weather"),
+      text: "Weather",
+      container: WeatherContainer,
     },
   ],
   hero: {
