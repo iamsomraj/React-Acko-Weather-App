@@ -164,8 +164,7 @@ These following API end-points are used in React-Acko-Weather-App
 **Answer:** There are only 3 free API options available on Open Weather Map API for Current & Forecast weather data collection. They are the following:
 - Current Weather Data
 - One Call API
-- 5 Day / 3 Hour Forecast
-Only, `5 Day / 3 Hour Forecast` fulfilled the assignment requirment.
+- 5 Day / 3 Hour Forecast `( only this fulfilled the assignment requirment )`
 
 
 
