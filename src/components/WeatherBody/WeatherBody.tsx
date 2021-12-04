@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
 import { INITIAL_LAT_AND_LONG_VALUE } from "../../data";
 import useWeatherDispatch from "../../hooks/useWeatherDispatch";
 import { useWeatherSelector } from "../../hooks/useWeatherSelector";
 import ForecastSection from "../ForecastSection/ForecastSection";
+import Spinner from "../Spinner/Spinner";
 
 const WeatherBody: React.FC = () => {
   const [lat, setLat] = useState(INITIAL_LAT_AND_LONG_VALUE);
@@ -33,7 +35,7 @@ const WeatherBody: React.FC = () => {
       );
     };
     fetchLocation();
-  }, [fetchWeatherByLatAndLong]);
+  }, []);
 
   if (isGeoPositionError) {
     if (isGeoPositionError.code !== 1) {
@@ -41,7 +43,9 @@ const WeatherBody: React.FC = () => {
     }
   }
 
-  return (
+  return data.loading ? (
+    <Spinner />
+  ) : (
     <ForecastSection
       forecastData={data}
       isUserDenied={!!isGeoPositionError && isGeoPositionError.code === 1}

@@ -5,11 +5,6 @@ import Table from "../Table/Table";
 
 const DayTimeSelector: React.FC<IDayTimeSelectorProps> = ({ forecast }) => {
   const [selectedDate, setSelectedDate] = useState("");
-
-  if (forecast.loading) {
-    return <Spinner />;
-  }
-
   if (!forecast.data) {
     return <div>No forecast data</div>;
   }
