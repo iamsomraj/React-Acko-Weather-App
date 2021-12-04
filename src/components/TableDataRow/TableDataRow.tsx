@@ -1,7 +1,6 @@
 import { ITableDataRow } from "../../types";
 
 const TableDataRow: React.FC<ITableDataRow> = ({ row }) => {
-  console.log(row);
   return (
     <>
       {row.map((item) => (

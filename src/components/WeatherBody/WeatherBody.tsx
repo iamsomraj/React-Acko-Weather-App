@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
 import { INITIAL_LAT_AND_LONG_VALUE } from "../../data";
 import useWeatherDispatch from "../../hooks/useWeatherDispatch";
@@ -15,23 +16,24 @@ const WeatherBody: React.FC = () => {
   const data = useWeatherSelector((state) => state.weather);
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setLat(position.coords.latitude);
-        setLong(position.coords.longitude);
-        fetchWeatherByLatAndLong(
-          position.coords.latitude,
-          position.coords.longitude
-        );
-      },
-      (error) => {
-        setIsGeoPositionError(error);
-        console.log("WeatherBody: Error is ", error);
-      }
-    );
-    console.log("Latitude is:", lat);
-    console.log("Longitude is:", long);
-  }, [lat, long, fetchWeatherByLatAndLong]);
+    const fetchLocation = () => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLat(position.coords.latitude);
+          setLong(position.coords.longitude);
+          fetchWeatherByLatAndLong(
+            position.coords.latitude,
+            position.coords.longitude
+          );
+        },
+        (error) => {
+          setIsGeoPositionError(error);
+          console.log("WeatherBody: Error is ", error);
+        }
+      );
+    };
+    fetchLocation();
+  }, [fetchWeatherByLatAndLong]);
 
   if (isGeoPositionError) {
     if (isGeoPositionError.code !== 1) {

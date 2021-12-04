@@ -22,9 +22,6 @@ const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
   if (!rowData) {
     return <div>There are no rows of information</div>;
   }
-
-  console.log(rowData);
-
   return (
     <div className="flex flex-col space-y-4">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
