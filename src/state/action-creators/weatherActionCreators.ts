@@ -22,7 +22,7 @@ export const fetchWeather =
     } catch (error: any) {
       dispatch({
         type: WeatherActionType.FETCH_WEATHER_ERROR,
-        payload: error.response.data.message,
+        payload: error?.response?.data?.message || error?.message,
       });
       console.log({ state: WeatherActionType.FETCH_WEATHER_ERROR, error });
     }
@@ -44,11 +44,11 @@ export const fetchWeatherByLatAndLong =
       });
       console.log({ state: WeatherActionType.FETCH_WEATHER_SUCCESS, data });
     } catch (error: any) {
+      console.log({ state: WeatherActionType.FETCH_WEATHER_ERROR, error });
       dispatch({
         type: WeatherActionType.FETCH_WEATHER_ERROR,
-        payload: error.response.data.message,
+        payload: error?.response?.data?.message || error?.message,
       });
-      console.log({ state: WeatherActionType.FETCH_WEATHER_ERROR, error });
     }
   };
 

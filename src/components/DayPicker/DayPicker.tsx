@@ -10,6 +10,16 @@ const DayPicker: React.FC<IDayTimeSelectorProps> = ({ forecast }) => {
    * When state is loading or data is not present
    */
   if (forecast.loading || !forecast.data) {
+    /**
+     * Handles error state
+     */
+    if (forecast.error) {
+      return (
+        <div className="block m-5 text-red-400 font-bold tracking-widest uppercase">
+          {forecast.error}
+        </div>
+      );
+    }
     return <Spinner text="Data is still not fetched" />;
   }
 
