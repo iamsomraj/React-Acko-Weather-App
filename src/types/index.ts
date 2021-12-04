@@ -119,9 +119,6 @@ export interface ISpinnerProps {
 /**
  * Weather List Item Response
  */
-/**
- * Weather List Item Response
- */
 export interface IWeatherListItemResponse {
   dt: number;
   main: {

@@ -1,5 +1,5 @@
 import { IForecastSectionProps, IFormProp } from "../../types";
-import DayTimeSelector from "../DayTimeSelector/DayTimeSelector";
+import DayPicker from "../DayPicker/DayPicker";
 import Form from "../Form/Form";
 import Spinner from "../Spinner/Spinner";
 
@@ -26,7 +26,7 @@ const ForecastSection: React.FC<IForecastSectionProps & IFormProp> = ({
         </div>
         {forecastData.data && (
           <div>
-            <DayTimeSelector forecast={forecastData} />
+            <DayPicker forecast={forecastData} />
           </div>
         )}
       </div>
@@ -37,7 +37,7 @@ const ForecastSection: React.FC<IForecastSectionProps & IFormProp> = ({
     <Spinner />
   ) : (
     <div>
-      <DayTimeSelector forecast={forecastData} />
+      <DayPicker forecast={forecastData} />
     </div>
   );
 };

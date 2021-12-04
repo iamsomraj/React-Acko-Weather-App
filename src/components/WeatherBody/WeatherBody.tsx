@@ -5,7 +5,6 @@ import { INITIAL_LAT_AND_LONG_VALUE } from "../../data";
 import useWeatherDispatch from "../../hooks/useWeatherDispatch";
 import { useWeatherSelector } from "../../hooks/useWeatherSelector";
 import ForecastSection from "../ForecastSection/ForecastSection";
-import Spinner from "../Spinner/Spinner";
 
 const WeatherBody: React.FC = () => {
   const [lat, setLat] = useState(INITIAL_LAT_AND_LONG_VALUE);

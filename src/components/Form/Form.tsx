@@ -24,7 +24,7 @@ const Form: React.FC<IFormProp> = ({
           </label>
           <input
             id="cityname"
-            className={`block w-full py-2 px-4 focus:outline-none rounded placeholder-gray-400 text-gray-500 ${
+            className={`block w-full py-2 px-4 focus:outline-none rounded border placeholder-gray-400 text-gray-500 ${
               isError && "border-red-500"
             }`}
             placeholder="Search City"
@@ -35,6 +35,12 @@ const Form: React.FC<IFormProp> = ({
               onChange(e.target.value);
             }}
           />
+          {isError && (
+            <div className="py-1 text-xs text-red-500 text-left font-semibold">
+              {error}
+            </div>
+          )}
+          <div></div>
         </div>
         <div className="mb-4">
           <button
