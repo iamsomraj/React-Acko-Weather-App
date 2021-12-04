@@ -1,7 +1,7 @@
 import { ITableProps } from "../../types";
 import { getTimeFromTimestamp } from "../../util";
-import TableDataRow from "../TableDataRow/TableDataRow";
-import TableHeaderRow from "../TableHeaderRow/TableHeaderRow";
+import TableBody from "../TableBody/TableBody";
+import TableHeader from "../TableHeader/TableHeader";
 
 const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
   /**
@@ -52,11 +52,11 @@ const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <TableHeaderRow rows={Object.keys(rowData[0])} />
+                  <TableHeader rows={Object.keys(rowData[0])} />
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                <TableDataRow row={rowData} />
+                <TableBody row={rowData} />
               </tbody>
             </table>
           </div>

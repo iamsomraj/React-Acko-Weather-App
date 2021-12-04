@@ -71,14 +71,14 @@ export interface ITableProps {
 /**
  * Table Row Props
  */
-export interface ITableRowProps {
+export interface ITableHeaderProps {
   rows: string[];
 }
 
 /**
  * Table Data Row Props
  */
-export interface ITableDataRow {
+export interface ITableBodyProps {
   row: {
     Time: string;
     Temperature: number;

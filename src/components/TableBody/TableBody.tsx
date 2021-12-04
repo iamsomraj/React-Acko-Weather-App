@@ -1,6 +1,6 @@
-import { ITableDataRow } from "../../types";
+import { ITableBodyProps } from "../../types";
 
-const TableDataRow: React.FC<ITableDataRow> = ({ row }) => {
+const TableBody: React.FC<ITableBodyProps> = ({ row }) => {
   /**
    * reusable row component which shows data in terms of row in table
    */
@@ -26,4 +26,4 @@ const TableDataRow: React.FC<ITableDataRow> = ({ row }) => {
   );
 };
 
-export default TableDataRow;
+export default TableBody;

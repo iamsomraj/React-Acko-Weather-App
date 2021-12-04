@@ -1,6 +1,6 @@
-import { ITableRowProps } from "../../types";
+import { ITableHeaderProps } from "../../types";
 
-const TableHeaderRow: React.FC<ITableRowProps> = ({ rows }) => {
+const TableHeader: React.FC<ITableHeaderProps> = ({ rows }) => {
   /**
    * helps to render table headers based on object keys dynamically
    */
@@ -17,4 +17,4 @@ const TableHeaderRow: React.FC<ITableRowProps> = ({ rows }) => {
   return <>{headList}</>;
 };
 
-export default TableHeaderRow;
+export default TableHeader;
