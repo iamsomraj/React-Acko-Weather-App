@@ -17,6 +17,7 @@ React-Acko-Weather-App is a forecast viewer application. When you use the Check 
 
 - Use of Typescript, in place of Javascript
 - Type Safety reduces Production Errors by 80%
+- Separate types folder, for handling all Application Types From One Place
 - Complete State Management by Redux with Redux Devtools Extension Integration
 - Persisting Global State Across All Routes
 - Use of React Router Dom for creating Routes in a Single Page Application
@@ -88,7 +89,7 @@ React-Acko-Weather-App currently supports some frontend tests using `jest` & `re
 
 ## Tech Stack
 
-**Client:** React, Redux, React Hooks
+**Client:** React, Redux, React Hooks, Tailwind CSS
 
 **Language Used:** Typescript
 
@@ -138,6 +139,36 @@ These following API end-points are used in React-Acko-Weather-App
 | Access    | Route                                              | Description                        |
 | :-------- | :------------------------------------------------- | :--------------------------------- |
 | `private` | `https://api.openweathermap.org/data/2.5/forecast` | Get 5 Day Weather Forecast By City |
+
+## FAQ
+
+**Question:** Why have you used Typescript?
+
+**Answer:** Nowadays, most React applications are built using Typescript. That's why, I have used it. Also, I like the language and it gives many benefits in the long run. I think, in future, everyone will develop React applications using only Typescript.
+
+**Question:** Why have you used Redux?
+
+**Answer:** It helps to keep the Main logic of the application separate with the rest of the application. One can also use React hooks, i.e., `useReducer`. But, my personal preference is Redux. In small parts of application, I also have used React hooks such as `useState` and `useEffect`.
+
+**Question:** There are very few unit tests. Why?
+
+**Answer:** I also agree to this. I am not very comfortable with unit tests. That's why, I was finding it difficult to write those tests. Still, for this assignment, I have tried my best to learn `react-testing-library` and implement all the things. I feel, If I get time, then, I will definitely improve my skills on this.
+
+**Question:** Why have not you used Docker Hub as mentioned in the mail?
+
+**Answer:** I have very little knowledge about Docker. Also, I have not used it, myself. In this time span, I wanted to focus on the application functionality itself. However, I have used `github-actions` on this application for `Continous Integration and Continous Deployment`. 
+
+**Question:** Why have you chosen this specific `5 Day / 3 Hour Forecast` API
+ from [Open Weather Map API](https://openweathermap.org/forecast5)?
+
+**Answer:** There are only 3 free API options available on Open Weather Map API for Current & Forecast weather data collection. They are the following:
+- Current Weather Data
+- One Call API
+- 5 Day / 3 Hour Forecast
+Only, `5 Day / 3 Hour Forecast` fulfilled the assignment requirment.
+
+
+
 
 ## License
 

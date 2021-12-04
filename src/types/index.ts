@@ -25,7 +25,7 @@ export interface IHeaderLinkProps {
 }
 
 /**
- * Header Brand Props
+ * Brand Props
  */
 export interface IBrandProps {
   homePage: string;
@@ -76,7 +76,7 @@ export interface ITableHeaderProps {
 }
 
 /**
- * Table Data Row Props
+ * Table Body Row Props
  */
 export interface ITableBodyProps {
   row: {
@@ -112,6 +112,19 @@ export interface ISpinnerProps {
 
 /******END******/
 /******PROP TYPES******/
+
+
+
+
+
+/*************************************************************** */
+/*************************************************************** */
+/*************************************************************** */
+
+
+
+
+
 
 /******OTHER TYPES******/
 /******START******/
