@@ -20,7 +20,7 @@ const DayPicker: React.FC<IDayTimeSelectorProps> = ({ forecast }) => {
         </div>
       );
     }
-    return <Spinner text="Data is still not fetched" />;
+    return <Spinner text="Data is loading" />;
   }
 
   const { list } = forecast.data;
