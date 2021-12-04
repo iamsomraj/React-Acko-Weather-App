@@ -27,9 +27,8 @@ const DayTimeSelector: React.FC<IDayTimeSelectorProps> = ({ forecast }) => {
   return (
     <div className="flex-col items-center space-y-5">
       <div>
-        <div>Select Day</div>
         <select
-          className="form-select w-1/2 mt-1"
+          className="form-select mt-2 py-2 px-3 focus:border-transparent focus:outline-none"
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
         >
