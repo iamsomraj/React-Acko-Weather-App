@@ -12,8 +12,10 @@ const WeatherBody: React.FC = () => {
   const [long, setLong] = useState(INITIAL_LAT_AND_LONG_VALUE);
   const [isGeoPositionError, setIsGeoPositionError] =
     useState<GeolocationPositionError>();
+  const [term, setTerm] = useState("");
 
-  const { fetchWeatherByLatAndLong } = useWeatherDispatch();
+  const { fetchWeatherByLatAndLong, fetchWeather, initState } =
+    useWeatherDispatch();
 
   const data = useWeatherSelector((state) => state.weather);
 
@@ -37,6 +39,12 @@ const WeatherBody: React.FC = () => {
     fetchLocation();
   }, []);
 
+  const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    initState();
+    fetchWeather(term);
+  };
+
   if (isGeoPositionError) {
     if (isGeoPositionError.code !== 1) {
       return <div>{isGeoPositionError.message}</div>;
@@ -49,6 +57,11 @@ const WeatherBody: React.FC = () => {
     <ForecastSection
       forecastData={data}
       isUserDenied={!!isGeoPositionError && isGeoPositionError.code === 1}
+      onChange={setTerm}
+      onInit={initState}
+      onSubmit={onSubmitHandler}
+      term={term}
+      state={data}
     />
   );
 };

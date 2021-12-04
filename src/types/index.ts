@@ -1,6 +1,10 @@
 /******PROP TYPES******/
 /******START******/
 
+import { Dispatch } from "react";
+import { WeatherActionType } from "../state/action-types";
+import { IWeatherAction } from "../state/reducers/weatherReducer";
+
 /**
  * Utility Container Props
  */
@@ -86,6 +90,19 @@ export interface ITableDataRow {
     Humidity: number;
     Pressure: number;
   }[];
+}
+
+/**
+ * Form Props
+ */
+export interface IFormProp {
+  term: string;
+  onChange: React.Dispatch<React.SetStateAction<string>>;
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  state: { loading: boolean; error: string | null };
+  onInit: () => {
+    type: WeatherActionType;
+  };
 }
 
 /******END******/

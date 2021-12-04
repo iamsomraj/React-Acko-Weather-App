@@ -1,13 +1,32 @@
-import { IForecastSectionProps } from "../../types";
+import { IForecastSectionProps, IFormProp } from "../../types";
 import DayTimeSelector from "../DayTimeSelector/DayTimeSelector";
+import Form from "../Form/Form";
 
-const ForecastSection: React.FC<IForecastSectionProps> = ({
+const ForecastSection: React.FC<IForecastSectionProps & IFormProp> = ({
   forecastData,
   isUserDenied,
+  onChange,
+  onInit,
+  onSubmit,
+  term,
+  state,
 }) => {
   if (isUserDenied) {
     return (
-      <div>Search by city name as user denied permission ( Coming Soon )</div>
+      <div>
+        <div className="flex justify-center">
+          <Form
+            onChange={onChange}
+            onInit={onInit}
+            onSubmit={onSubmit}
+            term={term}
+            state={state}
+          />
+        </div>
+        <div>
+          <DayTimeSelector forecast={forecastData} />
+        </div>
+      </div>
     );
   }
 
