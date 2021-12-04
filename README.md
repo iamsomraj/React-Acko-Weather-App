@@ -60,6 +60,12 @@ For developing this project, I prepared one basic design documentation. I will e
   npm install
 ```
 
+- Install dev dependencies
+
+```bash
+  npm install --only=dev
+```
+
 ## Run React-Acko-Weather-App
 
 - Open Terminal
