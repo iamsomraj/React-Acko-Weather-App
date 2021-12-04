@@ -1,9 +1,7 @@
 /******PROP TYPES******/
 /******START******/
 
-import { Dispatch } from "react";
 import { WeatherActionType } from "../state/action-types";
-import { IWeatherAction } from "../state/reducers/weatherReducer";
 
 /**
  * Utility Container Props
