@@ -1,4 +1,7 @@
 function FooterBottom() {
+  /**
+   * Bottom Footer component used at the bottom of the page
+   */
   return (
     <div className="py-4 mt-16 md:flex justify-between border-t text-gray-500 border-gray-300 text-sm text-center md:text-left space-y-4 md:space-y-0">
       <div>Copyright &copy; {new Date().getFullYear()}</div>

@@ -9,7 +9,14 @@ const Form: React.FC<IFormProp> = ({
   state,
 }) => {
   const { loading, error } = state;
+  /**
+   * disables the button to prevent incorrect API usage
+   */
   const isDisabled = term.trim().length === 0;
+
+  /**
+   * handles error state when Error response comes from API
+   */
   const isError = error !== null;
 
   return (
@@ -23,6 +30,7 @@ const Form: React.FC<IFormProp> = ({
             City Name
           </label>
           <input
+            autoComplete="off"
             id="cityname"
             className={`block w-full py-2 px-4 focus:outline-none rounded border placeholder-gray-400 text-gray-500 ${
               isError && "border-red-500"

@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import { IHeaderLinkProps } from "../../types";
 
 const HeaderLink: React.FC<IHeaderLinkProps> = ({ path, text, isPrimary }) => {
+
+  /**
+   * Primary Link Variant
+   */
   if (isPrimary) {
     return (
       <Link
@@ -13,6 +17,10 @@ const HeaderLink: React.FC<IHeaderLinkProps> = ({ path, text, isPrimary }) => {
     );
   }
 
+
+  /**
+   * Basic Link Variant
+   */
   return (
     <Link to={path} className="text-gray-400 hover:text-purple-600">
       {text}

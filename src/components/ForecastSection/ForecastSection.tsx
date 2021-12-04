@@ -12,6 +12,10 @@ const ForecastSection: React.FC<IForecastSectionProps & IFormProp> = ({
   term,
   state,
 }) => {
+
+  /**
+   * Handling when the user declines the location permission
+   */
   if (isUserDenied) {
     return (
       <div>
@@ -33,6 +37,10 @@ const ForecastSection: React.FC<IForecastSectionProps & IFormProp> = ({
     );
   }
 
+
+  /**
+   * Handling when user grants location permission
+   */
   return forecastData.loading ? (
     <Spinner />
   ) : (

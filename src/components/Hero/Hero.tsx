@@ -3,6 +3,9 @@ import data from "../../data";
 import { IHeroProps } from "../../types";
 
 const Hero: React.FC<IHeroProps> = () => {
+  /**
+   * Landing page main component which illustrates main functionality of application
+   */
   return (
     <div className="relative">
       <div className="container mx-auto px-10 py-24 text-center">

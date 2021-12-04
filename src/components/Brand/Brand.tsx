@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { IBrandProps } from "../../types";
 
 const Brand: React.FC<IBrandProps> = ({ homePage, brandName }) => {
+  /**
+   * Brand or Logo component for Navigation
+   */
   return (
     <Link
       to={homePage}

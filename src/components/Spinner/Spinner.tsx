@@ -1,6 +1,9 @@
 import { ISpinnerProps } from "../../types";
 
 const Spinner: React.FC<ISpinnerProps> = ({ text }) => {
+  /**
+   * basic Spinner component for showing states as loading
+   */
   return (
     <div className="flex items-center justify-center text-2xl text-purple">
       <div>

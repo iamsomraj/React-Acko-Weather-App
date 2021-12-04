@@ -1,6 +1,9 @@
 import { IFunElementProps } from "../../types";
 
 const FunElement: React.FC<IFunElementProps> = ({ position, translate }) => {
+  /**
+   * Decorative Element for adding in UI
+   */
   return (
     <div className="hidden lg:block">
       <div className={`absolute ${position} transform ${translate} opacity-30`}>

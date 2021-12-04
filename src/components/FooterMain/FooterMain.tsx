@@ -4,6 +4,10 @@ import data from "../../data";
 import FooterLink from "../HeaderLink/HeaderLink";
 
 const FooterMain: React.FC = () => {
+  /**
+   * Email State for handling subscription
+   * TODO: `can be used for sending newsletters or updates in future`
+   */
   const [email, setEmail] = useState("");
 
   return (
