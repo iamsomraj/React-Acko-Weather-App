@@ -31,7 +31,6 @@ const WeatherBody: React.FC = () => {
         },
         (error) => {
           setIsGeoPositionError(error);
-          console.log("WeatherBody: Error is ", error);
         }
       );
     };
