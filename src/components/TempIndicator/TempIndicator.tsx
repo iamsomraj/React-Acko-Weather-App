@@ -3,22 +3,20 @@ import { ITempIndicatorProps } from "../../types";
 const TempIndicator: React.FC<ITempIndicatorProps> = ({ val, index }) => {
   if (index !== 2) return null;
 
-  let color = "yellow";
+  let background = `bg-yellow-500`;
 
   /**
    * index === 2 means Real Feel
    */
   if (index === 2) {
     if (val < 5) {
-      color = "teal";
+      background = `bg-teal-500`;
     }
 
     if (val < 20) {
-      color = "green";
+      background = `bg-green-500`;
     }
   }
-
-  const background = `bg-${color}-500`;
 
   return <span className={`block h-3 w-3 rounded-full ${background}`}></span>;
 };
