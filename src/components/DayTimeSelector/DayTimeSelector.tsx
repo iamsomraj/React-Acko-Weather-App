@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { IDayTimeSelectorProps } from "../../types";
+import Spinner from "../Spinner/Spinner";
 import Table from "../Table/Table";
 
 const DayTimeSelector: React.FC<IDayTimeSelectorProps> = ({ forecast }) => {
   const [selectedDate, setSelectedDate] = useState("");
-  if (!forecast.data) {
-    return <div>No forecast data</div>;
+  if (forecast.loading || !forecast.data) {
+    return <Spinner text="Data is still not fetched" />;
   }
 
   const { list } = forecast.data;
@@ -27,6 +28,9 @@ const DayTimeSelector: React.FC<IDayTimeSelectorProps> = ({ forecast }) => {
   return (
     <div className="flex-col items-center space-y-5">
       <div>
+        <div className="my-3 uppercase tracking-wider text-teal-500 font-bold">
+          Data fetched successfully
+        </div>
         <select
           className="form-select mt-2 py-2 px-3 focus:border-transparent focus:outline-none"
           value={selectedDate}

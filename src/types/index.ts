@@ -105,6 +105,13 @@ export interface IFormProp {
   };
 }
 
+/**
+ * Spinner Props
+ */
+export interface ISpinnerProps {
+  text?: string;
+}
+
 /******END******/
 /******PROP TYPES******/
 

@@ -51,9 +51,7 @@ const WeatherBody: React.FC = () => {
     }
   }
 
-  return data.loading ? (
-    <Spinner />
-  ) : (
+  return (
     <ForecastSection
       forecastData={data}
       isUserDenied={!!isGeoPositionError && isGeoPositionError.code === 1}
