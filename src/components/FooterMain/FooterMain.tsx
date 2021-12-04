@@ -25,6 +25,7 @@ const FooterMain: React.FC = () => {
           }}
         >
           <input
+            autoComplete="off"
             type="email"
             name="text"
             value={email}
