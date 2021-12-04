@@ -51,6 +51,43 @@ export interface IForecastSectionProps {
   forecastData: IWeatherState;
 }
 
+/**
+ * Day Time Selector Props
+ */
+export interface IDayTimeSelectorProps {
+  forecast: IWeatherState;
+}
+
+/**
+ * Table Props
+ */
+export interface ITableProps {
+  forecast: IWeatherState;
+  selected: string;
+}
+
+/**
+ * Table Row Props
+ */
+export interface ITableRowProps {
+  rows: string[];
+}
+
+/**
+ * Table Data Row Props
+ */
+export interface ITableDataRow {
+  row: {
+    Time: string;
+    Temperature: number;
+    "Real Feel": number;
+    Description: string;
+    Visibility: number;
+    Humidity: number;
+    Pressure: number;
+  }[];
+}
+
 /******END******/
 /******PROP TYPES******/
 

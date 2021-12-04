@@ -11,7 +11,12 @@ function App() {
         <Header />
         <Route path={data.brand.path} component={data.brand.container} exact />
         {data.navLinks.map((link) => (
-          <Route path={link.path} component={link.container} exact />
+          <Route
+            key={link.path + link.text}
+            path={link.path}
+            component={link.container}
+            exact
+          />
         ))}
         {/* Footer Section */}
         <FooterSection />

@@ -1,4 +1,5 @@
 import { IForecastSectionProps } from "../../types";
+import DayTimeSelector from "../DayTimeSelector/DayTimeSelector";
 
 const ForecastSection: React.FC<IForecastSectionProps> = ({
   forecastData,
@@ -10,7 +11,11 @@ const ForecastSection: React.FC<IForecastSectionProps> = ({
     );
   }
 
-  return <div>{JSON.stringify(forecastData.data)}</div>;
+  return (
+    <div>
+      <DayTimeSelector forecast={forecastData} />
+    </div>
+  );
 };
 
 export default ForecastSection;
