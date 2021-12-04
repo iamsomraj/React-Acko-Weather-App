@@ -8,10 +8,15 @@ const TableDataRow: React.FC<ITableDataRow> = ({ row }) => {
     <>
       {row.map((item) => (
         <tr key={item.Description + item.Temperature + item.Time}>
-          {Object.values(item).map((val) => {
+          {Object.values(item).map((val, index) => {
             return (
-              <td key={val} className="px-6 py-4 whitespace-nowrap">
-                <div className="text-xs tracking-wider font-medium text-gray-500">{val}</div>
+              <td
+                key={`${val} ${index}`}
+                className="px-6 py-4 whitespace-nowrap"
+              >
+                <div className="text-xs tracking-wider font-medium text-gray-500">
+                  {val}
+                </div>
               </td>
             );
           })}
