@@ -110,21 +110,20 @@ export interface ISpinnerProps {
   text?: string;
 }
 
+/**
+ * Temp Indicator Props
+ */
+export interface ITempIndicatorProps {
+  val: string | number;
+  index: number;
+}
+
 /******END******/
 /******PROP TYPES******/
 
-
-
-
-
 /*************************************************************** */
 /*************************************************************** */
 /*************************************************************** */
-
-
-
-
-
 
 /******OTHER TYPES******/
 /******START******/

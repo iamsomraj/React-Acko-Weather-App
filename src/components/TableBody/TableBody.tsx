@@ -1,4 +1,5 @@
 import { ITableBodyProps } from "../../types";
+import TempIndicator from "../TempIndicator/TempIndicator";
 
 const TableBody: React.FC<ITableBodyProps> = ({ row }) => {
   /**
@@ -8,14 +9,17 @@ const TableBody: React.FC<ITableBodyProps> = ({ row }) => {
     <>
       {row.map((item) => (
         <tr key={item.Description + item.Temperature + item.Time}>
-          {Object.values(item).map((val, index) => {
+          {Object.values(item).map((val, index, arr) => {
             return (
               <td
                 key={`${val} ${index}`}
                 className="px-6 py-4 whitespace-nowrap"
               >
                 <div className="text-xs tracking-wider font-medium text-gray-500">
-                  {val}
+                  <div className="flex items-center space-x-2">
+                    <TempIndicator val={val} index={index} />
+                    <div>{val}</div>
+                  </div>
                 </div>
               </td>
             );
