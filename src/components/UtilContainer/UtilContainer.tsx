@@ -10,7 +10,7 @@ const UtilContainer: React.FC<IUtilContainerProps> = ({ children, isHome }) => {
    */
   if (isHome) {
     return (
-      <div className="relative bg-gradient-to-br from-purple-100 to-purple-300">
+      <div className="relative h-screen bg-gradient-to-br from-purple-100 to-purple-300">
         {children}
       </div>
     );
