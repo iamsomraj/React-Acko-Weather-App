@@ -152,7 +152,7 @@ These following API end-points are used in React-Acko-Weather-App
 
 **Question:** There are very few unit tests. Why?
 
-**Answer:** I also agree to this. I am not very comfortable with unit tests. That's why, I was finding it difficult to write those tests. Still, for this assignment, I have tried my best to learn `react-testing-library` and implement all the things. I feel, If I get time, then, I will definitely improve my skills on this.
+**Answer:** I also agree to this. I am not very comfortable with unit tests. That's why, I was finding it difficult to write those tests. Still, for this assignment, I have tried my best to learn `react-testing-library` and implement all the things. I feel, If I give proper effort, then, it will definitely help me regarding this.
 
 **Question:** Why have not you used Docker Hub as mentioned in the mail?
 
