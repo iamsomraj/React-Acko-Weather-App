@@ -139,4 +139,4 @@ These following API end-points are used in React-Acko-Weather-App
 
 ## Feedback
 
-If you have any feedback or you want to give me some tips related to development, please reach out to me at iamsomraj@gmail.com.
+If you have any feedback or you want to give me some tips related to development or even documentation, please reach out to me at iamsomraj@gmail.com.
