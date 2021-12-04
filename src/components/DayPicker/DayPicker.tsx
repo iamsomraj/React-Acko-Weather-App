@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import data from "../../data";
 import { IDayTimeSelectorProps } from "../../types";
 import { addPath } from "../../util";
 import Spinner from "../Spinner/Spinner";
