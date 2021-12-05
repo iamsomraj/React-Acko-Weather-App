@@ -1,5 +1,7 @@
+import ActionButton from "../../components/ActionButton/ActionButton";
 import Highlighter from "../../components/Highlighter/Highlighter";
 import UtilContainer from "../../components/UtilContainer/UtilContainer";
+import { addPath } from "../../util";
 
 const TermsContainer = () => {
   return (
@@ -38,6 +40,7 @@ const TermsContainer = () => {
               ullam eligendi laborum delectus sed!
             </div>
           </div>
+          <ActionButton path={addPath("")} body="Go Back Home" />
         </div>
       </div>
     </UtilContainer>

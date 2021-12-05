@@ -1,5 +1,7 @@
+import ActionButton from "../../components/ActionButton/ActionButton";
 import Highlighter from "../../components/Highlighter/Highlighter";
 import UtilContainer from "../../components/UtilContainer/UtilContainer";
+import { addPath } from "../../util";
 
 const AboutContainer = () => {
   return (
@@ -20,6 +22,7 @@ const AboutContainer = () => {
             <Highlighter> provident </Highlighter>mollitia commodi similique
             fugit amet quam quas in doloribus!
           </div>
+          <ActionButton path={addPath("")} body="Go Back Home" />
         </div>
       </div>
     </UtilContainer>
