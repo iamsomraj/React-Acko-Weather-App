@@ -1,5 +1,5 @@
 import { ITableBodyProps } from "../../types";
-import TempIndicator from "../TempIndicator/TempIndicator";
+import TemperatureIndicator from "../TemperatureIndicator/TemperatureIndicator";
 
 const TableBody: React.FC<ITableBodyProps> = ({ row }) => {
   /**
@@ -17,7 +17,7 @@ const TableBody: React.FC<ITableBodyProps> = ({ row }) => {
               >
                 <div className="text-xs tracking-wider font-medium text-gray-500">
                   <div className="flex items-center space-x-2">
-                    <TempIndicator val={val} index={index} />
+                    <TemperatureIndicator val={val} index={index} />
                     <div>{val}</div>
                   </div>
                 </div>

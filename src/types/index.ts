@@ -113,7 +113,7 @@ export interface ISpinnerProps {
 /**
  * Temp Indicator Props
  */
-export interface ITempIndicatorProps {
+export interface ITemperatureIndicatorProps {
   val: string | number;
   index: number;
 }

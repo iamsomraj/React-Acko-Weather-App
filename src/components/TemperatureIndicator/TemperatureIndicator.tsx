@@ -1,6 +1,9 @@
-import { ITempIndicatorProps } from "../../types";
+import { ITemperatureIndicatorProps } from "../../types";
 
-const TempIndicator: React.FC<ITempIndicatorProps> = ({ val, index }) => {
+const TemperatureIndicator: React.FC<ITemperatureIndicatorProps> = ({
+  val,
+  index,
+}) => {
   if (index !== 2) return null;
 
   /**
@@ -25,4 +28,4 @@ const TempIndicator: React.FC<ITempIndicatorProps> = ({ val, index }) => {
   return <span className={`block h-3 w-3 rounded-full bg-yellow-500`}></span>;
 };
 
-export default TempIndicator;
+export default TemperatureIndicator;
