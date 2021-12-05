@@ -97,7 +97,7 @@ React-Acko-Weather-App currently has 2 modes of operation.
 - Geolocation Mode : Fetches forecast data based on position
 - User Input Mode : Fetches forecast data based on city name
 
-After installing it into your local system,  you can enable or disable Location permission for the website.
+After installing it into your local system, you can enable or disable Location permission for the website and refresh. At the time of doing, you should be on the [Home Page](http://localhost:3000/React-Acko-Weather-App/).
 
 ## Tech Stack
 
@@ -171,9 +171,10 @@ These following API end-points are used in React-Acko-Weather-App
 **Answer:** I have very little knowledge about Docker. Also, I have not used it, myself. In this time span, I wanted to focus on the application functionality itself.
 
 **Question:** Why have you chosen this specific `5 Day / 3 Hour Forecast` API
- from [Open Weather Map API](https://openweathermap.org/forecast5)?
+from [Open Weather Map API](https://openweathermap.org/forecast5)?
 
 **Answer:** There are only 3 free API options available on Open Weather Map API for Current & Forecast weather data collection. They are the following:
+
 - Current Weather Data
 - One Call API
 - 5 Day / 3 Hour Forecast `( only this fulfilled the assignment requirment )`
