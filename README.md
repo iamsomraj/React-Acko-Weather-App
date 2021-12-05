@@ -45,6 +45,8 @@ For developing this project, I prepared one basic design documentation. I will e
 
 - [Live Version - Github Actions - CI/CD](https://iamsomraj.github.io/React-Acko-Weather-App/)
 
+- Installing Into Local System is Preferred
+
 ## Install React-Acko-Weather-App On Your Local System
 
 - Open Terminal
@@ -87,6 +89,15 @@ React-Acko-Weather-App currently supports some frontend tests using `jest` & `re
 ```bash
   npm run test
 ```
+
+## How To Test 2 Different Modes of Application
+
+React-Acko-Weather-App currently has 2 modes of operation.
+
+- Geolocation Mode : Fetches forecast data based on position
+- User Input Mode : Fetches forecast data based on city name
+
+After installing it into your local system,  you can enable or disable Location permission for the website.
 
 ## Tech Stack
 
@@ -166,9 +177,6 @@ These following API end-points are used in React-Acko-Weather-App
 - Current Weather Data
 - One Call API
 - 5 Day / 3 Hour Forecast `( only this fulfilled the assignment requirment )`
-
-
-
 
 ## License
 
