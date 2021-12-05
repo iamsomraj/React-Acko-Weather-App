@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { IDayTimeSelectorProps } from "../../types";
 import { addPath } from "../../util";
+import ActionButton from "../ActionButton/ActionButton";
 import Spinner from "../Spinner/Spinner";
 import Table from "../Table/Table";
 
@@ -64,12 +64,7 @@ const DayPicker: React.FC<IDayTimeSelectorProps> = ({ forecast }) => {
       {selectedDate !== "" && (
         <div>
           <Table selected={selectedDate} forecast={forecast} />
-          <Link
-            to={addPath("")}
-            className="inline-block my-4 lg:mb-16 py-3 px-6 rounded shadow-lg hover:shadow-2xl bg-gradient-to-br from-purple-500 to-purple-700 hover:to-purple-600 text-purple-100 hover:text-white font-bold text-md tracking-wide transition duration-500"
-          >
-            Go Back Home
-          </Link>
+          <ActionButton path={addPath("")} body="Go Back Home" />
         </div>
       )}
     </div>

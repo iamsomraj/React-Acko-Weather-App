@@ -118,6 +118,14 @@ export interface ITempIndicatorProps {
   index: number;
 }
 
+/**
+ * Action Button Props
+ */
+export interface IActionButtonProps {
+  path: string;
+  body: string;
+}
+
 /******END******/
 /******PROP TYPES******/
 

@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import data from "../../data";
 import { IHeroProps } from "../../types";
+import ActionButton from "../ActionButton/ActionButton";
 
 const Hero: React.FC<IHeroProps> = () => {
   /**
@@ -23,12 +23,10 @@ const Hero: React.FC<IHeroProps> = () => {
         </div>
         <div>
           <div>
-            <Link
-              to={data.hero.mainAction.path}
-              className="inline-block mb-8 lg:mb-16 py-3 px-12 rounded shadow-lg hover:shadow-2xl bg-gradient-to-br from-purple-500 to-purple-700 hover:to-purple-600 text-purple-100 hover:text-white font-bold text-md tracking-wide transition duration-500"
-            >
-              {data.hero.mainAction.text}
-            </Link>
+            <ActionButton
+              path={data.hero.mainAction.path}
+              body={data.hero.mainAction.text}
+            />
           </div>
           <div className="flex justify-center">
             <div className="relative">
