@@ -99,6 +99,13 @@ React-Acko-Weather-App currently has 2 modes of operation.
 
 After installing it into your local system, you can enable or disable Location permission for the website and refresh. At the time of doing, you should be on the [Home Page](http://localhost:3000/React-Acko-Weather-App/).
 
+## Future Improvements
+
+- Toggle Option for both modes of Operation
+- Dark Mode
+- Dockerization
+- Weather Map implementation
+
 ## Tech Stack
 
 **Client:** React, Redux, React Hooks, Tailwind CSS
