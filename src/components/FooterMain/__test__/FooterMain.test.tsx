@@ -7,7 +7,12 @@ describe('FooterMain Component', () => {
   it('should render form heading correctly in the footer main section', () => {
     const { getByTestId } = render(
       <div>
-        <BrowserRouter>
+        <BrowserRouter
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
           <FooterMain />
         </BrowserRouter>
       </div>

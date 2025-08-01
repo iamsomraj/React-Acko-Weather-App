@@ -36,7 +36,7 @@ describe('Form Component', () => {
       screen.getByPlaceholderText('Enter city or location name...')
     ).toBeDefined()
     expect(screen.getByText('Get Forecast')).toBeDefined()
-    expect(screen.getByText('Clear Location')).toBeDefined()
+    expect(screen.getByText('Clear')).toBeDefined()
   })
 
   it('calls onChange when typing in input', () => {
@@ -58,10 +58,10 @@ describe('Form Component', () => {
     expect(screen.getByText('City not found')).toBeDefined()
   })
 
-  it('calls onClear when Clear Location button is clicked', () => {
+  it('calls onClear when Clear button is clicked', () => {
     render(<Form {...defaultProps} />)
 
-    const clearButton = screen.getByText('Clear Location')
+    const clearButton = screen.getByText('Clear')
     fireEvent.click(clearButton)
 
     expect(mockOnClear).toHaveBeenCalledTimes(1)

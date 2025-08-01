@@ -8,7 +8,12 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50 text-foreground antialiased">
-      <Router>
+      <Router
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true,
+        }}
+      >
         {/* Skip to main content link for screen readers */}
         <a
           href="#main-content"

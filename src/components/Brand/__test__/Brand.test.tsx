@@ -6,7 +6,12 @@ import Brand from '../Brand'
 describe('Brand Component', () => {
   it('renders the logo text correctly', () => {
     const { getByTestId } = render(
-      <Router>
+      <Router
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true,
+        }}
+      >
         <Brand brandName="test" homePage="test" />
       </Router>
     )
