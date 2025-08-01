@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState, useId } from 'react'
 import { IDayPickerProps } from '@/types'
 import { addPath } from '@/util'
 import { ActionButton } from '@/components/ActionButton/ActionButton'
@@ -8,6 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export function DayPicker({ forecast }: IDayPickerProps) {
   const [selectedDate, setSelectedDate] = useState('')
+  const selectId = useId()
+  const errorId = useId()
 
   const handleDateChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -29,15 +31,23 @@ export function DayPicker({ forecast }: IDayPickerProps) {
   if (forecast.loading || !forecast.data) {
     if (forecast.error) {
       return (
-        <Card className="m-5">
+        <Card className="m-5" role="alert">
           <CardContent className="pt-6">
-            <div className="text-destructive font-bold tracking-widest uppercase text-center">
+            <div
+              id={errorId}
+              className="text-destructive font-semibold text-center p-4 bg-destructive/10 rounded-lg"
+              aria-live="assertive"
+            >
+              <span className="block text-lg mb-2">
+                ⚠️ Error Loading Forecast
+              </span>
               {forecast.error}
             </div>
           </CardContent>
         </Card>
       )
     }
+
     return (
       <div className="flex justify-center items-center min-h-[200px]">
         <Spinner text="Loading forecast data..." size="lg" />
@@ -46,39 +56,59 @@ export function DayPicker({ forecast }: IDayPickerProps) {
   }
 
   return (
-    <div className="flex flex-col items-center space-y-6 p-4">
+    <div className="flex flex-col items-center space-y-6 p-4 animate-slide-up">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle className="text-center text-primary-600">
+          <CardTitle className="text-center text-primary">
             Forecast for {forecast.data.city.name}
           </CardTitle>
+          <p className="text-center text-sm text-muted-foreground">
+            {forecast.data.city.country} • {forecast.data.list.length} forecasts
+            available
+          </p>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <label
-              htmlFor="date-select"
-              className="block text-sm font-medium text-foreground"
-            >
-              Select Forecast Date
-            </label>
-            <select
-              id="date-select"
-              className="w-full rounded-lg py-3 px-4 bg-background border border-input focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring transition-colors"
-              value={selectedDate}
-              onChange={handleDateChange}
-            >
-              {uniqueDays.map((day) => (
-                <option key={day || 'empty'} value={day}>
-                  {day || 'Choose a forecast date...'}
-                </option>
-              ))}
-            </select>
+            <div>
+              <label
+                htmlFor={selectId}
+                className="block text-sm font-medium text-foreground mb-2"
+              >
+                Select Forecast Date
+              </label>
+              <select
+                id={selectId}
+                className="w-full rounded-lg py-3 px-4 bg-background border border-input text-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+                value={selectedDate}
+                onChange={handleDateChange}
+                aria-describedby={`${selectId}-help`}
+              >
+                {uniqueDays.map((day) => (
+                  <option key={day || 'empty'} value={day}>
+                    {day
+                      ? new Date(day).toLocaleDateString('en-US', {
+                          weekday: 'long',
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })
+                      : 'Choose a forecast date...'}
+                  </option>
+                ))}
+              </select>
+              <p
+                id={`${selectId}-help`}
+                className="text-xs text-muted-foreground mt-1"
+              >
+                Select a date to view detailed hourly forecasts
+              </p>
+            </div>
           </div>
         </CardContent>
       </Card>
 
       {selectedDate && (
-        <div className="w-full space-y-6">
+        <div className="w-full space-y-6 animate-fade-in">
           <Table selected={selectedDate} forecast={forecast} />
           <div className="flex justify-center">
             <ActionButton

@@ -23,6 +23,8 @@ export interface IHeaderLinkProps {
   isPrimary: boolean
   path: string
   text: string
+  isMobile?: boolean
+  onClick?: () => void
 }
 
 /**

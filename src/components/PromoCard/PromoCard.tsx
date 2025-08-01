@@ -1,16 +1,32 @@
 function PromoCard() {
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center animate-fade-in">
       <div className="relative">
-        <span className="animate-ping absolute -top-2 -left-2 inline-flex h-5 w-5 rounded-full bg-green-600 opacity-90"></span>
+        <span
+          className="animate-ping absolute -top-2 -left-2 inline-flex h-4 w-4 rounded-full bg-success opacity-75"
+          aria-hidden="true"
+        ></span>
+        <span
+          className="absolute -top-2 -left-2 inline-flex h-4 w-4 rounded-full bg-success"
+          aria-hidden="true"
+        ></span>
       </div>
-      <div className="py-5 px-4 lg:w-1/2 rounded-b-xl shadow-xl border-t-4 border-green-800 bg-green-100 text-green-700 font-bold leading-relaxed">
-        ✨ Get accurate weather forecasts instantly with our
-        <span className="text-green-800"> real-time </span>weather service.
-        <span className="font-medium opacity-80">
-          {' '}
-          Your trusted weather companion!{' '}
-        </span>
+      <div
+        className="py-6 px-6 lg:w-2/3 xl:w-1/2 rounded-xl shadow-lg border-t-4 border-success bg-success/5 text-success-foreground font-medium leading-relaxed transition-all hover:shadow-xl hover:scale-105"
+        role="complementary"
+        aria-label="Weather service promotion"
+      >
+        <p className="text-foreground">
+          <span className="text-2xl mr-2" role="img" aria-label="sparkles">
+            ✨
+          </span>
+          Get accurate weather forecasts instantly with our
+          <span className="text-success font-semibold mx-1">real-time</span>
+          weather service.
+          <span className="text-muted-foreground font-normal block mt-2">
+            Your trusted weather companion!
+          </span>
+        </p>
       </div>
     </div>
   )
