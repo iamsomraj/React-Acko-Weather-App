@@ -11,7 +11,7 @@ export const INITIAL_LAT_AND_LONG_VALUE = -99999
 const data = {
   brand: {
     path: addPath(''),
-    text: 'Acko Weather',
+    text: 'WeatherNow',
     container: HomeContainer,
   },
   navLinks: [
@@ -24,28 +24,28 @@ const data = {
     {
       isPrimary: false,
       path: addPath('terms'),
-      text: 'Terms',
+      text: 'Privacy',
       container: TermsContainer,
     },
     {
       isPrimary: true,
       path: addPath('check-weather'),
-      text: 'Weather',
+      text: 'Weather Forecast',
       container: WeatherContainer,
     },
   ],
   hero: {
     mainHeading: {
-      first: 'Acko',
-      last: 'Weather',
+      first: 'Weather',
+      last: 'Forecast',
     },
     subHeading: {
-      first: 'Get all the weather information.',
-      second: 'Just one click away.',
+      first: 'Get accurate weather information for any location.',
+      second: 'Real-time data at your fingertips.',
     },
     mainAction: {
       path: addPath('check-weather'),
-      text: 'See Weather',
+      text: 'Check Weather',
       container: WeatherContainer,
     },
   },

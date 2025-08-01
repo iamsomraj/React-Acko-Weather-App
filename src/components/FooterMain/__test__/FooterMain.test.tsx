@@ -13,6 +13,6 @@ describe('FooterMain Component', () => {
       </div>
     )
     const element = getByTestId('form-heading-element')
-    expect(element.textContent).toBe('Get our monthly updates')
+    expect(element.textContent).toBe('Stay updated with weather insights')
   })
 })

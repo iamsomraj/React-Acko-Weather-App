@@ -17,13 +17,15 @@ const FooterMain: React.FC = () => {
           data-testid="form-heading-element"
           className="mb-4 font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r text-teal-500"
         >
-          Get our monthly updates
+          Stay updated with weather insights
         </h4>
         <form
           className="flex"
           onSubmit={(e) => {
             e.preventDefault()
-            alert('Thanks for subscribing: ' + email)
+            alert(
+              'Thank you for subscribing to weather updates! Email: ' + email
+            )
             setEmail('')
           }}
         >
@@ -33,7 +35,7 @@ const FooterMain: React.FC = () => {
             name="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="somraj@somraj.com"
+            placeholder="your.email@example.com"
             className="w-full p-3 rounded-l outline-none border-2 border-r-0 border-gray-400 focus:border-purple-400 placeholder-gray-400"
           />
           <button

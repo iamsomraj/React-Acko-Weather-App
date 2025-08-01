@@ -1,6 +1,6 @@
-# 🍃 React-Acko-Weather-App
+# �️ WeatherNow - React Weather Application
 
-React-Acko-Weather-App is a forecast viewer application. When you use the Check Weather feature in React-Acko-Weather-App, user will receive a prompt for accepting location permission. Based on user input, React-Acko-Weather-App shows the forecast weather data.
+WeatherNow is a modern weather forecast application built with React. When you use the Weather Forecast feature, users receive a prompt for location permission. Based on user preference, WeatherNow displays comprehensive weather forecast data with an intuitive interface.
 
 ## Top Features
 

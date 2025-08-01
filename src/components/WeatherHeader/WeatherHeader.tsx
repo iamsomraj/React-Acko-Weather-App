@@ -9,7 +9,7 @@ export function WeatherHeader({ className }: { className?: string }) {
         className
       )}
     >
-      Check Forecast
+      Weather Forecast
     </div>
   )
 }

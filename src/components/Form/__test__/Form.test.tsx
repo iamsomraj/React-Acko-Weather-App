@@ -33,15 +33,17 @@ describe('Form Component', () => {
   it('renders the form with input and buttons', () => {
     render(<Form {...defaultProps} />)
 
-    expect(screen.getByPlaceholderText('Enter city name...')).toBeDefined()
-    expect(screen.getByText('Search Weather')).toBeDefined()
-    expect(screen.getByText('Use Location')).toBeDefined()
+    expect(
+      screen.getByPlaceholderText('Enter city or location name...')
+    ).toBeDefined()
+    expect(screen.getByText('Get Forecast')).toBeDefined()
+    expect(screen.getByText('Use My Location')).toBeDefined()
   })
 
   it('calls onChange when typing in input', () => {
     render(<Form {...defaultProps} />)
 
-    const input = screen.getByPlaceholderText('Enter city name...')
+    const input = screen.getByPlaceholderText('Enter city or location name...')
     fireEvent.change(input, { target: { value: 'London' } })
 
     expect(mockOnChange).toHaveBeenCalledWith('London')

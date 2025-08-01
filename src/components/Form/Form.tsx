@@ -39,14 +39,14 @@ export function Form({
   return (
     <Card className={cn('w-full max-w-md', className)}>
       <CardHeader>
-        <CardTitle className="text-center">Weather Search</CardTitle>
+        <CardTitle className="text-center">Weather Lookup</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Input
               type="text"
-              placeholder="Enter city name..."
+              placeholder="Enter city or location name..."
               value={term}
               onChange={handleInputChange}
               disabled={state.loading}
@@ -63,7 +63,7 @@ export function Form({
               disabled={state.loading || !term.trim()}
               className="flex-1"
             >
-              {state.loading ? 'Searching...' : 'Search Weather'}
+              {state.loading ? 'Fetching weather...' : 'Get Forecast'}
             </Button>
 
             <Button
@@ -72,7 +72,7 @@ export function Form({
               onClick={handleInit}
               disabled={state.loading}
             >
-              Use Location
+              Use My Location
             </Button>
           </div>
         </form>

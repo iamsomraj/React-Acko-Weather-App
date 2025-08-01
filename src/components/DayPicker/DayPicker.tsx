@@ -40,7 +40,7 @@ export function DayPicker({ forecast }: IDayPickerProps) {
     }
     return (
       <div className="flex justify-center items-center min-h-[200px]">
-        <Spinner text="Loading weather data..." size="lg" />
+        <Spinner text="Loading forecast data..." size="lg" />
       </div>
     )
   }
@@ -50,7 +50,7 @@ export function DayPicker({ forecast }: IDayPickerProps) {
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-center text-primary-600">
-            Weather Data for {forecast.data.city.name}
+            Forecast for {forecast.data.city.name}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -59,7 +59,7 @@ export function DayPicker({ forecast }: IDayPickerProps) {
               htmlFor="date-select"
               className="block text-sm font-medium text-foreground"
             >
-              Select Date
+              Select Forecast Date
             </label>
             <select
               id="date-select"
@@ -69,7 +69,7 @@ export function DayPicker({ forecast }: IDayPickerProps) {
             >
               {uniqueDays.map((day) => (
                 <option key={day || 'empty'} value={day}>
-                  {day || 'Select a date...'}
+                  {day || 'Choose a forecast date...'}
                 </option>
               ))}
             </select>
@@ -83,7 +83,7 @@ export function DayPicker({ forecast }: IDayPickerProps) {
           <div className="flex justify-center">
             <ActionButton
               path={addPath('')}
-              body="Go Back Home"
+              body="Return Home"
               variant="outline"
             />
           </div>

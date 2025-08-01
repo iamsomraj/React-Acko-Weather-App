@@ -1,4 +1,3 @@
-
 import { useCallback, useEffect, useState } from 'react'
 import { INITIAL_LAT_AND_LONG_VALUE } from '@/data'
 import { useAppDispatch, useAppSelector } from '@/hooks'
@@ -46,7 +45,7 @@ export function WeatherBody() {
     if (!navigator.geolocation) {
       setGeoError({
         code: 0,
-        message: 'Geolocation is not supported by this browser.',
+        message: 'Location services are not supported by this browser.',
       })
       return
     }
@@ -87,7 +86,7 @@ export function WeatherBody() {
       <div className="flex items-center justify-center min-h-[200px] p-6">
         <div className="text-center">
           <h3 className="text-lg font-semibold text-red-600 mb-2">
-            Location Error
+            Location Access Error
           </h3>
           <p className="text-gray-600">{geoError.message}</p>
         </div>
