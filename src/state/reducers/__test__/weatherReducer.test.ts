@@ -8,7 +8,6 @@ import weatherReducer, {
   clearError,
 } from '../../../state/reducers/weatherReducer'
 
-// Mock axios
 vi.mock('axios')
 const mockedAxios = vi.mocked(axios)
 

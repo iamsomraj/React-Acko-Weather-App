@@ -30,7 +30,6 @@ export function WeatherBody() {
     (position: GeolocationPosition) => {
       const { latitude, longitude } = position.coords
       setCoordinates({ lat: latitude, lng: longitude })
-      // Use coordinates to fetch weather data for user's actual location
       dispatch(fetchWeatherDataByCoords({ lat: latitude, lng: longitude }))
     },
     [dispatch]
@@ -83,7 +82,6 @@ export function WeatherBody() {
     requestLocation()
   }, [requestLocation])
 
-  // Handle critical geolocation errors
   if (geoError && geoError.code !== 1) {
     return (
       <div className="flex items-center justify-center min-h-[200px] p-6">

@@ -3,7 +3,6 @@ import tseslint from '@typescript-eslint/eslint-plugin'
 import tsparser from '@typescript-eslint/parser'
 
 export default [
-  // Global ignores (must be in its own object)
   {
     ignores: [
       'dist/**/*',
@@ -15,7 +14,6 @@ export default [
       'bun.lockb',
     ],
   },
-  // JavaScript files
   {
     files: ['**/*.js'],
     ...js.configs.recommended,
@@ -41,7 +39,6 @@ export default [
       'no-console': 'warn',
     },
   },
-  // TypeScript files
   {
     files: ['**/*.{ts,tsx}'],
     plugins: {
@@ -72,7 +69,6 @@ export default [
       },
     },
     rules: {
-      // Basic TypeScript rules
       '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/no-explicit-any': 'warn',
       'no-console': 'warn',

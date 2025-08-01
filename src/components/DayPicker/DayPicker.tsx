@@ -26,7 +26,6 @@ export function DayPicker({ forecast }: IDayPickerProps) {
     return ['', ...days]
   }, [forecast.data?.list])
 
-  // Loading state
   if (forecast.loading || !forecast.data) {
     if (forecast.error) {
       return (

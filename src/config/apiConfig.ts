@@ -8,7 +8,6 @@ export const weatherAPIConfig = {
   },
 }
 
-// Validate required environment variables
 if (!import.meta.env.VITE_OPENWEATHER_API_KEY) {
   // eslint-disable-next-line no-console
   console.error(

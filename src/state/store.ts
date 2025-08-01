@@ -11,7 +11,7 @@ export const store = configureStore({
         ignoredActions: ['persist/PERSIST'],
       },
     }),
-  devTools: true, // Enable Redux DevTools in all environments for development
+  devTools: true,
 })
 
 export type RootState = ReturnType<typeof store.getState>

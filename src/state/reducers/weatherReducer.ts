@@ -9,7 +9,6 @@ const initialState: IWeatherState = {
   error: null,
 }
 
-// Async thunk for fetching weather data by city name
 export const fetchWeatherData = createAsyncThunk(
   'weather/fetchWeatherData',
   async (city: string, { rejectWithValue }) => {
@@ -33,7 +32,6 @@ export const fetchWeatherData = createAsyncThunk(
   }
 )
 
-// Async thunk for fetching weather data by coordinates
 export const fetchWeatherDataByCoords = createAsyncThunk(
   'weather/fetchWeatherDataByCoords',
   async (coords: { lat: number; lng: number }, { rejectWithValue }) => {
