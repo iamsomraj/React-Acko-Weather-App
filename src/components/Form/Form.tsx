@@ -14,7 +14,7 @@ export function Form({
   onChange,
   onSubmit,
   state,
-  onInit,
+  onClear,
   className,
 }: FormProps) {
   const handleInputChange = useCallback(
@@ -32,9 +32,9 @@ export function Form({
     [onSubmit]
   )
 
-  const handleInit = useCallback(() => {
-    onInit()
-  }, [onInit])
+  const handleClear = useCallback(() => {
+    onClear()
+  }, [onClear])
 
   return (
     <Card className={cn('w-full max-w-md', className)}>
@@ -69,10 +69,10 @@ export function Form({
             <Button
               type="button"
               variant="outline"
-              onClick={handleInit}
+              onClick={handleClear}
               disabled={state.loading}
             >
-              Use My Location
+              Clear Location
             </Button>
           </div>
         </form>

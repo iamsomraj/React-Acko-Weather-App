@@ -2,7 +2,6 @@
 /******START******/
 
 import { ReactNode } from 'react'
-import { WeatherActionType } from '@/state/action-types'
 
 /**
  * Utility Container Props
@@ -102,9 +101,7 @@ export interface IFormProps {
   onChange: (value: string) => void
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
   state: { loading: boolean; error: string | null }
-  onInit: () => {
-    type: WeatherActionType
-  }
+  onClear: () => void
 }
 
 /**

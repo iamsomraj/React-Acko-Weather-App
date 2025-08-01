@@ -1,7 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import React from 'react'
-import { WeatherActionType } from '../../../state/action-types'
 import Form from '../Form'
 
 interface FormProps {
@@ -9,20 +8,20 @@ interface FormProps {
   onChange: (value: string) => void
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
   state: { loading: boolean; error: string | null }
-  onInit: () => { type: WeatherActionType }
+  onClear: () => void
   className?: string
 }
 
 describe('Form Component', () => {
   const mockOnChange = vi.fn()
   const mockOnSubmit = vi.fn()
-  const mockOnInit = vi.fn(() => ({ type: WeatherActionType.INIT_STATE }))
+  const mockOnClear = vi.fn()
 
   const defaultProps: FormProps = {
     term: '',
     onChange: mockOnChange,
     onSubmit: mockOnSubmit,
-    onInit: mockOnInit,
+    onClear: mockOnClear,
     state: { loading: false, error: null },
   }
 
@@ -37,7 +36,7 @@ describe('Form Component', () => {
       screen.getByPlaceholderText('Enter city or location name...')
     ).toBeDefined()
     expect(screen.getByText('Get Forecast')).toBeDefined()
-    expect(screen.getByText('Use My Location')).toBeDefined()
+    expect(screen.getByText('Clear Location')).toBeDefined()
   })
 
   it('calls onChange when typing in input', () => {
@@ -57,5 +56,14 @@ describe('Form Component', () => {
     render(<Form {...errorProps} />)
 
     expect(screen.getByText('City not found')).toBeDefined()
+  })
+
+  it('calls onClear when Clear Location button is clicked', () => {
+    render(<Form {...defaultProps} />)
+
+    const clearButton = screen.getByText('Clear Location')
+    fireEvent.click(clearButton)
+
+    expect(mockOnClear).toHaveBeenCalledTimes(1)
   })
 })

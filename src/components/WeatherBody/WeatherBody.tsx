@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { INITIAL_LAT_AND_LONG_VALUE } from '@/data'
 import { useAppDispatch, useAppSelector } from '@/hooks'
-import { WeatherActionType } from '@/state/action-types'
 import {
   fetchWeatherData,
   fetchWeatherDataByCoords,
@@ -72,9 +71,9 @@ export function WeatherBody() {
     [dispatch, searchTerm]
   )
 
-  const handleReset = useCallback(() => {
+  const handleClear = useCallback(() => {
     dispatch(initState())
-    return { type: WeatherActionType.INIT_STATE }
+    setSearchTerm('')
   }, [dispatch])
 
   useEffect(() => {
@@ -99,7 +98,7 @@ export function WeatherBody() {
       forecastData={weatherState}
       isUserDenied={geoError?.code === 1}
       onChange={setSearchTerm}
-      onInit={handleReset}
+      onClear={handleClear}
       onSubmit={handleSearchSubmit}
       term={searchTerm}
       state={weatherState}

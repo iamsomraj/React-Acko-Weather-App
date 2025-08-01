@@ -7,7 +7,7 @@ const ForecastSection: React.FC<IForecastSectionProps & IFormProps> = ({
   forecastData,
   isUserDenied,
   onChange,
-  onInit,
+  onClear,
   onSubmit,
   term,
   state,
@@ -21,7 +21,7 @@ const ForecastSection: React.FC<IForecastSectionProps & IFormProps> = ({
         <div className="flex justify-center">
           <Form
             onChange={onChange}
-            onInit={onInit}
+            onClear={onClear}
             onSubmit={onSubmit}
             term={term}
             state={state}
