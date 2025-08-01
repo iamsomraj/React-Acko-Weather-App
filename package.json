@@ -45,18 +45,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "tsc --noEmit",
-    "lint:js": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
-    "preview": "vite preview",
+    "lint": "eslint .",
     "test": "vitest --run",
-    "test:watch": "vitest",
-    "test:ui": "vitest --ui",
+    "preview": "vite preview",
     "predeploy": "bun run build",
-    "deploy": "gh-pages -d dist",
-    "deploy:build": "bun run build",
-    "deploy:preview": "bun run build && bun run preview"
+    "deploy": "gh-pages -d dist"
   },
   "browserslist": {
     "production": [

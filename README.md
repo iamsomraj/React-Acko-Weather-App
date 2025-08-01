@@ -127,30 +127,14 @@ npm run preview
 
 ## Running Tests
 
-The project uses Vitest for testing with React Testing Library. Multiple test commands are available:
+The project uses Vitest for testing with React Testing Library.
 
-### Run Tests Once
+### Run Tests
 
 ```bash
 bun run test
 # or
 npm run test
-```
-
-### Watch Mode (for development)
-
-```bash
-bun run test:watch
-# or
-npm run test:watch
-```
-
-### Test UI (interactive testing interface)
-
-```bash
-bun run test:ui
-# or
-npm run test:ui
 ```
 
 ### Code Quality
@@ -161,22 +145,6 @@ Run linting:
 bun run lint
 # or
 npm run lint
-```
-
-Fix linting issues:
-
-```bash
-bun run lint:fix
-# or
-npm run lint:fix
-```
-
-Format code:
-
-```bash
-bun run format
-# or
-npm run format
 ```
 
 ## How To Test 2 Different Modes of Application
