@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,16 +16,16 @@ export default defineConfig({
   base: '/React-Acko-Weather-App/',
   resolve: {
     alias: {
-      '@': '/src',
-      '@/components': '/src/components',
-      '@/hooks': '/src/hooks',
-      '@/state': '/src/state',
-      '@/types': '/src/types',
-      '@/utils': '/src/utils',
-      '@/util': '/src/util',
-      '@/config': '/src/config',
-      '@/data': '/src/data',
-      '@/containers': '/src/containers',
+      '@': resolve(__dirname, './src'),
+      '@/components': resolve(__dirname, './src/components'),
+      '@/hooks': resolve(__dirname, './src/hooks'),
+      '@/state': resolve(__dirname, './src/state'),
+      '@/types': resolve(__dirname, './src/types'),
+      '@/utils': resolve(__dirname, './src/utils'),
+      '@/util': resolve(__dirname, './src/util'),
+      '@/config': resolve(__dirname, './src/config'),
+      '@/data': resolve(__dirname, './src/data'),
+      '@/containers': resolve(__dirname, './src/containers'),
     },
   },
 })

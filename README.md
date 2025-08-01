@@ -1,5 +1,7 @@
 # 🍃 React-Acko-Weather-App
 
+**Updated Project** - This React weather application has been modernized with the latest dependencies and coding standards, now optimized for Bun runtime.
+
 React-Acko-Weather-App is a forecast viewer application. When you use the Check Weather feature in React-Acko-Weather-App, user will receive a prompt for accepting location permission. Based on user input, React-Acko-Weather-App shows the forecast weather data.
 
 ## Top Features
@@ -28,12 +30,8 @@ React-Acko-Weather-App is a forecast viewer application. When you use the Check 
 - No Redundant API Calls
 - Complete Data Processing within the Application from Single API Call
 - 15+ Reusable React Typescript Components
-
-## Status of CI/CD Setup
-
-![Deployment Status](https://github.com/iamsomraj/React-Acko-Weather-App/actions/workflows/main.yml/badge.svg)
-
-![Testing Status](https://github.com/iamsomraj/React-Acko-Weather-App/actions/workflows/unit-tests.yml/badge.svg)
+- **Bun Runtime Support** - Optimized for fast package management and execution
+- **Modern Development Setup** - Updated with latest dependencies and coding standards
 
 ## Documentation
 
@@ -41,54 +39,71 @@ For developing this project, I prepared one basic design documentation. I will e
 
 - [Design Document - Link](https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Acko%20Weather%20Design%20Document#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1LDoDDeXxr86frGwT0wGW1eg2tLLtGAFS%26export%3Ddownload)
 
-## Demo
+## Local Development
 
-- [Live Version - Github Actions - CI/CD](https://iamsomraj.github.io/React-Acko-Weather-App/)
-
-- Installing Into Local System is Preferred
+Installing Into Local System is Preferred for the best development experience.
 
 ## Install React-Acko-Weather-App On Your Local System
+
+### Prerequisites
+
+- **Bun** - [Install Bun](https://bun.sh/docs/installation) (Recommended for optimal performance)
+
+### Installation
 
 - Open Terminal
 
 - Clone React-Acko-Weather-App Repository
 
 ```bash
-    git clone https://github.com/iamsomraj/React-Acko-Weather-App.git
+git clone https://github.com/iamsomraj/React-Acko-Weather-App.git
 ```
 
 - Install dependencies
 
 ```bash
-  cd React-Acko-Weather-App
-  npm install
-```
-
-- Install dev dependencies
-
-```bash
-  npm install --only=dev
+cd React-Acko-Weather-App
+bun install
 ```
 
 ## Run React-Acko-Weather-App
 
 - Open Terminal
-
 - Go to Root Directory of React-Acko-Weather-App
-
 - Start React-Acko-Weather-App
 
 ```bash
-  npm start
+bun run dev
 ```
+
+The application will be available at `http://localhost:5173/`
 
 ## Running Tests
 
-React-Acko-Weather-App currently supports some frontend tests using `jest` & `react-testing-library` . To run tests, run the following command
+React-Acko-Weather-App currently supports frontend tests using `vitest` & `react-testing-library`.
 
 ```bash
-  npm run test
+bun run test          # Run tests once
+bun run test:watch    # Run tests in watch mode
 ```
+
+## Build for Production
+
+```bash
+bun run build
+```
+
+## Available Scripts
+
+| Script       | Command              | Description               |
+| ------------ | -------------------- | ------------------------- |
+| Development  | `bun run dev`        | Start development server  |
+| Build        | `bun run build`      | Build for production      |
+| Test         | `bun run test`       | Run tests once            |
+| Test (Watch) | `bun run test:watch` | Run tests in watch mode   |
+| Lint         | `bun run lint`       | Run ESLint                |
+| Format       | `bun run format`     | Format code with Prettier |
+| Preview      | `bun run preview`    | Preview production build  |
 
 ## How To Test 2 Different Modes of Application
 
@@ -97,7 +112,7 @@ React-Acko-Weather-App currently has 2 modes of operation.
 - Geolocation Mode : Fetches forecast data based on position
 - User Input Mode : Fetches forecast data based on city name
 
-After installing it into your local system, you can enable or disable Location permission for the website and refresh. At the time of doing, you should be on the [Home Page](http://localhost:3000/React-Acko-Weather-App/).
+After installing it into your local system, you can enable or disable Location permission for the website and refresh. At the time of doing, you should be on the [Home Page](http://localhost:5173/).
 
 ## Future Improvements
 
@@ -111,6 +126,12 @@ After installing it into your local system, you can enable or disable Location p
 **Client:** React, Redux, React Hooks, Tailwind CSS
 
 **Language Used:** Typescript
+
+**Build Tool:** Vite
+
+**Package Manager:** Bun
+
+**Testing:** Vitest, React Testing Library
 
 **API:** [Open Weather Map API](https://openweathermap.org/forecast5)
 
