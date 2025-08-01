@@ -86,7 +86,7 @@ const weatherSlice = createSlice({
       .addCase(fetchWeatherData.rejected, (state, action) => {
         state.loading = false
         state.data = null
-        state.error = action.payload as string
+        state.error = action.payload ? String(action.payload) : 'Failed to fetch weather data'
       })
       .addCase(fetchWeatherDataByCoords.pending, (state) => {
         state.loading = true
@@ -103,7 +103,7 @@ const weatherSlice = createSlice({
       .addCase(fetchWeatherDataByCoords.rejected, (state, action) => {
         state.loading = false
         state.data = null
-        state.error = action.payload as string
+        state.error = action.payload ? String(action.payload) : 'Failed to fetch weather data'
       })
   },
 })

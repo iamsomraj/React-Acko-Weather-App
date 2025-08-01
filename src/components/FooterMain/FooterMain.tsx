@@ -10,18 +10,23 @@ const FooterMain: React.FC = () => {
    */
   const [email, setEmail] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [successMessage, setSuccessMessage] = useState('')
   const emailId = useId()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSuccessMessage('')
 
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
-    alert('Thank you for subscribing to weather updates! Email: ' + email)
+    setSuccessMessage(`Thank you for subscribing to weather updates! Email: ${email}`)
     setEmail('')
     setIsSubmitting(false)
+    
+    // Clear success message after 5 seconds
+    setTimeout(() => setSuccessMessage(''), 5000)
   }
 
   return (
@@ -79,6 +84,15 @@ const FooterMain: React.FC = () => {
             </div>
           )}
         </form>
+        {successMessage && (
+          <div
+            role="status"
+            aria-live="polite"
+            className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg text-green-800 text-sm"
+          >
+            {successMessage}
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col justify-center text-left lg:text-right lg:flex-shrink-0">

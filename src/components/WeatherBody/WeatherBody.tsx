@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react'
-import { INITIAL_LAT_AND_LONG_VALUE } from '@/data'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import {
   fetchWeatherData,
@@ -14,10 +13,6 @@ interface GeolocationError {
 }
 
 export function WeatherBody() {
-  const [, setCoordinates] = useState({
-    lat: INITIAL_LAT_AND_LONG_VALUE,
-    lng: INITIAL_LAT_AND_LONG_VALUE,
-  })
   const [geoError, setGeoError] = useState<GeolocationError | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -27,7 +22,6 @@ export function WeatherBody() {
   const handleLocationSuccess = useCallback(
     (position: GeolocationPosition) => {
       const { latitude, longitude } = position.coords
-      setCoordinates({ lat: latitude, lng: longitude })
       dispatch(fetchWeatherDataByCoords({ lat: latitude, lng: longitude }))
     },
     [dispatch]

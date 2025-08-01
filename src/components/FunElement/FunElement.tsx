@@ -14,8 +14,8 @@ const FunElement: React.FC<IFunElementProps> = ({ position, translate }) => {
         {/* Secondary element with opposite rotation and floating */}
         <div className="absolute ml-10 mt-10 bg-gradient-to-br from-secondary-300 to-secondary-400 w-48 h-48 rounded-3xl transform rotate-3 animate-float-medium shadow-md"></div>
 
-        {/* Tertiary element with faster floating animation - high contrast */}
-        <div className="absolute ml-20 mt-6 bg-gradient-to-br from-purple-500 to-purple-700 w-48 h-48 rounded-3xl transform -rotate-6 animate-float-fast shadow-xl border border-purple-400/30"></div>
+        {/* Tertiary element with faster floating animation - uses accent colors for better theme compatibility */}
+        <div className="absolute ml-20 mt-6 bg-gradient-to-br from-primary-600 to-primary-800 w-48 h-48 rounded-3xl transform -rotate-6 animate-float-fast shadow-xl border border-primary-500/30 dark:from-primary-500 dark:to-primary-700 dark:border-primary-400/30"></div>
 
         {/* Additional small floating dots for extra visual interest */}
         <div className="absolute ml-32 mt-8 bg-gradient-to-br from-warning-300 to-warning-400 w-12 h-12 rounded-full animate-bounce-gentle opacity-70"></div>
