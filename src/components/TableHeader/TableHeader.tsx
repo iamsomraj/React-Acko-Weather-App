@@ -5,7 +5,6 @@ const TableHeader: React.FC<ITableHeaderProps> = ({ rows }) => {
    * helps to render table headers based on object keys dynamically
    */
   const formatHeaderText = (header: string) => {
-    // Convert camelCase to readable format
     return header
       .replace(/([A-Z])/g, ' $1')
       .replace(/^./, (str) => str.toUpperCase())

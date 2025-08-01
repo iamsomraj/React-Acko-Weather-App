@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card } from '@/components/ui/card'
-import { Spinner } from '@/components/Spinner/Spinner'
+import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner'
 import { ActionButton } from '@/components/ActionButton/ActionButton'
 
 export function DebugTest() {
@@ -13,7 +13,7 @@ export function DebugTest() {
       <Card className="p-4">
         <div>Sample Card Component</div>
       </Card>
-      <Spinner text="Loading components..." />
+      <LoadingSpinner text="Loading components..." />
       <ActionButton body="Navigate Home" path="/" />
     </div>
   )

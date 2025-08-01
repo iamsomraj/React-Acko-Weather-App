@@ -5,14 +5,18 @@ import {
   fetchWeatherDataByCoords,
   initState,
 } from '@/state/reducers/weatherReducer'
-import ForecastSection from '@/components/ForecastSection/ForecastSection'
+import WeatherDataProvider from '@/components/WeatherDataProvider/WeatherDataProvider'
 
 interface GeolocationError {
   code: number
   message: string
 }
 
-export function WeatherBody() {
+/**
+ * WeatherService - Handles geolocation, API calls, and provides weather data to children
+ * Replaces the old WeatherBody component with better separation of concerns
+ */
+export function WeatherService() {
   const [geoError, setGeoError] = useState<GeolocationError | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -88,16 +92,15 @@ export function WeatherBody() {
   }
 
   return (
-    <ForecastSection
-      forecastData={weatherState}
-      isUserDenied={geoError?.code === 1}
-      onChange={setSearchTerm}
+    <WeatherDataProvider
+      weatherData={weatherState}
+      isLocationDenied={geoError?.code === 1}
+      searchTerm={searchTerm}
+      onSearchTermChange={setSearchTerm}
+      onSearchSubmit={handleSearchSubmit}
       onClear={handleClear}
-      onSubmit={handleSearchSubmit}
-      term={searchTerm}
-      state={weatherState}
     />
   )
 }
 
-export default WeatherBody
+export default WeatherService

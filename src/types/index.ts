@@ -49,29 +49,6 @@ export interface IFunElementProps {
 }
 
 /**
- * Forecast Section Props
- */
-export interface IForecastSectionProps {
-  isUserDenied: boolean | undefined
-  forecastData: IWeatherState
-}
-
-/**
- * Day Picker Props
- */
-export interface IDayPickerProps {
-  forecast: IWeatherState
-}
-
-/**
- * Table Props
- */
-export interface ITableProps {
-  forecast: IWeatherState
-  selected: string
-}
-
-/**
  * Table Row Props
  */
 export interface ITableHeaderProps {
@@ -93,24 +70,6 @@ export interface ITableBodyProps {
     WindSpeed: number
     CloudCover: number
   }[]
-}
-
-/**
- * Form Props
- */
-export interface IFormProps {
-  term: string
-  onChange: (value: string) => void
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
-  state: { loading: boolean; error: string | null }
-  onClear: () => void
-}
-
-/**
- * Spinner Props
- */
-export interface ISpinnerProps {
-  text?: string
 }
 
 /**

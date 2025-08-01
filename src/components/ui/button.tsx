@@ -31,7 +31,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         className={cn(
           'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
-          // Variant styles
           {
             'bg-primary text-primary-foreground shadow-md hover:bg-primary/90 hover:shadow-lg active:scale-95':
               variant === 'default',
@@ -46,14 +45,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             'text-primary underline-offset-4 hover:underline focus:underline active:no-underline':
               variant === 'link',
           },
-          // Size styles
           {
             'h-10 px-4 py-2 min-w-[2.5rem]': size === 'default',
             'h-9 rounded-md px-3 text-xs min-w-[2rem]': size === 'sm',
             'h-11 rounded-md px-8 text-base min-w-[3rem]': size === 'lg',
             'h-10 w-10 p-0': size === 'icon',
           },
-          // Loading state
           loading && 'cursor-wait',
           className
         )}

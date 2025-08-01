@@ -1,15 +1,21 @@
 import { useCallback, useMemo, useState, useId } from 'react'
-import { IDayPickerProps } from '@/types'
+import { useAppSelector } from '@/hooks'
 import { addPath } from '@/util'
 import { ActionButton } from '@/components/ActionButton/ActionButton'
-import { Spinner } from '@/components/Spinner/Spinner'
-import Table from '@/components/Table/Table'
+import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner'
+import HourlyForecastTable from '@/components/HourlyForecastTable/HourlyForecastTable'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-export function DayPicker({ forecast }: IDayPickerProps) {
+/**
+ * WeatherForecastDisplay - Displays weather forecast with date selection
+ * Replaces the old DayPicker component with better naming and direct Redux connection
+ */
+export function WeatherForecastDisplay() {
   const [selectedDate, setSelectedDate] = useState('')
   const selectId = useId()
   const errorId = useId()
+
+  const forecast = useAppSelector((state) => state.weather)
 
   const handleDateChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -36,6 +42,7 @@ export function DayPicker({ forecast }: IDayPickerProps) {
             <div
               id={errorId}
               className="text-destructive font-semibold text-center p-4 bg-destructive/10 rounded-lg"
+              role="status"
               aria-live="assertive"
             >
               <span className="block text-lg mb-2">
@@ -50,7 +57,7 @@ export function DayPicker({ forecast }: IDayPickerProps) {
 
     return (
       <div className="flex justify-center items-center min-h-[200px]">
-        <Spinner text="Loading forecast data..." size="lg" />
+        <LoadingSpinner text="Loading forecast data..." size="lg" />
       </div>
     )
   }
@@ -109,7 +116,7 @@ export function DayPicker({ forecast }: IDayPickerProps) {
 
       {selectedDate && (
         <div className="w-full space-y-6 animate-fade-in">
-          <Table selected={selectedDate} forecast={forecast} />
+          <HourlyForecastTable selectedDate={selectedDate} />
           <div className="flex justify-center">
             <ActionButton
               path={addPath('')}
@@ -123,4 +130,4 @@ export function DayPicker({ forecast }: IDayPickerProps) {
   )
 }
 
-export default DayPicker
+export default WeatherForecastDisplay

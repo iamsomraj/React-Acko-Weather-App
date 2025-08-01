@@ -1,22 +1,31 @@
 import React, { useCallback, useId } from 'react'
-import { IFormProps } from '@/types'
+import { IWeatherState } from '@/types'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/util/cn'
 
-interface FormProps extends IFormProps {
+interface LocationSearchFormProps {
+  term: string
+  onChange: (value: string) => void
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+  state: IWeatherState
+  onClear: () => void
   className?: string
 }
 
-export function Form({
+/**
+ * LocationSearchForm - Form for searching weather by city name
+ * Replaces the old Form component with more descriptive naming
+ */
+export function LocationSearchForm({
   term,
   onChange,
   onSubmit,
   state,
   onClear,
   className,
-}: FormProps) {
+}: LocationSearchFormProps) {
   const inputId = useId()
   const errorId = useId()
 
@@ -50,34 +59,42 @@ export function Form({
         </p>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <label
               htmlFor={inputId}
               className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
-              City or Location
+              City Name
             </label>
             <Input
               id={inputId}
               type="text"
-              placeholder="Enter city or location name..."
               value={term}
               onChange={handleInputChange}
+              placeholder="Enter city name (e.g., London, Paris)"
               disabled={state.loading}
-              className="w-full"
-              error={!!state.error}
-              helperText={state.error || undefined}
+              aria-invalid={!!state.error}
               aria-describedby={state.error ? errorId : undefined}
-              aria-required="true"
-              autoComplete="address-level2"
+              autoComplete="off"
+              required
             />
+            {state.error && (
+              <div
+                id={errorId}
+                role="alert"
+                className="text-sm text-destructive bg-destructive/10 p-2 rounded-md"
+                aria-live="polite"
+              >
+                {state.error}
+              </div>
+            )}
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex space-x-2">
             <Button
               type="submit"
-              disabled={state.loading || !term.trim()}
+              disabled={!term.trim() || state.loading}
               className="flex-1"
               loading={state.loading}
               aria-describedby={state.loading ? 'loading-status' : undefined}
@@ -112,4 +129,4 @@ export function Form({
   )
 }
 
-export default Form
+export default LocationSearchForm

@@ -1,17 +1,33 @@
-import { ITableProps } from '@/types'
+import { useAppSelector } from '@/hooks'
 import { getTimeFromTimestamp } from '@/util'
 import TableBody from '@/components/TableBody/TableBody'
 import TableHeader from '@/components/TableHeader/TableHeader'
 
-const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
+interface HourlyForecastTableProps {
+  selectedDate: string
+}
+
+/**
+ * HourlyForecastTable - Displays hourly weather forecast data in a table
+ * Replaces the old Table component with more descriptive naming and direct Redux connection
+ */
+const HourlyForecastTable: React.FC<HourlyForecastTableProps> = ({
+  selectedDate,
+}) => {
+  const forecast = useAppSelector((state) => state.weather)
+
+  if (!forecast.data) {
+    return null
+  }
+
   /**
    * filters the forecast data based on user selected value from drop down
    */
-  const filteredForecast = forecast.data?.list.filter((item) =>
-    item.dt_txt.includes(selected)
+  const filteredForecast = forecast.data.list.filter((item) =>
+    item.dt_txt.includes(selectedDate)
   )
 
-  const rowData = filteredForecast?.map((item) => {
+  const rowData = filteredForecast.map((item) => {
     return {
       Time: item.dt_txt,
       Temperature: item.main.temp,
@@ -25,10 +41,10 @@ const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
     }
   })
 
-  if (!rowData || rowData.length === 0) {
+  if (rowData.length === 0) {
     return (
       <div
-        className="text-center p-8 text-muted-foreground bg-muted/20 rounded-lg"
+        className="flex flex-col items-center justify-center p-12 bg-muted/20 rounded-lg border-2 border-dashed border-muted-foreground/20"
         role="status"
         aria-live="polite"
       >
@@ -43,12 +59,15 @@ const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
     )
   }
 
-  const selectedDateFormatted = new Date(selected).toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
+  const selectedDateFormatted = new Date(selectedDate).toLocaleDateString(
+    'en-US',
+    {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }
+  )
 
   return (
     <div className="flex flex-col space-y-6 animate-slide-up">
@@ -57,9 +76,9 @@ const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
           className="text-2xl lg:text-4xl font-bold text-primary"
           id="forecast-heading"
         >
-          {forecast.data?.city.name}
+          {forecast.data.city.name}
           <span className="text-sm font-normal text-muted-foreground ml-2 block lg:inline">
-            {forecast.data?.city.country}
+            {forecast.data.city.country}
           </span>
         </h2>
         <p className="text-lg text-foreground font-medium">
@@ -76,10 +95,8 @@ const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
             </span>
             <span>
               <span className="font-medium">Sunrise:</span>{' '}
-              <time
-                dateTime={getTimeFromTimestamp(forecast.data?.city.sunrise)}
-              >
-                {getTimeFromTimestamp(forecast.data?.city.sunrise)}
+              <time dateTime={getTimeFromTimestamp(forecast.data.city.sunrise)}>
+                {getTimeFromTimestamp(forecast.data.city.sunrise)}
               </time>
             </span>
           </div>
@@ -89,8 +106,8 @@ const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
             </span>
             <span>
               <span className="font-medium">Sunset:</span>{' '}
-              <time dateTime={getTimeFromTimestamp(forecast.data?.city.sunset)}>
-                {getTimeFromTimestamp(forecast.data?.city.sunset)}
+              <time dateTime={getTimeFromTimestamp(forecast.data.city.sunset)}>
+                {getTimeFromTimestamp(forecast.data.city.sunset)}
               </time>
             </span>
           </div>
@@ -105,7 +122,7 @@ const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
           aria-describedby="forecast-description"
         >
           <caption id="forecast-description" className="sr-only">
-            Hourly weather forecast table for {forecast.data?.city.name} on{' '}
+            Hourly weather forecast table for {forecast.data.city.name} on{' '}
             {selectedDateFormatted}. Contains temperature, conditions, and
             meteorological data for each time period.
           </caption>
@@ -123,4 +140,4 @@ const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
   )
 }
 
-export default Table
+export default HourlyForecastTable

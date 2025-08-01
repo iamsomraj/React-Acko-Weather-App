@@ -1,4 +1,4 @@
-import { BASE_URL } from '@/data'
+export const BASE_URL = 'React-Acko-Weather-App'
 
 export const addPath = (text: string) => '/' + BASE_URL + '/' + text
 

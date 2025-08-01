@@ -2,9 +2,9 @@ import AboutContainer from '@/containers/AboutContainer/AboutContainer'
 import HomeContainer from '@/containers/HomeContainer/HomeContainer'
 import TermsContainer from '@/containers/TermsContainer/TermsContainer'
 import WeatherContainer from '@/containers/WeatherContainer/WeatherContainer'
-import { addPath } from '@/util'
+import { addPath, BASE_URL } from '@/util'
 
-export const BASE_URL = 'React-Acko-Weather-App'
+export { BASE_URL }
 
 export const INITIAL_LAT_AND_LONG_VALUE = -99999
 

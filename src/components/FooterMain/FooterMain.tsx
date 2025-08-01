@@ -18,7 +18,6 @@ const FooterMain: React.FC = () => {
     setIsSubmitting(true)
     setSuccessMessage('')
 
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
     setSuccessMessage(
@@ -27,7 +26,6 @@ const FooterMain: React.FC = () => {
     setEmail('')
     setIsSubmitting(false)
 
-    // Clear success message after 5 seconds
     setTimeout(() => setSuccessMessage(''), 5000)
   }
 
