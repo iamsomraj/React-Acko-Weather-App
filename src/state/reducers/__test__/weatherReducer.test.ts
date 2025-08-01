@@ -6,7 +6,8 @@ import weatherReducer, {
   fetchWeatherDataByCoords,
   initState,
   clearError,
-} from '../../../state/reducers/weatherReducer'
+} from '../weatherReducer'
+import type { IWeatherState } from '../../../types'
 
 vi.mock('axios')
 const mockedAxios = vi.mocked(axios)
@@ -23,8 +24,10 @@ const mockWeatherResponse = {
   city: { name: 'London', country: 'GB' },
 }
 
+type TestStore = ReturnType<typeof configureStore<{ weather: IWeatherState }>>
+
 describe('Weather Reducer', () => {
-  let store: ReturnType<typeof configureStore>
+  let store: TestStore
 
   beforeEach(() => {
     store = configureStore({
@@ -55,7 +58,8 @@ describe('Weather Reducer', () => {
   })
 
   it('should handle fetchWeatherData.pending', () => {
-    mockedAxios.get.mockResolvedValue({ data: mockWeatherResponse })
+    const mockGet = vi.fn().mockResolvedValue({ data: mockWeatherResponse })
+    mockedAxios.get = mockGet
 
     store.dispatch(fetchWeatherData('London'))
     const state = store.getState().weather
@@ -64,7 +68,8 @@ describe('Weather Reducer', () => {
   })
 
   it('should handle fetchWeatherDataByCoords.pending', () => {
-    mockedAxios.get.mockResolvedValue({ data: mockWeatherResponse })
+    const mockGet = vi.fn().mockResolvedValue({ data: mockWeatherResponse })
+    mockedAxios.get = mockGet
 
     store.dispatch(fetchWeatherDataByCoords({ lat: 51.5074, lng: -0.1278 }))
     const state = store.getState().weather
@@ -73,7 +78,8 @@ describe('Weather Reducer', () => {
   })
 
   it('should fetch weather data by city successfully', async () => {
-    mockedAxios.get.mockResolvedValue({ data: mockWeatherResponse })
+    const mockGet = vi.fn().mockResolvedValue({ data: mockWeatherResponse })
+    mockedAxios.get = mockGet
 
     await store.dispatch(fetchWeatherData('London'))
     const state = store.getState().weather
@@ -81,7 +87,7 @@ describe('Weather Reducer', () => {
     expect(state.loading).toBe(false)
     expect(state.data).toEqual(mockWeatherResponse)
     expect(state.error).toBe(null)
-    expect(mockedAxios.get).toHaveBeenCalledWith(
+    expect(mockGet).toHaveBeenCalledWith(
       expect.stringContaining('api.openweathermap.org'),
       expect.objectContaining({
         params: expect.objectContaining({
@@ -92,7 +98,8 @@ describe('Weather Reducer', () => {
   })
 
   it('should fetch weather data by coordinates successfully', async () => {
-    mockedAxios.get.mockResolvedValue({ data: mockWeatherResponse })
+    const mockGet = vi.fn().mockResolvedValue({ data: mockWeatherResponse })
+    mockedAxios.get = mockGet
 
     const coords = { lat: 51.5074, lng: -0.1278 }
     await store.dispatch(fetchWeatherDataByCoords(coords))
@@ -101,7 +108,7 @@ describe('Weather Reducer', () => {
     expect(state.loading).toBe(false)
     expect(state.data).toEqual(mockWeatherResponse)
     expect(state.error).toBe(null)
-    expect(mockedAxios.get).toHaveBeenCalledWith(
+    expect(mockGet).toHaveBeenCalledWith(
       expect.stringContaining('api.openweathermap.org'),
       expect.objectContaining({
         params: expect.objectContaining({
@@ -114,9 +121,10 @@ describe('Weather Reducer', () => {
 
   it('should handle fetchWeatherData.rejected', async () => {
     const errorMessage = 'City not found'
-    mockedAxios.get.mockRejectedValue({
+    const mockGet = vi.fn().mockRejectedValue({
       response: { data: { message: errorMessage } },
     })
+    mockedAxios.get = mockGet
 
     await store.dispatch(fetchWeatherData('InvalidCity'))
     const state = store.getState().weather
@@ -128,9 +136,10 @@ describe('Weather Reducer', () => {
 
   it('should handle fetchWeatherDataByCoords.rejected', async () => {
     const errorMessage = 'Invalid coordinates'
-    mockedAxios.get.mockRejectedValue({
+    const mockGet = vi.fn().mockRejectedValue({
       response: { data: { message: errorMessage } },
     })
+    mockedAxios.get = mockGet
 
     await store.dispatch(fetchWeatherDataByCoords({ lat: 999, lng: 999 }))
     const state = store.getState().weather
