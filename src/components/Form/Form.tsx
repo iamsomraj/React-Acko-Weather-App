@@ -1,78 +1,115 @@
-import { IFormProp } from "../../types";
-import Spinner from "../Spinner/Spinner";
+import React, { useCallback, useId } from 'react'
+import { IFormProps } from '@/types'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { cn } from '@/util/cn'
 
-const Form: React.FC<IFormProp> = ({
+interface FormProps extends IFormProps {
+  className?: string
+}
+
+export function Form({
   term,
   onChange,
   onSubmit,
-  onInit,
   state,
-}) => {
-  const { loading, error } = state;
-  /**
-   * disables the button to prevent incorrect API usage
-   */
-  const isDisabled = term.trim().length === 0;
+  onClear,
+  className,
+}: FormProps) {
+  const inputId = useId()
+  const errorId = useId()
 
-  /**
-   * handles error state when Error response comes from API
-   */
-  const isError = error !== null;
+  const handleInputChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      onChange(event.target.value)
+    },
+    [onChange]
+  )
 
-  const formInputControlElement = (
-    <div className="mb-4">
-      <label
-        className="block mb-2 font-semibold text-xl text-left text-gray-500"
-        htmlFor="cityname"
-      >
-        City Name
-      </label>
-      <input
-        autoComplete="off"
-        id="cityname"
-        className={`block w-full py-2 px-4 focus:outline-none rounded border placeholder-gray-400 text-gray-500 ${
-          isError && "border-red-500"
-        }`}
-        placeholder="Search City"
-        type="text"
-        value={term}
-        onChange={(e) => {
-          onInit();
-          onChange(e.target.value);
-        }}
-      />
-      {isError && (
-        <div className="py-1 text-xs text-red-500 text-left font-semibold">
-          {error}
-        </div>
-      )}
-    </div>
-  );
+  const handleSubmit = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault()
+      onSubmit(event)
+    },
+    [onSubmit]
+  )
 
-  const formBtnControlElement = (
-    <div className="mb-4">
-      <button
-        disabled={isDisabled}
-        type="submit"
-        className={`block py-1 w-full rounded-lg bg-blue-400 text-gray-100 font-semibold disabled:opacity-80 ${
-          isDisabled && "cursor-not-allowed"
-        }`}
-      >
-        {loading ? <Spinner /> : "Fetch"}
-      </button>
-    </div>
-  );
+  const handleClear = useCallback(() => {
+    onClear()
+  }, [onClear])
 
   return (
-    <div className="my-6 px-5 py-4 shadow-lg rounded-md bg-gray-200 text-blue-700 text-center">
-      <form onSubmit={onSubmit}>
-        {/* Input Element */}
-        {formInputControlElement}
-        {/* Button Element */}
-        {formBtnControlElement}
-      </form>
-    </div>
-  );
-};
+    <Card className={cn('w-full max-w-md animate-fade-in', className)}>
+      <CardHeader>
+        <CardTitle className="text-center text-primary">
+          Weather Lookup
+        </CardTitle>
+        <p className="text-center text-sm text-muted-foreground">
+          Enter a city name to get current weather and forecast
+        </p>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+          <div className="space-y-2">
+            <label
+              htmlFor={inputId}
+              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+              City or Location
+            </label>
+            <Input
+              id={inputId}
+              type="text"
+              placeholder="Enter city or location name..."
+              value={term}
+              onChange={handleInputChange}
+              disabled={state.loading}
+              className="w-full"
+              error={!!state.error}
+              helperText={state.error || undefined}
+              aria-describedby={state.error ? errorId : undefined}
+              aria-required="true"
+              autoComplete="address-level2"
+            />
+          </div>
 
-export default Form;
+          <div className="flex gap-2">
+            <Button
+              type="submit"
+              disabled={state.loading || !term.trim()}
+              className="flex-1"
+              loading={state.loading}
+              aria-describedby={state.loading ? 'loading-status' : undefined}
+            >
+              {state.loading ? 'Getting forecast...' : 'Get Forecast'}
+            </Button>
+
+            <Button
+              type="button"
+              variant="outline"
+              onClick={handleClear}
+              disabled={state.loading}
+              aria-label="Clear location input and reset form"
+            >
+              Clear
+            </Button>
+          </div>
+
+          {state.loading && (
+            <div
+              id="loading-status"
+              role="status"
+              aria-live="polite"
+              className="sr-only"
+            >
+              Loading weather forecast data...
+            </div>
+          )}
+        </form>
+      </CardContent>
+    </Card>
+  )
+}
+
+export default Form

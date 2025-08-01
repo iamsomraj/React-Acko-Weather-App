@@ -1,0 +1,32 @@
+# Bun configuration file
+# Learn more: https://bun.sh/docs/runtime/bunfig
+
+[install]
+# Install packages from npm registry
+registry = "https://registry.npmjs.org/"
+
+# Use exact versions (like npm ci)  
+exact = false
+
+# Production dependencies only
+production = false
+
+# Install optional dependencies
+optional = true
+
+# Install peer dependencies
+peer = true
+
+# Cache directory
+cache = "node_modules/.cache/bun"
+
+[install.lockfile]
+# Save lockfile 
+save = true
+
+[test]
+# Test runner configuration
+preload = ["./src/test/setup.ts"]
+
+# Use jsdom environment for testing
+# This is handled in vitest.config.ts but kept here for reference

@@ -1,6 +1,6 @@
-import FunElement from "../../components/FunElement/FunElement";
-import Hero from "../../components/Hero/Hero";
-import UtilContainer from "../../components/UtilContainer/UtilContainer";
+import FunElement from '@/components/FunElement/FunElement'
+import Hero from '@/components/Hero/Hero'
+import UtilContainer from '@/components/UtilContainer/UtilContainer'
 
 const HomeContainer = () => {
   return (
@@ -15,7 +15,7 @@ const HomeContainer = () => {
         translate="-translate-x-80 -translate-y-80"
       />
     </UtilContainer>
-  );
-};
+  )
+}
 
-export default HomeContainer;
+export default HomeContainer

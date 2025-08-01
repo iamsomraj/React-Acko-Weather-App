@@ -1,18 +1,17 @@
-import { IForecastSectionProps, IFormProp } from "../../types";
-import DayPicker from "../DayPicker/DayPicker";
-import Form from "../Form/Form";
-import Spinner from "../Spinner/Spinner";
+import { IForecastSectionProps, IFormProps } from '@/types'
+import DayPicker from '@/components/DayPicker/DayPicker'
+import Form from '@/components/Form/Form'
+import Spinner from '@/components/Spinner/Spinner'
 
-const ForecastSection: React.FC<IForecastSectionProps & IFormProp> = ({
+const ForecastSection: React.FC<IForecastSectionProps & IFormProps> = ({
   forecastData,
   isUserDenied,
   onChange,
-  onInit,
+  onClear,
   onSubmit,
   term,
   state,
 }) => {
-
   /**
    * Handling when the user declines the location permission
    */
@@ -22,7 +21,7 @@ const ForecastSection: React.FC<IForecastSectionProps & IFormProp> = ({
         <div className="flex justify-center">
           <Form
             onChange={onChange}
-            onInit={onInit}
+            onClear={onClear}
             onSubmit={onSubmit}
             term={term}
             state={state}
@@ -34,9 +33,8 @@ const ForecastSection: React.FC<IForecastSectionProps & IFormProp> = ({
           </div>
         )}
       </div>
-    );
+    )
   }
-
 
   /**
    * Handling when user grants location permission
@@ -47,7 +45,7 @@ const ForecastSection: React.FC<IForecastSectionProps & IFormProp> = ({
     <div>
       <DayPicker forecast={forecastData} />
     </div>
-  );
-};
+  )
+}
 
-export default ForecastSection;
+export default ForecastSection

@@ -1,5 +1,5 @@
-import { ITableBodyProps } from "../../types";
-import TemperatureIndicator from "../TemperatureIndicator/TemperatureIndicator";
+import { ITableBodyProps } from '@/types'
+import TemperatureIndicator from '@/components/TemperatureIndicator/TemperatureIndicator'
 
 const TableBody: React.FC<ITableBodyProps> = ({ row }) => {
   /**
@@ -9,7 +9,7 @@ const TableBody: React.FC<ITableBodyProps> = ({ row }) => {
     <>
       {row.map((item) => (
         <tr key={item.Description + item.Temperature + item.Time}>
-          {Object.values(item).map((val, index, arr) => {
+          {Object.values(item).map((val, index) => {
             return (
               <td
                 key={`${val} ${index}`}
@@ -22,12 +22,12 @@ const TableBody: React.FC<ITableBodyProps> = ({ row }) => {
                   </div>
                 </div>
               </td>
-            );
+            )
           })}
         </tr>
       ))}
     </>
-  );
-};
+  )
+}
 
-export default TableBody;
+export default TableBody

@@ -1,7 +1,7 @@
-import { ITableProps } from "../../types";
-import { getTimeFromTimestamp } from "../../util";
-import TableBody from "../TableBody/TableBody";
-import TableHeader from "../TableHeader/TableHeader";
+import { ITableProps } from '@/types'
+import { getTimeFromTimestamp } from '@/util'
+import TableBody from '@/components/TableBody/TableBody'
+import TableHeader from '@/components/TableHeader/TableHeader'
 
 const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
   /**
@@ -9,61 +9,118 @@ const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
    */
   const filteredForecast = forecast.data?.list.filter((item) =>
     item.dt_txt.includes(selected)
-  );
+  )
 
   const rowData = filteredForecast?.map((item) => {
     return {
       Time: item.dt_txt,
       Temperature: item.main.temp,
-      "Real Feel": item.main.feels_like,
+      RealFeel: item.main.feels_like,
       Description: item.weather[0].description.toUpperCase(),
       Visibility: item.visibility,
       Humidity: item.main.humidity,
       Pressure: item.main.pressure,
-      "Wind Speed": item.wind.speed,
-      "Cloud Cover": item.clouds.all,
-    };
-  });
+      WindSpeed: item.wind.speed,
+      CloudCover: item.clouds.all,
+    }
+  })
 
-  if (!rowData) {
-    return <div>There are no rows of information</div>;
+  if (!rowData || rowData.length === 0) {
+    return (
+      <div
+        className="text-center p-8 text-muted-foreground bg-muted/20 rounded-lg"
+        role="status"
+        aria-live="polite"
+      >
+        <span className="text-4xl mb-4 block" role="img" aria-label="no data">
+          📊
+        </span>
+        <p className="text-lg font-medium mb-2">No forecast data available</p>
+        <p className="text-sm">
+          Please select a different date or try again later.
+        </p>
+      </div>
+    )
   }
+
+  const selectedDateFormatted = new Date(selected).toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+
   return (
-    <div className="flex flex-col space-y-4">
-      <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <h2 className="mt-10 text-xl lg:text-3xl font-bold text-purple-700">
+    <div className="flex flex-col space-y-6 animate-slide-up">
+      <div className="text-center space-y-3">
+        <h2
+          className="text-2xl lg:text-4xl font-bold text-primary"
+          id="forecast-heading"
+        >
           {forecast.data?.city.name}
-          <span className="px-2 text-xs font-bold text-gray-500">
+          <span className="text-sm font-normal text-muted-foreground ml-2 block lg:inline">
             {forecast.data?.city.country}
           </span>
         </h2>
-        <div className="flex justify-center space-x-3">
-          <div className="mt-2 text-xs font-bold text-teal-600">
-            Sunrise {getTimeFromTimestamp(forecast.data?.city.sunrise)}
+        <p className="text-lg text-foreground font-medium">
+          Weather forecast for {selectedDateFormatted}
+        </p>
+        <div
+          className="flex justify-center items-center space-x-6 text-sm"
+          role="group"
+          aria-label="Sun information"
+        >
+          <div className="flex items-center space-x-2 text-primary">
+            <span role="img" aria-label="sunrise">
+              🌅
+            </span>
+            <span>
+              <span className="font-medium">Sunrise:</span>{' '}
+              <time
+                dateTime={getTimeFromTimestamp(forecast.data?.city.sunrise)}
+              >
+                {getTimeFromTimestamp(forecast.data?.city.sunrise)}
+              </time>
+            </span>
           </div>
-          <div className="mt-2 text-xs font-bold text-teal-600">
-            Sunset {getTimeFromTimestamp(forecast.data?.city.sunset)}
+          <div className="flex items-center space-x-2 text-primary">
+            <span role="img" aria-label="sunset">
+              🌇
+            </span>
+            <span>
+              <span className="font-medium">Sunset:</span>{' '}
+              <time dateTime={getTimeFromTimestamp(forecast.data?.city.sunset)}>
+                {getTimeFromTimestamp(forecast.data?.city.sunset)}
+              </time>
+            </span>
           </div>
         </div>
       </div>
-      <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-          <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
-                <tr>
-                  <TableHeader rows={Object.keys(rowData[0])} />
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                <TableBody row={rowData} />
-              </tbody>
-            </table>
-          </div>
-        </div>
+
+      <div className="overflow-x-auto shadow-lg rounded-lg border border-border">
+        <table
+          className="min-w-full divide-y divide-border bg-background"
+          role="table"
+          aria-labelledby="forecast-heading"
+          aria-describedby="forecast-description"
+        >
+          <caption id="forecast-description" className="sr-only">
+            Hourly weather forecast table for {forecast.data?.city.name} on{' '}
+            {selectedDateFormatted}. Contains temperature, conditions, and
+            meteorological data for each time period.
+          </caption>
+          <thead className="bg-muted/30">
+            <tr role="row">
+              <TableHeader rows={Object.keys(rowData[0])} />
+            </tr>
+          </thead>
+          <tbody className="bg-background divide-y divide-border">
+            <TableBody row={rowData} />
+          </tbody>
+        </table>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Table;
+export default Table

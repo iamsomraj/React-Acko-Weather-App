@@ -1,6 +1,5 @@
-import React from "react";
-import WeatherBody from "../WeatherBody/WeatherBody";
-import WeatherHeader from "../WeatherHeader/WeatherHeader";
+import WeatherBody from '@/components/WeatherBody/WeatherBody'
+import WeatherHeader from '@/components/WeatherHeader/WeatherHeader'
 
 function WeatherMain() {
   return (
@@ -8,7 +7,7 @@ function WeatherMain() {
       <WeatherHeader />
       <WeatherBody />
     </>
-  );
+  )
 }
 
-export default WeatherMain;
+export default WeatherMain

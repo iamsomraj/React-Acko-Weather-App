@@ -1,20 +1,25 @@
 function PromoCard() {
   return (
-    <div className="flex justify-center">
-      <div className="relative">
-        <span className="animate-ping absolute -top-2 -left-2 inline-flex h-5 w-5 rounded-full bg-yellow-600 opacity-90"></span>
-      </div>
-      <div className="py-5 px-4 lg:w-1/2 rounded-b-xl shadow-xl border-t-4 border-yellow-800 bg-yellow-200 text-yellow-500 font-bold leading-relaxed">
-        Hurry! We are keeping our services
-        <span className="text-yellow-600"> FREE </span>for next{" "}
-        <span className="text-yellow-600"> 90 </span> days!
-        <span className="font-medium opacity-80">
-          {" "}
-          You are very important to us!{" "}
-        </span>
+    <div className="flex justify-center animate-fade-in">
+      <div
+        className="py-6 px-6 lg:w-2/3 xl:w-1/2 rounded-xl shadow-lg border-t-4 border-success bg-success/5 text-success-foreground font-medium leading-relaxed transition-all hover:shadow-xl hover:scale-105"
+        role="complementary"
+        aria-label="Weather service promotion"
+      >
+        <p className="text-foreground">
+          <span className="text-2xl mr-2" role="img" aria-label="sparkles">
+            ✨
+          </span>
+          Get accurate weather forecasts instantly with our
+          <span className="text-success font-semibold mx-1">real-time</span>
+          weather service.
+          <span className="text-muted-foreground font-normal block mt-2">
+            Your trusted weather companion!
+          </span>
+        </p>
       </div>
     </div>
-  );
+  )
 }
 
-export default PromoCard;
+export default PromoCard

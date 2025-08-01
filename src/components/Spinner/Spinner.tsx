@@ -1,30 +1,60 @@
-import { ISpinnerProps } from "../../types";
+import { cn } from '@/util/cn'
 
-const Spinner: React.FC<ISpinnerProps> = ({ text }) => {
-  /**
-   * basic Spinner component for showing states as loading
-   */
+interface SpinnerProps {
+  className?: string
+  size?: 'sm' | 'md' | 'lg'
+  text?: string
+}
+
+export function Spinner({
+  className,
+  size = 'md',
+  text = 'Loading...',
+}: SpinnerProps) {
+  const sizeClasses = {
+    sm: 'h-4 w-4',
+    md: 'h-6 w-6',
+    lg: 'h-8 w-8',
+  }
+
   return (
-    <div className="flex items-center justify-center text-2xl text-purple">
-      <div>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 animate-spin inline-block mr-1"
-          fill="none"
-          viewBox="0 0 24 24"
+    <div
+      className={cn(
+        'flex flex-col items-center justify-center space-y-2 p-4',
+        className
+      )}
+      role="status"
+      aria-live="polite"
+    >
+      <svg
+        className={cn('animate-spin text-primary', sizeClasses[size])}
+        fill="none"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <circle
+          className="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
           stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-          />
-        </svg>
-        <span>{text ? text : ""}</span>
-      </div>
+          strokeWidth="4"
+        />
+        <path
+          className="opacity-75"
+          fill="currentColor"
+          d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        />
+      </svg>
+      {text && (
+        <span className="text-sm text-muted-foreground animate-pulse-soft">
+          {text}
+        </span>
+      )}
+      <span className="sr-only">{text}</span>
     </div>
-  );
-};
+  )
+}
 
-export default Spinner;
+export default Spinner

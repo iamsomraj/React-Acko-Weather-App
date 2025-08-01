@@ -1,6 +1,6 @@
-# 🍃 React-Acko-Weather-App
+# �️ WeatherNow - React Weather Application
 
-React-Acko-Weather-App is a forecast viewer application. When you use the Check Weather feature in React-Acko-Weather-App, user will receive a prompt for accepting location permission. Based on user input, React-Acko-Weather-App shows the forecast weather data.
+WeatherNow is a modern weather forecast application built with React. When you use the Weather Forecast feature, users receive a prompt for location permission. Based on user preference, WeatherNow displays comprehensive weather forecast data with an intuitive interface.
 
 ## Top Features
 
@@ -15,25 +15,19 @@ React-Acko-Weather-App is a forecast viewer application. When you use the Check 
 
 ### Code level
 
-- Use of Typescript, in place of Javascript
-- Type Safety reduces Production Errors by 80%
-- Separate types folder, for handling all Application Types From One Place
-- Complete State Management by Redux with Redux Devtools Extension Integration
-- Persisting Global State Across All Routes
-- Use of React Router Dom for creating Routes in a Single Page Application
-- No use of Custom UI framework, completely built using Tailwind CSS
-- Responsive UI even in Smaller Devices
-- 70% UI Text, Elements configurable from One File
-- Unit Tests for testing UI
-- No Redundant API Calls
-- Complete Data Processing within the Application from Single API Call
-- 15+ Reusable React Typescript Components
-
-## Status of CI/CD Setup
-
-![Deployment Status](https://github.com/iamsomraj/React-Acko-Weather-App/actions/workflows/main.yml/badge.svg)
-
-![Testing Status](https://github.com/iamsomraj/React-Acko-Weather-App/actions/workflows/unit-tests.yml/badge.svg)
+- Modern React 19 with TypeScript for type safety and better development experience
+- Vite for fast development and optimized production builds
+- Redux Toolkit for efficient state management with Redux DevTools integration
+- React Router v6 for client-side routing in Single Page Application
+- Tailwind CSS for utility-first styling without custom UI frameworks
+- Vitest for fast unit testing with modern testing capabilities
+- ESLint and Prettier for code quality and consistent formatting
+- Bun runtime support for faster package management and execution
+- Responsive design optimized for all device sizes
+- Component-based architecture with 15+ reusable TypeScript components
+- Efficient API integration with no redundant calls
+- Complete data processing and state persistence across routes
+- Modern build tooling with hot module replacement
 
 ## Documentation
 
@@ -49,45 +43,108 @@ For developing this project, I prepared one basic design documentation. I will e
 
 ## Install React-Acko-Weather-App On Your Local System
 
-- Open Terminal
+### Prerequisites
 
-- Clone React-Acko-Weather-App Repository
+- Node.js (v18 or higher recommended)
+- Bun (optional, for faster package management) or npm/yarn
 
-```bash
-    git clone https://github.com/iamsomraj/React-Acko-Weather-App.git
-```
+### Installation Steps
 
-- Install dependencies
-
-```bash
-  cd React-Acko-Weather-App
-  npm install
-```
-
-- Install dev dependencies
+1. **Clone the repository**
 
 ```bash
-  npm install --only=dev
+git clone https://github.com/iamsomraj/React-Acko-Weather-App.git
+cd React-Acko-Weather-App
 ```
+
+2. **Install dependencies**
+
+Using Bun (recommended for faster installation):
+
+```bash
+bun install
+```
+
+Or using npm:
+
+```bash
+npm install
+```
+
+3. **Set up environment variables**
+
+   Copy the example environment file:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Then edit the `.env` file and add your OpenWeatherMap API key:
+
+   ```bash
+   VITE_OPENWEATHER_API_KEY=your_actual_api_key_here
+   ```
+
+   To get your API key:
+   - Visit [OpenWeatherMap API](https://openweathermap.org/api)
+   - Sign up for a free account
+   - Navigate to API keys section
+   - Copy your API key and replace `your_actual_api_key_here` in the `.env` file
 
 ## Run React-Acko-Weather-App
 
-- Open Terminal
+### Development Mode
 
-- Go to Root Directory of React-Acko-Weather-App
-
-- Start React-Acko-Weather-App
+Using Bun:
 
 ```bash
-  npm start
+bun run dev
+```
+
+Or using npm:
+
+```bash
+npm run dev
+```
+
+The application will start on `http://localhost:5173` (Vite default port).
+
+### Production Build
+
+```bash
+bun run build
+# or
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+bun run preview
+# or
+npm run preview
 ```
 
 ## Running Tests
 
-React-Acko-Weather-App currently supports some frontend tests using `jest` & `react-testing-library` . To run tests, run the following command
+The project uses Vitest for testing with React Testing Library.
+
+### Run Tests
 
 ```bash
-  npm run test
+bun run test
+# or
+npm run test
+```
+
+### Code Quality
+
+Run linting:
+
+```bash
+bun run lint
+# or
+npm run lint
 ```
 
 ## How To Test 2 Different Modes of Application
@@ -97,22 +154,92 @@ React-Acko-Weather-App currently has 2 modes of operation.
 - Geolocation Mode : Fetches forecast data based on position
 - User Input Mode : Fetches forecast data based on city name
 
-After installing it into your local system, you can enable or disable Location permission for the website and refresh. At the time of doing, you should be on the [Home Page](http://localhost:3000/React-Acko-Weather-App/).
+After installing it into your local system, you can enable or disable Location permission for the website and refresh. At the time of doing, you should be on the [Home Page](http://localhost:5173/).
+
+## Deployment
+
+### GitHub Pages Deployment
+
+```bash
+bun run deploy
+# or
+npm run deploy
+```
+
+This will build the project and deploy it to GitHub Pages.
+
+## Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+├── containers/          # Page-level container components
+├── state/              # Redux store, actions, and reducers
+├── hooks/              # Custom React hooks
+├── types/              # TypeScript type definitions
+├── utils/              # Utility functions
+├── config/             # API and app configuration
+└── data/               # Static data and constants
+```
 
 ## Future Improvements
 
 - Toggle Option for both modes of Operation
-- Dark Mode
-- Dockerization
-- Weather Map implementation
+- Dark Mode Implementation
+- Docker containerization for easy deployment
+- Interactive Weather Map with geographical visualization
+- Progressive Web App (PWA) features
+- Advanced weather analytics and historical data
+- Multi-language support (i18n)
+- Weather alerts and notifications
+- Offline functionality with service workers
 
 ## Tech Stack
 
-**Client:** React, Redux, React Hooks, Tailwind CSS
+**Frontend Framework:** React 19 with TypeScript
 
-**Language Used:** Typescript
+**Build Tool:** Vite (fast development and optimized builds)
 
-**API:** [Open Weather Map API](https://openweathermap.org/forecast5)
+**State Management:** Redux Toolkit with Redux DevTools
+
+**Routing:** React Router v6
+
+**Styling:** Tailwind CSS (utility-first CSS framework)
+
+**Testing:** Vitest with React Testing Library
+
+**Package Manager:** Bun (with npm fallback support)
+
+**Code Quality:** ESLint + Prettier + TypeScript
+
+**Deployment:** GitHub Actions CI/CD → GitHub Pages
+
+**API:** [OpenWeatherMap API](https://openweathermap.org/forecast5) (5-day/3-hour forecast)
+
+## Development Experience
+
+This project leverages modern development tools and practices:
+
+- **⚡ Vite**: Lightning-fast development server with Hot Module Replacement (HMR)
+- **🟦 TypeScript**: Full type safety with modern TypeScript features
+- **🧪 Vitest**: Fast unit testing with native ES modules support
+- **🎯 Redux Toolkit**: Simplified Redux usage with built-in best practices
+- **🎨 Tailwind CSS**: Utility-first styling with responsive design
+- **🏃‍♂️ Bun**: Optional fast runtime and package manager support
+- **📋 ESLint + Prettier**: Automated code formatting and linting
+- **🚀 GitHub Actions**: Automated testing and deployment pipeline
+- **⚛️ React 19**: Latest React features including improved performance and modern patterns
+
+### Key Technical Highlights
+
+- Zero-config setup with Vite
+- Modern ES modules throughout the codebase
+- Efficient state management with Redux Toolkit
+- Component-driven development with strict TypeScript
+- Comprehensive error handling and user feedback
+- Mobile-first responsive design approach
+- Optimized bundle size and loading performance
+- Latest React 19 features and optimizations
 
 ## Open Weather Map API Reference
 
@@ -163,11 +290,11 @@ These following API end-points are used in React-Acko-Weather-App
 
 **Question:** Why have you used Typescript?
 
-**Answer:** Nowadays, most React applications are built using Typescript. That's why, I have used it. Also, I like the language and it gives many benefits in the long run. I think, in future, everyone will develop React applications using only Typescript.
+**Answer:** Nowadays, most React applications are built using Typescript. That's why, I have used it. Also, I like the language and it gives many benefits in the long run. I think, in future, everyone will develop React applications using only Typescript. With React 19, TypeScript integration has become even more seamless and provides better type safety for modern React patterns.
 
 **Question:** Why have you used Redux?
 
-**Answer:** It helps to keep the Main logic of the application separate with the rest of the application. One can also use React hooks, i.e., `useReducer`. But, my personal preference is Redux. In small parts of application, I also have used React hooks such as `useState` and `useEffect`.
+**Answer:** It helps to keep the Main logic of the application separate with the rest of the application. One can also use React hooks, i.e., `useReducer`. But, my personal preference is Redux. In small parts of application, I also have used React hooks such as `useState` and `useEffect`. Redux Toolkit makes state management much more efficient and works excellently with React 19's performance optimizations.
 
 **Question:** There are very few unit tests. Why?
 

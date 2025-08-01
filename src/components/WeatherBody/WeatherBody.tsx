@@ -1,65 +1,103 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from "react";
-import { INITIAL_LAT_AND_LONG_VALUE } from "../../data";
-import useWeatherDispatch from "../../hooks/useWeatherDispatch";
-import { useWeatherSelector } from "../../hooks/useWeatherSelector";
-import ForecastSection from "../ForecastSection/ForecastSection";
+import { useCallback, useEffect, useState } from 'react'
+import { useAppDispatch, useAppSelector } from '@/hooks'
+import {
+  fetchWeatherData,
+  fetchWeatherDataByCoords,
+  initState,
+} from '@/state/reducers/weatherReducer'
+import ForecastSection from '@/components/ForecastSection/ForecastSection'
 
-const WeatherBody: React.FC = () => {
-  const [lat, setLat] = useState(INITIAL_LAT_AND_LONG_VALUE);
-  const [long, setLong] = useState(INITIAL_LAT_AND_LONG_VALUE);
-  const [isGeoPositionError, setIsGeoPositionError] =
-    useState<GeolocationPositionError>();
-  const [term, setTerm] = useState("");
+interface GeolocationError {
+  code: number
+  message: string
+}
 
-  const { fetchWeatherByLatAndLong, fetchWeather, initState } =
-    useWeatherDispatch();
+export function WeatherBody() {
+  const [geoError, setGeoError] = useState<GeolocationError | null>(null)
+  const [searchTerm, setSearchTerm] = useState('')
 
-  const data = useWeatherSelector((state) => state.weather);
+  const dispatch = useAppDispatch()
+  const weatherState = useAppSelector((state) => state.weather)
+
+  const handleLocationSuccess = useCallback(
+    (position: GeolocationPosition) => {
+      const { latitude, longitude } = position.coords
+      dispatch(fetchWeatherDataByCoords({ lat: latitude, lng: longitude }))
+    },
+    [dispatch]
+  )
+
+  const handleLocationError = useCallback((error: GeolocationPositionError) => {
+    setGeoError({
+      code: error.code,
+      message: error.message,
+    })
+  }, [])
+
+  const requestLocation = useCallback(() => {
+    if (!navigator.geolocation) {
+      setGeoError({
+        code: 0,
+        message: 'Location services are not supported by this browser.',
+      })
+      return
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      handleLocationSuccess,
+      handleLocationError,
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0,
+      }
+    )
+  }, [handleLocationSuccess, handleLocationError])
+
+  const handleSearchSubmit = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault()
+      if (!searchTerm.trim()) return
+
+      dispatch(initState())
+      dispatch(fetchWeatherData(searchTerm.trim()))
+    },
+    [dispatch, searchTerm]
+  )
+
+  const handleClear = useCallback(() => {
+    dispatch(initState())
+    setSearchTerm('')
+  }, [dispatch])
 
   useEffect(() => {
-    const fetchLocation = () => {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLat(position.coords.latitude);
-          setLong(position.coords.longitude);
-          fetchWeatherByLatAndLong(
-            position.coords.latitude,
-            position.coords.longitude
-          );
-        },
-        (error) => {
-          setIsGeoPositionError(error);
-        }
-      );
-    };
-    fetchLocation();
-  }, []);
+    requestLocation()
+  }, [requestLocation])
 
-  const onSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    initState();
-    fetchWeather(term);
-  };
-
-  if (isGeoPositionError) {
-    if (isGeoPositionError.code !== 1) {
-      return <div>{isGeoPositionError.message}</div>;
-    }
+  if (geoError && geoError.code !== 1) {
+    return (
+      <div className="flex items-center justify-center min-h-[200px] p-6">
+        <div className="text-center">
+          <h3 className="text-lg font-semibold text-red-600 mb-2">
+            Location Access Error
+          </h3>
+          <p className="text-gray-600">{geoError.message}</p>
+        </div>
+      </div>
+    )
   }
 
   return (
     <ForecastSection
-      forecastData={data}
-      isUserDenied={!!isGeoPositionError && isGeoPositionError.code === 1}
-      onChange={setTerm}
-      onInit={initState}
-      onSubmit={onSubmitHandler}
-      term={term}
-      state={data}
+      forecastData={weatherState}
+      isUserDenied={geoError?.code === 1}
+      onChange={setSearchTerm}
+      onClear={handleClear}
+      onSubmit={handleSearchSubmit}
+      term={searchTerm}
+      state={weatherState}
     />
-  );
-};
+  )
+}
 
-export default WeatherBody;
+export default WeatherBody
