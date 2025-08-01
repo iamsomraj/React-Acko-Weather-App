@@ -72,11 +72,24 @@ npm install
 ```
 
 3. **Set up environment variables**
-   Create a `.env` file in the root directory and add your OpenWeatherMap API key:
 
-```bash
-VITE_OPENWEATHER_API_KEY=your_api_key_here
-```
+   Copy the example environment file:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Then edit the `.env` file and add your OpenWeatherMap API key:
+
+   ```bash
+   VITE_OPENWEATHER_API_KEY=your_actual_api_key_here
+   ```
+
+   To get your API key:
+   - Visit [OpenWeatherMap API](https://openweathermap.org/api)
+   - Sign up for a free account
+   - Navigate to API keys section
+   - Copy your API key and replace `your_actual_api_key_here` in the `.env` file
 
 ## Run React-Acko-Weather-App
 
