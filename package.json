@@ -1,5 +1,6 @@
 {
   "name": "react-acko-weather-app",
+  "homepage": "https://iamsomraj.github.io/React-Acko-Weather-App",
   "version": "0.2.0",
   "private": true,
   "type": "module",
@@ -45,7 +46,9 @@
     "preview": "vite preview",
     "test": "vitest --run",
     "test:watch": "vitest",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "deploy:build": "bun run build",
+    "deploy:preview": "bun run build && bun run preview"
   },
   "browserslist": {
     "production": [

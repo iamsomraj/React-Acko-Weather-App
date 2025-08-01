@@ -33,6 +33,14 @@ React-Acko-Weather-App is a forecast viewer application. When you use the Check 
 - **Bun Runtime Support** - Optimized for fast package management and execution
 - **Modern Development Setup** - Updated with latest dependencies and coding standards
 
+## Deployment Status
+
+![Deployment Status](https://github.com/iamsomraj/React-Acko-Weather-App/actions/workflows/deploy.yml/badge.svg)
+
+## Demo
+
+- [Live Version - GitHub Pages](https://iamsomraj.github.io/React-Acko-Weather-App/)
+
 ## Documentation
 
 For developing this project, I prepared one basic design documentation. I will encourage you to see that first, so that you can get a better idea what to expect from this.
@@ -93,17 +101,50 @@ bun run test:watch    # Run tests in watch mode
 bun run build
 ```
 
+## GitHub Pages Deployment
+
+This project is automatically deployed to GitHub Pages using GitHub Actions whenever changes are pushed to the `master` or `main` branch.
+
+### Automatic Deployment
+
+- **Trigger**: Push to `master` or `main` branch
+- **Build Tool**: Bun
+- **Deploy Target**: GitHub Pages
+- **Live URL**: [https://iamsomraj.github.io/React-Acko-Weather-App/](https://iamsomraj.github.io/React-Acko-Weather-App/)
+
+### Manual Deployment Testing
+
+You can test the deployment build locally:
+
+```bash
+bun run deploy:preview
+```
+
+This will build the project and start a local preview server to test the production build.
+
+### GitHub Pages Setup (For Repository Owners)
+To enable GitHub Pages deployment for your fork:
+
+1. Go to your repository settings
+2. Navigate to "Pages" in the left sidebar
+3. Under "Source", select "GitHub Actions"
+4. The deployment will automatically trigger on the next push to `master` or `main`
+
+> **Note**: The first deployment may take a few minutes to complete and become available.
+
 ## Available Scripts
 
-| Script       | Command              | Description               |
-| ------------ | -------------------- | ------------------------- |
-| Development  | `bun run dev`        | Start development server  |
-| Build        | `bun run build`      | Build for production      |
-| Test         | `bun run test`       | Run tests once            |
-| Test (Watch) | `bun run test:watch` | Run tests in watch mode   |
-| Lint         | `bun run lint`       | Run ESLint                |
-| Format       | `bun run format`     | Format code with Prettier |
-| Preview      | `bun run preview`    | Preview production build  |
+| Script         | Command                  | Description                      |
+| -------------- | ------------------------ | -------------------------------- |
+| Development    | `bun run dev`            | Start development server         |
+| Build          | `bun run build`          | Build for production             |
+| Test           | `bun run test`           | Run tests once                   |
+| Test (Watch)   | `bun run test:watch`     | Run tests in watch mode          |
+| Lint           | `bun run lint`           | Run TypeScript type checking     |
+| Format         | `bun run format`         | Format code with Prettier        |
+| Preview        | `bun run preview`        | Preview production build         |
+| Deploy Build   | `bun run deploy:build`   | Build for deployment             |
+| Deploy Preview | `bun run deploy:preview` | Build and preview for deployment |
 
 ## How To Test 2 Different Modes of Application
 
