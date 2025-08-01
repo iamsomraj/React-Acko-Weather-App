@@ -46,6 +46,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint .",
+    "format": "eslint . --fix && prettier --write .",
     "test": "vitest --run",
     "preview": "vite preview",
     "predeploy": "bun run build",
