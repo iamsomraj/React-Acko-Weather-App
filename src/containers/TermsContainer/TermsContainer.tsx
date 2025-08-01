@@ -22,7 +22,7 @@ const TermsContainer = () => {
             <div>
               When you use our location-based features, we temporarily access
               your GPS coordinates to deliver precise weather data for your
-              area. This information is
+              area. This information is{' '}
               <Highlighter>never stored permanently</Highlighter> on our servers
               and is only used to fetch relevant weather information from our
               trusted data providers.
