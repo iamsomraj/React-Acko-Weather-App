@@ -15,7 +15,7 @@ React-Acko-Weather-App is a forecast viewer application. When you use the Check 
 
 ### Code level
 
-- Modern React 18 with TypeScript for type safety and better development experience
+- Modern React 19 with TypeScript for type safety and better development experience
 - Vite for fast development and optimized production builds
 - Redux Toolkit for efficient state management with Redux DevTools integration
 - React Router v6 for client-side routing in Single Page Application
@@ -228,7 +228,7 @@ src/
 
 ## Tech Stack
 
-**Frontend Framework:** React 18 with TypeScript
+**Frontend Framework:** React 19 with TypeScript
 
 **Build Tool:** Vite (fast development and optimized builds)
 
@@ -260,6 +260,7 @@ This project leverages modern development tools and practices:
 - **🏃‍♂️ Bun**: Optional fast runtime and package manager support
 - **📋 ESLint + Prettier**: Automated code formatting and linting
 - **🚀 GitHub Actions**: Automated testing and deployment pipeline
+- **⚛️ React 19**: Latest React features including improved performance and modern patterns
 
 ### Key Technical Highlights
 
@@ -270,6 +271,7 @@ This project leverages modern development tools and practices:
 - Comprehensive error handling and user feedback
 - Mobile-first responsive design approach
 - Optimized bundle size and loading performance
+- Latest React 19 features and optimizations
 
 ## Open Weather Map API Reference
 
@@ -320,11 +322,11 @@ These following API end-points are used in React-Acko-Weather-App
 
 **Question:** Why have you used Typescript?
 
-**Answer:** Nowadays, most React applications are built using Typescript. That's why, I have used it. Also, I like the language and it gives many benefits in the long run. I think, in future, everyone will develop React applications using only Typescript.
+**Answer:** Nowadays, most React applications are built using Typescript. That's why, I have used it. Also, I like the language and it gives many benefits in the long run. I think, in future, everyone will develop React applications using only Typescript. With React 19, TypeScript integration has become even more seamless and provides better type safety for modern React patterns.
 
 **Question:** Why have you used Redux?
 
-**Answer:** It helps to keep the Main logic of the application separate with the rest of the application. One can also use React hooks, i.e., `useReducer`. But, my personal preference is Redux. In small parts of application, I also have used React hooks such as `useState` and `useEffect`.
+**Answer:** It helps to keep the Main logic of the application separate with the rest of the application. One can also use React hooks, i.e., `useReducer`. But, my personal preference is Redux. In small parts of application, I also have used React hooks such as `useState` and `useEffect`. Redux Toolkit makes state management much more efficient and works excellently with React 19's performance optimizations.
 
 **Question:** There are very few unit tests. Why?
 
