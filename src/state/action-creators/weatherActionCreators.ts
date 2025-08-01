@@ -18,11 +18,12 @@ export const fetchWeatherByCity =
         payload: data,
       })
     } catch (error: unknown) {
-      const errorMessage = 
-        error instanceof Error 
-          ? error.message 
-          : (error as { response?: { data?: { message?: string } } })?.response?.data?.message || 'Unknown error'
-      
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : (error as { response?: { data?: { message?: string } } })?.response
+              ?.data?.message || 'Unknown error'
+
       dispatch({
         type: WeatherActionType.FETCH_WEATHER_ERROR,
         payload: errorMessage,
@@ -44,11 +45,12 @@ export const fetchWeatherByLatAndLong =
         payload: data,
       })
     } catch (error: unknown) {
-      const errorMessage = 
-        error instanceof Error 
-          ? error.message 
-          : (error as { response?: { data?: { message?: string } } })?.response?.data?.message || 'Unknown error'
-      
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : (error as { response?: { data?: { message?: string } } })?.response
+              ?.data?.message || 'Unknown error'
+
       dispatch({
         type: WeatherActionType.FETCH_WEATHER_ERROR,
         payload: errorMessage,
