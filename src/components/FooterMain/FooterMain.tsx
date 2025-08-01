@@ -21,10 +21,12 @@ const FooterMain: React.FC = () => {
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
-    setSuccessMessage(`Thank you for subscribing to weather updates! Email: ${email}`)
+    setSuccessMessage(
+      `Thank you for subscribing to weather updates! Email: ${email}`
+    )
     setEmail('')
     setIsSubmitting(false)
-    
+
     // Clear success message after 5 seconds
     setTimeout(() => setSuccessMessage(''), 5000)
   }
