@@ -1,4 +1,4 @@
-# �️ WeatherNow - React Weather Application
+# WeatherNow - React Weather Application
 
 WeatherNow is a modern weather forecast application built with React. When you use the Weather Forecast feature, users receive a prompt for location permission. Based on user preference, WeatherNow displays comprehensive weather forecast data with an intuitive interface.
 
