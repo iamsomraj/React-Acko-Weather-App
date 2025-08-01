@@ -37,9 +37,7 @@ For developing this project, I prepared one basic design documentation. I will e
 
 ## Demo
 
-- [Live Version - Github Actions - CI/CD](https://iamsomraj.github.io/React-Acko-Weather-App/)
-
-- Installing Into Local System is Preferred
+- [Live Version](https://iamsomraj.github.io/React-Acko-Weather-App/)
 
 ## Install React-Acko-Weather-App On Your Local System
 
