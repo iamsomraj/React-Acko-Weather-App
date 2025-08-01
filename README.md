@@ -29,12 +29,6 @@ WeatherNow is a modern weather forecast application built with React. When you u
 - Complete data processing and state persistence across routes
 - Modern build tooling with hot module replacement
 
-## Documentation
-
-For developing this project, I prepared one basic design documentation. I will encourage you to see that first, so that you can get a better idea what to expect from this.
-
-- [Design Document - Link](https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Acko%20Weather%20Design%20Document#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1LDoDDeXxr86frGwT0wGW1eg2tLLtGAFS%26export%3Ddownload)
-
 ## Demo
 
 - [Live Version](https://iamsomraj.github.io/React-Acko-Weather-App/)
