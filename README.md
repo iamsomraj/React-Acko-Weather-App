@@ -1,7 +1,5 @@
 # 🍃 React-Acko-Weather-App
 
-**Updated Project** - This React weather application has been modernized with the latest dependencies and coding standards, now optimized for Bun runtime.
-
 React-Acko-Weather-App is a forecast viewer application. When you use the Check Weather feature in React-Acko-Weather-App, user will receive a prompt for accepting location permission. Based on user input, React-Acko-Weather-App shows the forecast weather data.
 
 ## Top Features
@@ -17,29 +15,19 @@ React-Acko-Weather-App is a forecast viewer application. When you use the Check 
 
 ### Code level
 
-- Use of Typescript, in place of Javascript
-- Type Safety reduces Production Errors by 80%
-- Separate types folder, for handling all Application Types From One Place
-- Complete State Management by Redux with Redux Devtools Extension Integration
-- Persisting Global State Across All Routes
-- Use of React Router Dom for creating Routes in a Single Page Application
-- No use of Custom UI framework, completely built using Tailwind CSS
-- Responsive UI even in Smaller Devices
-- 70% UI Text, Elements configurable from One File
-- Unit Tests for testing UI
-- No Redundant API Calls
-- Complete Data Processing within the Application from Single API Call
-- 15+ Reusable React Typescript Components
-- **Bun Runtime Support** - Optimized for fast package management and execution
-- **Modern Development Setup** - Updated with latest dependencies and coding standards
-
-## Deployment Status
-
-![Deployment Status](https://github.com/iamsomraj/React-Acko-Weather-App/actions/workflows/deploy.yml/badge.svg)
-
-## Demo
-
-- [Live Version - GitHub Pages](https://iamsomraj.github.io/React-Acko-Weather-App/)
+- Modern React 18 with TypeScript for type safety and better development experience
+- Vite for fast development and optimized production builds
+- Redux Toolkit for efficient state management with Redux DevTools integration
+- React Router v6 for client-side routing in Single Page Application
+- Tailwind CSS for utility-first styling without custom UI frameworks
+- Vitest for fast unit testing with modern testing capabilities
+- ESLint and Prettier for code quality and consistent formatting
+- Bun runtime support for faster package management and execution
+- Responsive design optimized for all device sizes
+- Component-based architecture with 15+ reusable TypeScript components
+- Efficient API integration with no redundant calls
+- Complete data processing and state persistence across routes
+- Modern build tooling with hot module replacement
 
 ## Documentation
 
@@ -47,104 +35,136 @@ For developing this project, I prepared one basic design documentation. I will e
 
 - [Design Document - Link](https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Acko%20Weather%20Design%20Document#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1LDoDDeXxr86frGwT0wGW1eg2tLLtGAFS%26export%3Ddownload)
 
-## Local Development
+## Demo
 
-Installing Into Local System is Preferred for the best development experience.
+- [Live Version - Github Actions - CI/CD](https://iamsomraj.github.io/React-Acko-Weather-App/)
+
+- Installing Into Local System is Preferred
 
 ## Install React-Acko-Weather-App On Your Local System
 
 ### Prerequisites
 
-- **Bun** - [Install Bun](https://bun.sh/docs/installation) (Recommended for optimal performance)
+- Node.js (v18 or higher recommended)
+- Bun (optional, for faster package management) or npm/yarn
 
-### Installation
+### Installation Steps
 
-- Open Terminal
-
-- Clone React-Acko-Weather-App Repository
+1. **Clone the repository**
 
 ```bash
 git clone https://github.com/iamsomraj/React-Acko-Weather-App.git
+cd React-Acko-Weather-App
 ```
 
-- Install dependencies
+2. **Install dependencies**
+
+Using Bun (recommended for faster installation):
 
 ```bash
-cd React-Acko-Weather-App
 bun install
+```
+
+Or using npm:
+
+```bash
+npm install
+```
+
+3. **Set up environment variables**
+   Create a `.env` file in the root directory and add your OpenWeatherMap API key:
+
+```bash
+VITE_OPENWEATHER_API_KEY=your_api_key_here
 ```
 
 ## Run React-Acko-Weather-App
 
-- Open Terminal
-- Go to Root Directory of React-Acko-Weather-App
-- Start React-Acko-Weather-App
+### Development Mode
+
+Using Bun:
 
 ```bash
 bun run dev
 ```
 
-The application will be available at `http://localhost:5173/`
-
-## Running Tests
-
-React-Acko-Weather-App currently supports frontend tests using `vitest` & `react-testing-library`.
+Or using npm:
 
 ```bash
-bun run test          # Run tests once
-bun run test:watch    # Run tests in watch mode
+npm run dev
 ```
 
-## Build for Production
+The application will start on `http://localhost:5173` (Vite default port).
+
+### Production Build
 
 ```bash
 bun run build
+# or
+npm run build
 ```
 
-## GitHub Pages Deployment
-
-This project is automatically deployed to GitHub Pages using GitHub Actions whenever changes are pushed to the `master` or `main` branch.
-
-### Automatic Deployment
-
-- **Trigger**: Push to `master` or `main` branch
-- **Build Tool**: Bun
-- **Deploy Target**: GitHub Pages
-- **Live URL**: [https://iamsomraj.github.io/React-Acko-Weather-App/](https://iamsomraj.github.io/React-Acko-Weather-App/)
-
-### Manual Deployment Testing
-
-You can test the deployment build locally:
+### Preview Production Build
 
 ```bash
-bun run deploy:preview
+bun run preview
+# or
+npm run preview
 ```
 
-This will build the project and start a local preview server to test the production build.
+## Running Tests
 
-### GitHub Pages Setup (For Repository Owners)
-To enable GitHub Pages deployment for your fork:
+The project uses Vitest for testing with React Testing Library. Multiple test commands are available:
 
-1. Go to your repository settings
-2. Navigate to "Pages" in the left sidebar
-3. Under "Source", select "GitHub Actions"
-4. The deployment will automatically trigger on the next push to `master` or `main`
+### Run Tests Once
 
-> **Note**: The first deployment may take a few minutes to complete and become available.
+```bash
+bun run test
+# or
+npm run test
+```
 
-## Available Scripts
+### Watch Mode (for development)
 
-| Script         | Command                  | Description                      |
-| -------------- | ------------------------ | -------------------------------- |
-| Development    | `bun run dev`            | Start development server         |
-| Build          | `bun run build`          | Build for production             |
-| Test           | `bun run test`           | Run tests once                   |
-| Test (Watch)   | `bun run test:watch`     | Run tests in watch mode          |
-| Lint           | `bun run lint`           | Run TypeScript type checking     |
-| Format         | `bun run format`         | Format code with Prettier        |
-| Preview        | `bun run preview`        | Preview production build         |
-| Deploy Build   | `bun run deploy:build`   | Build for deployment             |
-| Deploy Preview | `bun run deploy:preview` | Build and preview for deployment |
+```bash
+bun run test:watch
+# or
+npm run test:watch
+```
+
+### Test UI (interactive testing interface)
+
+```bash
+bun run test:ui
+# or
+npm run test:ui
+```
+
+### Code Quality
+
+Run linting:
+
+```bash
+bun run lint
+# or
+npm run lint
+```
+
+Fix linting issues:
+
+```bash
+bun run lint:fix
+# or
+npm run lint:fix
+```
+
+Format code:
+
+```bash
+bun run format
+# or
+npm run format
+```
 
 ## How To Test 2 Different Modes of Application
 
@@ -155,26 +175,88 @@ React-Acko-Weather-App currently has 2 modes of operation.
 
 After installing it into your local system, you can enable or disable Location permission for the website and refresh. At the time of doing, you should be on the [Home Page](http://localhost:5173/).
 
+## Deployment
+
+### GitHub Pages Deployment
+
+```bash
+bun run deploy
+# or
+npm run deploy
+```
+
+This will build the project and deploy it to GitHub Pages.
+
+## Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+├── containers/          # Page-level container components
+├── state/              # Redux store, actions, and reducers
+├── hooks/              # Custom React hooks
+├── types/              # TypeScript type definitions
+├── utils/              # Utility functions
+├── config/             # API and app configuration
+└── data/               # Static data and constants
+```
+
 ## Future Improvements
 
 - Toggle Option for both modes of Operation
-- Dark Mode
-- Dockerization
-- Weather Map implementation
+- Dark Mode Implementation
+- Docker containerization for easy deployment
+- Interactive Weather Map with geographical visualization
+- Progressive Web App (PWA) features
+- Advanced weather analytics and historical data
+- Multi-language support (i18n)
+- Weather alerts and notifications
+- Offline functionality with service workers
 
 ## Tech Stack
 
-**Client:** React, Redux, React Hooks, Tailwind CSS
+**Frontend Framework:** React 18 with TypeScript
 
-**Language Used:** Typescript
+**Build Tool:** Vite (fast development and optimized builds)
 
-**Build Tool:** Vite
+**State Management:** Redux Toolkit with Redux DevTools
 
-**Package Manager:** Bun
+**Routing:** React Router v6
 
-**Testing:** Vitest, React Testing Library
+**Styling:** Tailwind CSS (utility-first CSS framework)
 
-**API:** [Open Weather Map API](https://openweathermap.org/forecast5)
+**Testing:** Vitest with React Testing Library
+
+**Package Manager:** Bun (with npm fallback support)
+
+**Code Quality:** ESLint + Prettier + TypeScript
+
+**Deployment:** GitHub Actions CI/CD → GitHub Pages
+
+**API:** [OpenWeatherMap API](https://openweathermap.org/forecast5) (5-day/3-hour forecast)
+
+## Development Experience
+
+This project leverages modern development tools and practices:
+
+- **⚡ Vite**: Lightning-fast development server with Hot Module Replacement (HMR)
+- **🟦 TypeScript**: Full type safety with modern TypeScript features
+- **🧪 Vitest**: Fast unit testing with native ES modules support
+- **🎯 Redux Toolkit**: Simplified Redux usage with built-in best practices
+- **🎨 Tailwind CSS**: Utility-first styling with responsive design
+- **🏃‍♂️ Bun**: Optional fast runtime and package manager support
+- **📋 ESLint + Prettier**: Automated code formatting and linting
+- **🚀 GitHub Actions**: Automated testing and deployment pipeline
+
+### Key Technical Highlights
+
+- Zero-config setup with Vite
+- Modern ES modules throughout the codebase
+- Efficient state management with Redux Toolkit
+- Component-driven development with strict TypeScript
+- Comprehensive error handling and user feedback
+- Mobile-first responsive design approach
+- Optimized bundle size and loading performance
 
 ## Open Weather Map API Reference
 
