@@ -9,7 +9,6 @@ export const fetchWeatherByCity =
     dispatch({
       type: WeatherActionType.FETCH_WEATHER,
     })
-    console.log({ state: WeatherActionType.FETCH_WEATHER })
     try {
       const { data } = await axios.get(weatherAPIConfig.URI, {
         params: { ...weatherAPIConfig.params, q: cityName },
@@ -18,12 +17,15 @@ export const fetchWeatherByCity =
         type: WeatherActionType.FETCH_WEATHER_SUCCESS,
         payload: data,
       })
-      console.log({ state: WeatherActionType.FETCH_WEATHER_SUCCESS, data })
-    } catch (error: any) {
-      console.log({ state: WeatherActionType.FETCH_WEATHER_ERROR, error })
+    } catch (error: unknown) {
+      const errorMessage = 
+        error instanceof Error 
+          ? error.message 
+          : (error as { response?: { data?: { message?: string } } })?.response?.data?.message || 'Unknown error'
+      
       dispatch({
         type: WeatherActionType.FETCH_WEATHER_ERROR,
-        payload: error?.response?.data?.message || error?.message,
+        payload: errorMessage,
       })
     }
   }
@@ -33,7 +35,6 @@ export const fetchWeatherByLatAndLong =
     dispatch({
       type: WeatherActionType.FETCH_WEATHER,
     })
-    console.log({ state: WeatherActionType.FETCH_WEATHER })
     try {
       const { data } = await axios.get(weatherAPIConfig.URI, {
         params: { ...weatherAPIConfig.params, lat, lon },
@@ -42,18 +43,20 @@ export const fetchWeatherByLatAndLong =
         type: WeatherActionType.FETCH_WEATHER_SUCCESS,
         payload: data,
       })
-      console.log({ state: WeatherActionType.FETCH_WEATHER_SUCCESS, data })
-    } catch (error: any) {
-      console.log({ state: WeatherActionType.FETCH_WEATHER_ERROR, error })
+    } catch (error: unknown) {
+      const errorMessage = 
+        error instanceof Error 
+          ? error.message 
+          : (error as { response?: { data?: { message?: string } } })?.response?.data?.message || 'Unknown error'
+      
       dispatch({
         type: WeatherActionType.FETCH_WEATHER_ERROR,
-        payload: error?.response?.data?.message || error?.message,
+        payload: errorMessage,
       })
     }
   }
 
 export const initState = () => {
-  console.log(WeatherActionType.INIT_STATE)
   return {
     type: WeatherActionType.INIT_STATE,
   }

@@ -21,10 +21,13 @@ export const fetchWeatherData = createAsyncThunk(
         },
       })
       return response.data as IWeatherResponse
-    } catch (error: any) {
-      return rejectWithValue(
-        error.response?.data?.message || 'Failed to fetch weather data'
-      )
+    } catch (error: unknown) {
+      const errorMessage = 
+        error instanceof Error 
+          ? error.message 
+          : (error as { response?: { data?: { message?: string } } })?.response?.data?.message || 'Failed to fetch weather data'
+      
+      return rejectWithValue(errorMessage)
     }
   }
 )
@@ -42,10 +45,13 @@ export const fetchWeatherDataByCoords = createAsyncThunk(
         },
       })
       return response.data as IWeatherResponse
-    } catch (error: any) {
-      return rejectWithValue(
-        error.response?.data?.message || 'Failed to fetch weather data'
-      )
+    } catch (error: unknown) {
+      const errorMessage = 
+        error instanceof Error 
+          ? error.message 
+          : (error as { response?: { data?: { message?: string } } })?.response?.data?.message || 'Failed to fetch weather data'
+      
+      return rejectWithValue(errorMessage)
     }
   }
 )

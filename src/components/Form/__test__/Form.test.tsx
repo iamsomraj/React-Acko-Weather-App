@@ -3,14 +3,22 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import React from 'react'
 import { WeatherActionType } from '../../../state/action-types'
 import Form from '../Form'
-import type { IFormProps } from '../../../types'
+
+interface FormProps {
+  term: string
+  onChange: (value: string) => void
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+  state: { loading: boolean; error: string | null }
+  onInit: () => { type: WeatherActionType }
+  className?: string
+}
 
 describe('Form Component', () => {
   const mockOnChange = vi.fn()
   const mockOnSubmit = vi.fn()
   const mockOnInit = vi.fn(() => ({ type: WeatherActionType.INIT_STATE }))
 
-  const defaultProps: IFormProps = {
+  const defaultProps: FormProps = {
     term: '',
     onChange: mockOnChange,
     onSubmit: mockOnSubmit,
@@ -23,7 +31,7 @@ describe('Form Component', () => {
   })
 
   it('renders the form with input and buttons', () => {
-    render(<Form {...(defaultProps as any)} />)
+    render(<Form {...defaultProps} />)
 
     expect(screen.getByPlaceholderText('Enter city name...')).toBeDefined()
     expect(screen.getByText('Search Weather')).toBeDefined()
@@ -31,7 +39,7 @@ describe('Form Component', () => {
   })
 
   it('calls onChange when typing in input', () => {
-    render(<Form {...(defaultProps as any)} />)
+    render(<Form {...defaultProps} />)
 
     const input = screen.getByPlaceholderText('Enter city name...')
     fireEvent.change(input, { target: { value: 'London' } })
@@ -40,11 +48,11 @@ describe('Form Component', () => {
   })
 
   it('displays error message when error exists', () => {
-    const errorProps = {
+    const errorProps: FormProps = {
       ...defaultProps,
       state: { loading: false, error: 'City not found' },
     }
-    render(<Form {...(errorProps as any)} />)
+    render(<Form {...errorProps} />)
 
     expect(screen.getByText('City not found')).toBeDefined()
   })

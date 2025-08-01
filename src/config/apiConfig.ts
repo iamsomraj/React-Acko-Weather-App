@@ -10,6 +10,7 @@ export const weatherAPIConfig = {
 
 // Validate required environment variables
 if (!import.meta.env.VITE_OPENWEATHER_API_KEY) {
+  // eslint-disable-next-line no-console
   console.error(
     '⚠️  VITE_OPENWEATHER_API_KEY is not defined in environment variables. ' +
       'Please create a .env file and add your OpenWeatherMap API key.'
