@@ -6,10 +6,6 @@ import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner'
 import HourlyForecastTable from '@/components/HourlyForecastTable/HourlyForecastTable'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-/**
- * WeatherForecastDisplay - Displays weather forecast with date selection
- * Replaces the old DayPicker component with better naming and direct Redux connection
- */
 export function WeatherForecastDisplay() {
   const [selectedDate, setSelectedDate] = useState('')
   const selectId = useId()

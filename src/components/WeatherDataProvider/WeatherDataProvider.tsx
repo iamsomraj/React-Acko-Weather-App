@@ -12,10 +12,6 @@ interface WeatherDataProviderProps {
   onClear: () => void
 }
 
-/**
- * WeatherDataProvider - Conditionally renders weather data based on location permission
- * Replaces the old ForecastSection component with clearer naming and responsibility
- */
 const WeatherDataProvider: React.FC<WeatherDataProviderProps> = ({
   weatherData,
   isLocationDenied,

@@ -12,10 +12,6 @@ interface GeolocationError {
   message: string
 }
 
-/**
- * WeatherService - Handles geolocation, API calls, and provides weather data to children
- * Replaces the old WeatherBody component with better separation of concerns
- */
 export function WeatherService() {
   const [geoError, setGeoError] = useState<GeolocationError | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
