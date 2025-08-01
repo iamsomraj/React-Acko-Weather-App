@@ -1,13 +1,15 @@
-/******PROP TYPES******/
+/****** TYPES******/
 /******START******/
 
-import { WeatherActionType } from "../state/action-types";
+import { ReactNode } from 'react'
+import { WeatherActionType } from '@/state/action-types'
 
 /**
  * Utility Container Props
  */
 export interface IUtilContainerProps {
-  isHome?: boolean;
+  isHome?: boolean
+  children: ReactNode
 }
 
 /**
@@ -19,17 +21,17 @@ export interface IHeaderProps {}
  * Header Link Props
  */
 export interface IHeaderLinkProps {
-  isPrimary: boolean;
-  path: string;
-  text: string;
+  isPrimary: boolean
+  path: string
+  text: string
 }
 
 /**
  * Brand Props
  */
 export interface IBrandProps {
-  homePage: string;
-  brandName: string;
+  homePage: string
+  brandName: string
 }
 
 /**
@@ -41,38 +43,38 @@ export interface IHeroProps {}
  * Fun Element Props
  */
 export interface IFunElementProps {
-  position: string;
-  translate: string;
+  position: string
+  translate: string
 }
 
 /**
  * Forecast Section Props
  */
 export interface IForecastSectionProps {
-  isUserDenied: boolean | undefined;
-  forecastData: IWeatherState;
+  isUserDenied: boolean | undefined
+  forecastData: IWeatherState
 }
 
 /**
  * Day Time Selector Props
  */
 export interface IDayTimeSelectorProps {
-  forecast: IWeatherState;
+  forecast: IWeatherState
 }
 
 /**
  * Table Props
  */
 export interface ITableProps {
-  forecast: IWeatherState;
-  selected: string;
+  forecast: IWeatherState
+  selected: string
 }
 
 /**
  * Table Row Props
  */
 export interface ITableHeaderProps {
-  rows: string[];
+  rows: string[]
 }
 
 /**
@@ -80,50 +82,50 @@ export interface ITableHeaderProps {
  */
 export interface ITableBodyProps {
   row: {
-    Time: string;
-    Temperature: number;
-    "Real Feel": number;
-    Description: string;
-    Visibility: number;
-    Humidity: number;
-    Pressure: number;
-  }[];
+    Time: string
+    Temperature: number
+    'Real Feel': number
+    Description: string
+    Visibility: number
+    Humidity: number
+    Pressure: number
+  }[]
 }
 
 /**
  * Form Props
  */
 export interface IFormProp {
-  term: string;
-  onChange: React.Dispatch<React.SetStateAction<string>>;
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  state: { loading: boolean; error: string | null };
+  term: string
+  onChange: (value: string) => void
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+  state: { loading: boolean; error: string | null }
   onInit: () => {
-    type: WeatherActionType;
-  };
+    type: WeatherActionType
+  }
 }
 
 /**
  * Spinner Props
  */
 export interface ISpinnerProps {
-  text?: string;
+  text?: string
 }
 
 /**
  * Temp Indicator Props
  */
 export interface ITemperatureIndicatorProps {
-  val: string | number;
-  index: number;
+  val: string | number
+  index: number
 }
 
 /**
  * Action Button Props
  */
 export interface IActionButtonProps {
-  path: string;
-  body: string;
+  path: string
+  body: string
 }
 
 /******END******/
@@ -140,74 +142,74 @@ export interface IActionButtonProps {
  * Weather List Item Response
  */
 export interface IWeatherListItemResponse {
-  dt: number;
+  dt: number
   main: {
-    temp: number;
-    feels_like: number;
-    temp_min: number;
-    temp_max: number;
-    pressure: number;
-    sea_level: number;
-    grnd_level: number;
-    humidity: number;
-    temp_kf: number;
-  };
+    temp: number
+    feels_like: number
+    temp_min: number
+    temp_max: number
+    pressure: number
+    sea_level: number
+    grnd_level: number
+    humidity: number
+    temp_kf: number
+  }
   weather: [
     {
-      id: number;
-      main: string;
-      description: string;
-      icon: string;
-    }
-  ];
+      id: number
+      main: string
+      description: string
+      icon: string
+    },
+  ]
   clouds: {
-    all: number;
-  };
+    all: number
+  }
   wind: {
-    speed: number;
-    deg: number;
-    gust: number;
-  };
-  visibility: number;
-  pop: number;
+    speed: number
+    deg: number
+    gust: number
+  }
+  visibility: number
+  pop: number
   rain: {
-    "3h": number;
-  };
+    '3h': number
+  }
   sys: {
-    pod: string;
-  };
-  dt_txt: string;
+    pod: string
+  }
+  dt_txt: string
 }
 
 /**
  * Weather Response
  */
 export interface IWeatherResponse {
-  cod: string;
-  message: number;
-  cnt: number;
-  list: IWeatherListItemResponse[];
+  cod: string
+  message: number
+  cnt: number
+  list: IWeatherListItemResponse[]
   city: {
-    id: number;
-    name: string;
+    id: number
+    name: string
     coord: {
-      lat: number;
-      lon: number;
-    };
-    country: string;
-    population: number;
-    timezone: number;
-    sunrise: number;
-    sunset: number;
-  };
+      lat: number
+      lon: number
+    }
+    country: string
+    population: number
+    timezone: number
+    sunrise: number
+    sunset: number
+  }
 }
 /**
  * Weather Reducer State
  */
 export interface IWeatherState {
-  loading: boolean;
-  data: IWeatherResponse | null;
-  error: string | null;
+  loading: boolean
+  data: IWeatherResponse | null
+  error: string | null
 }
 
 /******END******/

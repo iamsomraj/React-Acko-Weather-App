@@ -1,5 +1,5 @@
-import FooterBottom from "../FooterBottom/FooterBottom";
-import FooterMain from "../FooterMain/FooterMain";
+import FooterBottom from '@/components/FooterBottom/FooterBottom'
+import FooterMain from '@/components/FooterMain/FooterMain'
 
 const FooterSection = () => {
   return (
@@ -7,7 +7,7 @@ const FooterSection = () => {
       <FooterMain />
       <FooterBottom />
     </div>
-  );
-};
+  )
+}
 
-export default FooterSection;
+export default FooterSection

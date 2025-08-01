@@ -1,4 +1,4 @@
-import { IUtilContainerProps } from "../../types";
+import { IUtilContainerProps } from '@/types'
 
 const UtilContainer: React.FC<IUtilContainerProps> = ({ children, isHome }) => {
   /**
@@ -13,7 +13,7 @@ const UtilContainer: React.FC<IUtilContainerProps> = ({ children, isHome }) => {
       <div className="relative h-screen bg-gradient-to-br from-purple-100 to-purple-300">
         {children}
       </div>
-    );
+    )
   }
 
   /**
@@ -25,7 +25,7 @@ const UtilContainer: React.FC<IUtilContainerProps> = ({ children, isHome }) => {
         {children}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default UtilContainer;
+export default UtilContainer

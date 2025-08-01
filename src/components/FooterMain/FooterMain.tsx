@@ -1,27 +1,30 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import data from "../../data";
-import FooterLink from "../HeaderLink/HeaderLink";
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import data from '@/data'
+import FooterLink from '@/components/HeaderLink/HeaderLink'
 
 const FooterMain: React.FC = () => {
   /**
    * Email State for handling subscription
    * TODO: `can be used for sending newsletters or updates in future`
    */
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('')
 
   return (
     <div className="lg:flex justify-between space-y-12 lg:space-y-0">
       <div className="flex flex-col justify-center">
-        <h4 data-testid="form-heading-element" className="mb-4 font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r text-teal-500">
+        <h4
+          data-testid="form-heading-element"
+          className="mb-4 font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r text-teal-500"
+        >
           Get our monthly updates
         </h4>
         <form
           className="flex"
           onSubmit={(e) => {
-            e.preventDefault();
-            alert("Thanks for subscribing: " + email);
-            setEmail("");
+            e.preventDefault()
+            alert('Thanks for subscribing: ' + email)
+            setEmail('')
           }}
         >
           <input
@@ -58,7 +61,7 @@ const FooterMain: React.FC = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FooterMain;
+export default FooterMain

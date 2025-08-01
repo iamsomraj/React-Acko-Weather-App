@@ -1,4 +1,10 @@
-const Highlighter: React.FC = ({ children }) => {
+import { ReactNode } from 'react'
+
+interface HighlighterProps {
+  children: ReactNode
+}
+
+export function Highlighter({ children }: HighlighterProps) {
   /**
    * basic reusable text highlighter component
    */
@@ -6,7 +12,7 @@ const Highlighter: React.FC = ({ children }) => {
     <span className="italic text-green-500 text-md font-bold tracking-wide">
       {children}
     </span>
-  );
-};
+  )
+}
 
-export default Highlighter;
+export default Highlighter

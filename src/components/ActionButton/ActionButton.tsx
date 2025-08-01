@@ -1,15 +1,38 @@
-import { IActionButtonProps } from "../../types";
-import { Link } from "react-router-dom";
+import { IActionButtonProps } from '@/types'
+import { cn } from '@/utils/cn'
+import { Link } from 'react-router-dom'
 
-const ActionButton: React.FC<IActionButtonProps> = ({ body, path }) => {
+interface ModernActionButtonProps extends IActionButtonProps {
+  className?: string
+  variant?: 'default' | 'outline' | 'ghost'
+}
+
+export function ActionButton({
+  body,
+  path,
+  className,
+  variant = 'default',
+}: ModernActionButtonProps) {
+  const variantStyles = {
+    default:
+      'bg-gradient-to-br from-primary-500 to-primary-700 hover:to-primary-600 text-white shadow-lg hover:shadow-2xl',
+    outline:
+      'border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white',
+    ghost: 'text-primary-500 hover:bg-primary-50',
+  }
+
   return (
     <Link
       to={path}
-      className="inline-block mt-4 mb-8 lg:mb-16 py-3 px-12 rounded shadow-lg hover:shadow-2xl bg-gradient-to-br from-purple-500 to-purple-700 hover:to-purple-600 text-purple-100 hover:text-white font-bold text-md tracking-wide transition duration-500"
+      className={cn(
+        'inline-block mt-4 mb-8 lg:mb-16 py-3 px-12 rounded font-bold text-md tracking-wide transition-all duration-500 transform hover:scale-105',
+        variantStyles[variant],
+        className
+      )}
     >
       {body}
     </Link>
-  );
-};
+  )
+}
 
-export default ActionButton;
+export default ActionButton

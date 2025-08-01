@@ -1,20 +1,20 @@
-import { IWeatherResponse } from "../../types";
-import { WeatherActionType } from "../action-types";
+import { IWeatherResponse } from '@/types'
+import { WeatherActionType } from '@/state/action-types'
 
 export interface IFetchWeatherAction {
-  type: WeatherActionType.FETCH_WEATHER;
+  type: WeatherActionType.FETCH_WEATHER
 }
 
 export interface IInitStateAction {
-  type: WeatherActionType.INIT_STATE;
+  type: WeatherActionType.INIT_STATE
 }
 
 export interface IFetchWeatherSuccessAction {
-  type: WeatherActionType.FETCH_WEATHER_SUCCESS;
-  payload: IWeatherResponse;
+  type: WeatherActionType.FETCH_WEATHER_SUCCESS
+  payload: IWeatherResponse
 }
 
 export interface IFetchWeatherErrorAction {
-  type: WeatherActionType.FETCH_WEATHER_ERROR;
-  payload: string;
+  type: WeatherActionType.FETCH_WEATHER_ERROR
+  payload: string
 }

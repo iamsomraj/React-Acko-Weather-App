@@ -1,4 +1,4 @@
-import { ITableHeaderProps } from "../../types";
+import { ITableHeaderProps } from '@/types'
 
 const TableHeader: React.FC<ITableHeaderProps> = ({ rows }) => {
   /**
@@ -12,9 +12,9 @@ const TableHeader: React.FC<ITableHeaderProps> = ({ rows }) => {
     >
       {head}
     </th>
-  ));
+  ))
 
-  return <>{headList}</>;
-};
+  return <>{headList}</>
+}
 
-export default TableHeader;
+export default TableHeader

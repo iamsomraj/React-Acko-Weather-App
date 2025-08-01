@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
-import { IHeaderLinkProps } from "../../types";
+import { Link } from 'react-router-dom'
+import { IHeaderLinkProps } from '@/types'
 
 const HeaderLink: React.FC<IHeaderLinkProps> = ({ path, text, isPrimary }) => {
-
   /**
    * Primary Link Variant
    */
@@ -14,9 +13,8 @@ const HeaderLink: React.FC<IHeaderLinkProps> = ({ path, text, isPrimary }) => {
       >
         {text}
       </Link>
-    );
+    )
   }
-
 
   /**
    * Basic Link Variant
@@ -25,7 +23,7 @@ const HeaderLink: React.FC<IHeaderLinkProps> = ({ path, text, isPrimary }) => {
     <Link to={path} className="text-gray-400 hover:text-purple-600">
       {text}
     </Link>
-  );
-};
+  )
+}
 
-export default HeaderLink;
+export default HeaderLink

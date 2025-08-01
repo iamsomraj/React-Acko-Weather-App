@@ -1,9 +1,9 @@
-import data from "../../data";
-import { IHeroProps } from "../../types";
-import ActionButton from "../ActionButton/ActionButton";
-import HeroPrimary from "../HeroPrimary/HeroPrimary";
-import HeroSecondary from "../HeroSecondary/HeroSecondary";
-import PromoCard from "../PromoCard/PromoCard";
+import data from '@/data'
+import { IHeroProps } from '@/types'
+import ActionButton from '@/components/ActionButton/ActionButton'
+import HeroPrimary from '@/components/HeroPrimary/HeroPrimary'
+import HeroSecondary from '@/components/HeroSecondary/HeroSecondary'
+import PromoCard from '@/components/PromoCard/PromoCard'
 
 const Hero: React.FC<IHeroProps> = () => {
   /**
@@ -25,7 +25,7 @@ const Hero: React.FC<IHeroProps> = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

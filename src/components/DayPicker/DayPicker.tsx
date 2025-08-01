@@ -1,74 +1,98 @@
-import { useState } from "react";
-import { IDayTimeSelectorProps } from "../../types";
-import { addPath } from "../../util";
-import ActionButton from "../ActionButton/ActionButton";
-import Spinner from "../Spinner/Spinner";
-import Table from "../Table/Table";
 
-const DayPicker: React.FC<IDayTimeSelectorProps> = ({ forecast }) => {
-  const [selectedDate, setSelectedDate] = useState("");
+import { useCallback, useMemo, useState } from 'react'
+import { IDayTimeSelectorProps } from '@/types'
+import { addPath } from '@/util'
+import { ActionButton } from '@/components/ActionButton/ActionButton'
+import { Spinner } from '@/components/Spinner/Spinner'
+import Table from '@/components/Table/Table'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-  /**
-   * When state is loading or data is not present
-   */
+export function DayPicker({ forecast }: IDayTimeSelectorProps) {
+  const [selectedDate, setSelectedDate] = useState('')
+
+  const handleDateChange = useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      setSelectedDate(event.target.value)
+    },
+    []
+  )
+
+  const uniqueDays = useMemo(() => {
+    if (!forecast.data?.list) return ['']
+
+    const days = forecast.data.list
+      .map((item) => item.dt_txt.split(' ')[0])
+      .filter((item, index, arr) => arr.indexOf(item) === index)
+
+    return ['', ...days]
+  }, [forecast.data?.list])
+
+  // Loading state
   if (forecast.loading || !forecast.data) {
-    /**
-     * Handles error state
-     */
     if (forecast.error) {
       return (
-        <div className="block m-5 text-red-400 font-bold tracking-widest uppercase">
-          {forecast.error}
-        </div>
-      );
+        <Card className="m-5">
+          <CardContent className="pt-6">
+            <div className="text-destructive font-bold tracking-widest uppercase text-center">
+              {forecast.error}
+            </div>
+          </CardContent>
+        </Card>
+      )
     }
-    return <Spinner text="Data is loading" />;
+    return (
+      <div className="flex justify-center items-center min-h-[200px]">
+        <Spinner text="Loading weather data..." size="lg" />
+      </div>
+    )
   }
 
-  const { list } = forecast.data;
-
-  const listOptions = list.map((item) => item);
-
-  /**
-   * Getting all the days
-   */
-  let listOfDays = listOptions.map((item) => item.dt_txt.split(" ")[0]);
-  /**
-   * Removing duplicate strings
-   */
-  listOfDays = listOfDays.filter(function (item, index, inputArray) {
-    return inputArray.indexOf(item) === index;
-  });
-
-  /**
-   * Adding one blank element in front of the list
-   */
-  listOfDays.unshift("");
-
   return (
-    <div className="flex-col items-center space-y-5">
-      <div>
-        <div className="my-3 uppercase tracking-wider text-teal-500 font-bold">
-          Data fetched successfully for {forecast.data.city.name}
-        </div>
-        <select
-          className="form-select rounded-lg mt-2 py-3 px-4 bg-gray-50 focus:border-transparent focus:outline-none"
-          value={selectedDate}
-          onChange={(e) => setSelectedDate(e.target.value)}
-        >
-          {listOfDays.map((opt) => {
-            return <option key={opt}>{opt}</option>;
-          })}
-        </select>
-      </div>
-      {selectedDate !== "" && (
-        <div>
+    <div className="flex flex-col items-center space-y-6 p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle className="text-center text-primary-600">
+            Weather Data for {forecast.data.city.name}
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            <label
+              htmlFor="date-select"
+              className="block text-sm font-medium text-foreground"
+            >
+              Select Date
+            </label>
+            <select
+              id="date-select"
+              className="w-full rounded-lg py-3 px-4 bg-background border border-input focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring transition-colors"
+              value={selectedDate}
+              onChange={handleDateChange}
+            >
+              {uniqueDays.map((day) => (
+                <option key={day || 'empty'} value={day}>
+                  {day || 'Select a date...'}
+                </option>
+              ))}
+            </select>
+          </div>
+        </CardContent>
+      </Card>
+
+      {selectedDate && (
+        <div className="w-full space-y-6">
           <Table selected={selectedDate} forecast={forecast} />
-          <ActionButton path={addPath("")} body="Go Back Home" />
+          <div className="flex justify-center">
+            <ActionButton
+              path={addPath('')}
+              body="Go Back Home"
+              variant="outline"
+            />
+          </div>
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default DayPicker;
+export default DayPicker

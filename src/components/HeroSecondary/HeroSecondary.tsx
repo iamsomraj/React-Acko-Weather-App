@@ -1,4 +1,4 @@
-import data from "../../data";
+import data from '@/data'
 
 function HeroSecondary() {
   return (
@@ -6,7 +6,7 @@ function HeroSecondary() {
       <p>{data.hero.subHeading.first}</p>
       <p>{data.hero.subHeading.second}</p>
     </div>
-  );
+  )
 }
 
-export default HeroSecondary;
+export default HeroSecondary

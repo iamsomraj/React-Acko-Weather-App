@@ -1,16 +1,16 @@
-import data from "../../data";
-import { IHeaderProps } from "../../types";
-import Brand from "../Brand/Brand";
-import HeaderLink from "../HeaderLink/HeaderLink";
+import data from '@/data'
+import { IHeaderProps } from '@/types'
+import Brand from '@/components/Brand/Brand'
+import HeaderLink from '@/components/HeaderLink/HeaderLink'
 
 const Header: React.FC<IHeaderProps> = () => {
-  const { brand, navLinks } = data;
+  const { brand, navLinks } = data
 
   const BrandSection = (
     <div className="flex items-center space-x-4">
       <Brand homePage={brand.path} brandName={brand.text} />
     </div>
-  );
+  )
 
   const NavigationSection = (
     <div className="hidden lg:flex items-center space-x-4">
@@ -23,7 +23,7 @@ const Header: React.FC<IHeaderProps> = () => {
         />
       ))}
     </div>
-  );
+  )
 
   return (
     <div className="relative text-purple-200">
@@ -34,7 +34,7 @@ const Header: React.FC<IHeaderProps> = () => {
         {NavigationSection}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

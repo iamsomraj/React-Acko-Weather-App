@@ -1,7 +1,7 @@
-import { ITableProps } from "../../types";
-import { getTimeFromTimestamp } from "../../util";
-import TableBody from "../TableBody/TableBody";
-import TableHeader from "../TableHeader/TableHeader";
+import { ITableProps } from '@/types'
+import { getTimeFromTimestamp } from '@/util'
+import TableBody from '@/components/TableBody/TableBody'
+import TableHeader from '@/components/TableHeader/TableHeader'
 
 const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
   /**
@@ -9,24 +9,24 @@ const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
    */
   const filteredForecast = forecast.data?.list.filter((item) =>
     item.dt_txt.includes(selected)
-  );
+  )
 
   const rowData = filteredForecast?.map((item) => {
     return {
       Time: item.dt_txt,
       Temperature: item.main.temp,
-      "Real Feel": item.main.feels_like,
+      'Real Feel': item.main.feels_like,
       Description: item.weather[0].description.toUpperCase(),
       Visibility: item.visibility,
       Humidity: item.main.humidity,
       Pressure: item.main.pressure,
-      "Wind Speed": item.wind.speed,
-      "Cloud Cover": item.clouds.all,
-    };
-  });
+      'Wind Speed': item.wind.speed,
+      'Cloud Cover': item.clouds.all,
+    }
+  })
 
   if (!rowData) {
-    return <div>There are no rows of information</div>;
+    return <div>There are no rows of information</div>
   }
   return (
     <div className="flex flex-col space-y-4">
@@ -63,7 +63,7 @@ const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Table;
+export default Table

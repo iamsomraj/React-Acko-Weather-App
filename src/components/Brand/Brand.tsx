@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { IBrandProps } from "../../types";
+import { Link } from 'react-router-dom'
+import { IBrandProps } from '@/types'
 
 const Brand: React.FC<IBrandProps> = ({ homePage, brandName }) => {
   /**
@@ -13,7 +13,7 @@ const Brand: React.FC<IBrandProps> = ({ homePage, brandName }) => {
     >
       {brandName}
     </Link>
-  );
-};
+  )
+}
 
-export default Brand;
+export default Brand

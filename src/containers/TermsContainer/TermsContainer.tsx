@@ -1,7 +1,7 @@
-import ActionButton from "../../components/ActionButton/ActionButton";
-import Highlighter from "../../components/Highlighter/Highlighter";
-import UtilContainer from "../../components/UtilContainer/UtilContainer";
-import { addPath } from "../../util";
+import ActionButton from '@/components/ActionButton/ActionButton'
+import Highlighter from '@/components/Highlighter/Highlighter'
+import UtilContainer from '@/components/UtilContainer/UtilContainer'
+import { addPath } from '@/util'
 
 const TermsContainer = () => {
   return (
@@ -26,7 +26,7 @@ const TermsContainer = () => {
               delectus sed!
             </div>
             <div>
-              Lorem ipsum dolor sit amet{" "}
+              Lorem ipsum dolor sit amet{' '}
               <Highlighter> consectetur </Highlighter>
               adipisicing elit. Non vel sequi, iure nihil ipsum ab tempora
               aliquid! Beatae, harum asperiores aut nihil commodi dolorem fugiat
@@ -35,16 +35,16 @@ const TermsContainer = () => {
             <div>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum culpa
               repudiandae aliquid minima dolor eligendi corrupti hic ex
-              veritatis nostrum. Impedit{" "}
+              veritatis nostrum. Impedit{' '}
               <Highlighter> accusantium </Highlighter>esse ad? Exercitationem
               ullam eligendi laborum delectus sed!
             </div>
           </div>
-          <ActionButton path={addPath("")} body="Go Back Home" />
+          <ActionButton path={addPath('')} body="Go Back Home" />
         </div>
       </div>
     </UtilContainer>
-  );
-};
+  )
+}
 
-export default TermsContainer;
+export default TermsContainer

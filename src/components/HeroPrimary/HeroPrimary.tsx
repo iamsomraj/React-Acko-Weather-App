@@ -1,4 +1,4 @@
-import data from "../../data";
+import data from '@/data'
 
 function HeroPrimary() {
   return (
@@ -10,7 +10,7 @@ function HeroPrimary() {
         {data.hero.mainHeading.last}
       </span>
     </h1>
-  );
+  )
 }
 
-export default HeroPrimary;
+export default HeroPrimary

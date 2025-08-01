@@ -1,4 +1,4 @@
-import WeatherMain from "../../components/WeatherMain/WeatherMain";
+import WeatherMain from '@/components/WeatherMain/WeatherMain'
 
 const WeatherContainer = () => {
   return (
@@ -7,7 +7,7 @@ const WeatherContainer = () => {
         <WeatherMain />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default WeatherContainer;
+export default WeatherContainer
