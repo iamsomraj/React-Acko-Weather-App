@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react'
-import { IFormProp } from '@/types'
+import { IFormProps } from '@/types'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { cn } from '@/utils/cn'
+import { cn } from '@/util/cn'
 
-interface FormProps extends IFormProp {
+interface FormProps extends IFormProps {
   className?: string
 }
 

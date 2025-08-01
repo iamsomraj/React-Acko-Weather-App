@@ -1,9 +1,9 @@
-import { IForecastSectionProps, IFormProp } from '@/types'
+import { IForecastSectionProps, IFormProps } from '@/types'
 import DayPicker from '@/components/DayPicker/DayPicker'
 import Form from '@/components/Form/Form'
 import Spinner from '@/components/Spinner/Spinner'
 
-const ForecastSection: React.FC<IForecastSectionProps & IFormProp> = ({
+const ForecastSection: React.FC<IForecastSectionProps & IFormProps> = ({
   forecastData,
   isUserDenied,
   onChange,

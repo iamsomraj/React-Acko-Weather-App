@@ -18,3 +18,9 @@ export interface IFetchWeatherErrorAction {
   type: WeatherActionType.FETCH_WEATHER_ERROR
   payload: string
 }
+
+export type IWeatherAction =
+  | IFetchWeatherAction
+  | IInitStateAction
+  | IFetchWeatherSuccessAction
+  | IFetchWeatherErrorAction

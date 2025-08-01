@@ -3,14 +3,14 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import React from 'react'
 import { WeatherActionType } from '../../../state/action-types'
 import Form from '../Form'
-import type { IFormProp } from '../../../types'
+import type { IFormProps } from '../../../types'
 
 describe('Form Component', () => {
   const mockOnChange = vi.fn()
   const mockOnSubmit = vi.fn()
   const mockOnInit = vi.fn(() => ({ type: WeatherActionType.INIT_STATE }))
 
-  const defaultProps: IFormProp = {
+  const defaultProps: IFormProps = {
     term: '',
     onChange: mockOnChange,
     onSubmit: mockOnSubmit,

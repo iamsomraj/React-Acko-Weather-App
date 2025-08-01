@@ -56,9 +56,9 @@ export interface IForecastSectionProps {
 }
 
 /**
- * Day Time Selector Props
+ * Day Picker Props
  */
-export interface IDayTimeSelectorProps {
+export interface IDayPickerProps {
   forecast: IWeatherState
 }
 
@@ -84,18 +84,20 @@ export interface ITableBodyProps {
   row: {
     Time: string
     Temperature: number
-    'Real Feel': number
+    RealFeel: number
     Description: string
     Visibility: number
     Humidity: number
     Pressure: number
+    WindSpeed: number
+    CloudCover: number
   }[]
 }
 
 /**
  * Form Props
  */
-export interface IFormProp {
+export interface IFormProps {
   term: string
   onChange: (value: string) => void
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void

@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { cn } from '@/utils/cn'
+import { cn } from '@/util/cn'
 
 interface WeatherCardProps {
   title: string

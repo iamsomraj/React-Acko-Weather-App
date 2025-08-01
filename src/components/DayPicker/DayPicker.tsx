@@ -1,13 +1,12 @@
-
 import { useCallback, useMemo, useState } from 'react'
-import { IDayTimeSelectorProps } from '@/types'
+import { IDayPickerProps } from '@/types'
 import { addPath } from '@/util'
 import { ActionButton } from '@/components/ActionButton/ActionButton'
 import { Spinner } from '@/components/Spinner/Spinner'
 import Table from '@/components/Table/Table'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-export function DayPicker({ forecast }: IDayTimeSelectorProps) {
+export function DayPicker({ forecast }: IDayPickerProps) {
   const [selectedDate, setSelectedDate] = useState('')
 
   const handleDateChange = useCallback(

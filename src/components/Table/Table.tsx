@@ -15,13 +15,13 @@ const Table: React.FC<ITableProps> = ({ forecast, selected }) => {
     return {
       Time: item.dt_txt,
       Temperature: item.main.temp,
-      'Real Feel': item.main.feels_like,
+      RealFeel: item.main.feels_like,
       Description: item.weather[0].description.toUpperCase(),
       Visibility: item.visibility,
       Humidity: item.main.humidity,
       Pressure: item.main.pressure,
-      'Wind Speed': item.wind.speed,
-      'Cloud Cover': item.clouds.all,
+      WindSpeed: item.wind.speed,
+      CloudCover: item.clouds.all,
     }
   })
 

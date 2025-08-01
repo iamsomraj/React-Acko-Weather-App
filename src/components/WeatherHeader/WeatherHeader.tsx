@@ -1,4 +1,4 @@
-import { cn } from '@/utils/cn'
+import { cn } from '@/util/cn'
 
 export function WeatherHeader({ className }: { className?: string }) {
   return (

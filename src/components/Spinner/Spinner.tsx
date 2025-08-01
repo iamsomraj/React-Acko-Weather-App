@@ -1,5 +1,4 @@
-
-import { cn } from '@/utils/cn'
+import { cn } from '@/util/cn'
 
 interface SpinnerProps {
   className?: string
