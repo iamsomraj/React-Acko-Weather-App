@@ -1,6 +1,6 @@
 import { IActionButtonProps } from '@/types'
 import { cn } from '@/util/cn'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 interface ModernActionButtonProps extends IActionButtonProps {
   className?: string

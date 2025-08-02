@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router'
 import FooterSection from '@/components/FooterSection/FooterSection'
 import Header from '@/components/Header/Header'
 import data from '@/data'
@@ -8,12 +8,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50 text-foreground antialiased">
-      <Router
-        future={{
-          v7_startTransition: true,
-          v7_relativeSplatPath: true,
-        }}
-      >
+      <Router>
         {/* Skip to main content link for screen readers */}
         <a
           href="#main-content"

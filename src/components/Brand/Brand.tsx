@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router'
 import { IBrandProps } from '@/types'
 
 const Brand: React.FC<IBrandProps> = ({ homePage, brandName }) => {
