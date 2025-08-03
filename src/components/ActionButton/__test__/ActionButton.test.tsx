@@ -1,20 +1,15 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { BrowserRouter } from 'react-router'
-import ActionButton from '../ActionButton'
+import { ActionButton } from '../ActionButton'
 
 describe('ActionButton Component', () => {
-  const defaultProps = {
-    body: 'Test Button',
-    path: '/test',
-  }
-
   const renderWithRouter = (component: React.ReactElement) => {
     return render(<BrowserRouter>{component}</BrowserRouter>)
   }
 
   it('renders with default props', () => {
-    renderWithRouter(<ActionButton {...defaultProps} />)
+    renderWithRouter(<ActionButton body="Test Button" path="/test" />)
 
     expect(
       screen.getByRole('button', { name: 'Navigate to Test Button' })
@@ -24,14 +19,14 @@ describe('ActionButton Component', () => {
 
   it('applies correct variant styles', () => {
     const { rerender } = renderWithRouter(
-      <ActionButton {...defaultProps} variant="default" />
+      <ActionButton body="Test Button" path="/test" variant="default" />
     )
     let button = screen.getByRole('button')
     expect(button.className).toContain('bg-gradient-to-br')
 
     rerender(
       <BrowserRouter>
-        <ActionButton {...defaultProps} variant="outline" />
+        <ActionButton body="Test Button" path="/test" variant="outline" />
       </BrowserRouter>
     )
     button = screen.getByRole('button')
@@ -39,7 +34,7 @@ describe('ActionButton Component', () => {
 
     rerender(
       <BrowserRouter>
-        <ActionButton {...defaultProps} variant="ghost" />
+        <ActionButton body="Test Button" path="/test" variant="ghost" />
       </BrowserRouter>
     )
     button = screen.getByRole('button')
@@ -48,14 +43,14 @@ describe('ActionButton Component', () => {
 
   it('applies correct size styles', () => {
     const { rerender } = renderWithRouter(
-      <ActionButton {...defaultProps} size="sm" />
+      <ActionButton body="Test Button" path="/test" size="sm" />
     )
     let button = screen.getByRole('button')
     expect(button.className).toContain('px-4')
 
     rerender(
       <BrowserRouter>
-        <ActionButton {...defaultProps} size="md" />
+        <ActionButton body="Test Button" path="/test" size="md" />
       </BrowserRouter>
     )
     button = screen.getByRole('button')
@@ -63,7 +58,7 @@ describe('ActionButton Component', () => {
 
     rerender(
       <BrowserRouter>
-        <ActionButton {...defaultProps} size="lg" />
+        <ActionButton body="Test Button" path="/test" size="lg" />
       </BrowserRouter>
     )
     button = screen.getByRole('button')
@@ -72,14 +67,14 @@ describe('ActionButton Component', () => {
 
   it('applies custom className', () => {
     renderWithRouter(
-      <ActionButton {...defaultProps} className="custom-class" />
+      <ActionButton body="Test Button" path="/test" className="custom-class" />
     )
     const button = screen.getByRole('button')
     expect(button.className).toContain('custom-class')
   })
 
   it('has correct link path', () => {
-    renderWithRouter(<ActionButton {...defaultProps} />)
+    renderWithRouter(<ActionButton body="Test Button" path="/test" />)
     const button = screen.getByRole('button')
     expect(button.getAttribute('href')).toBe('/test')
   })

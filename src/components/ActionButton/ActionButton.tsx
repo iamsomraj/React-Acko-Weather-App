@@ -1,8 +1,8 @@
-import { IActionButtonProps } from '@/types'
+import { IActionButtonProps } from '../../types'
 import { cn } from '@/util/cn'
 import { Link } from 'react-router'
 
-interface ModernActionButtonProps extends IActionButtonProps {
+export interface ModernActionButtonProps extends IActionButtonProps {
   className?: string
   variant?: 'default' | 'outline' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
