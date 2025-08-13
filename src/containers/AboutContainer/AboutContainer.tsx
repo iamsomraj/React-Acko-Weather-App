@@ -1,7 +1,6 @@
 import ActionButton from '@/components/ActionButton/ActionButton'
 import Highlighter from '@/components/Highlighter/Highlighter'
 import UtilContainer from '@/components/UtilContainer/UtilContainer'
-import { addPath } from '@/util'
 
 const AboutContainer = () => {
   return (
@@ -34,7 +33,7 @@ const AboutContainer = () => {
             that works seamlessly across all devices, ensuring you have access
             to critical weather information whenever you need it.
           </div>
-          <ActionButton path={addPath('')} body="Back to Home" />
+          <ActionButton path="/" body="Back to Home" />
         </div>
       </div>
     </UtilContainer>

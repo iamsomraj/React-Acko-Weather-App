@@ -1,7 +1,6 @@
 import ActionButton from '@/components/ActionButton/ActionButton'
 import Highlighter from '@/components/Highlighter/Highlighter'
 import UtilContainer from '@/components/UtilContainer/UtilContainer'
-import { addPath } from '@/util'
 
 const TermsContainer = () => {
   return (
@@ -43,7 +42,7 @@ const TermsContainer = () => {
               constitutes acceptance of any updated terms.
             </div>
           </div>
-          <ActionButton path={addPath('')} body="Back to Home" />
+          <ActionButton path="/" body="Back to Home" />
         </div>
       </div>
     </UtilContainer>

@@ -1,7 +1,3 @@
-export const BASE_URL = 'React-Acko-Weather-App'
-
-export const addPath = (text: string) => '/' + BASE_URL + '/' + text
-
 export const getTimeFromTimestamp = (unixTimestamp: number | undefined) => {
   if (!unixTimestamp) {
     return ''

@@ -1,6 +1,5 @@
 import { useCallback, useMemo, useState, useId } from 'react'
 import { useAppSelector } from '@/hooks'
-import { addPath } from '@/util'
 import { ActionButton } from '@/components/ActionButton/ActionButton'
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner'
 import HourlyForecastTable from '@/components/HourlyForecastTable/HourlyForecastTable'
@@ -114,11 +113,7 @@ export function WeatherForecastDisplay() {
         <div className="w-full space-y-6 animate-fade-in">
           <HourlyForecastTable selectedDate={selectedDate} />
           <div className="flex justify-center">
-            <ActionButton
-              path={addPath('')}
-              body="Return Home"
-              variant="outline"
-            />
+            <ActionButton path="/" body="Return Home" variant="outline" />
           </div>
         </div>
       )}
