@@ -1,6 +1,6 @@
 import data from '@/data'
 import { IHeroProps } from '@/types'
-import ActionButton from '@/components/ActionButton/ActionButton'
+import { ActionButton } from '@/components/ActionButton/ActionButton'
 import HeroPrimary from '@/components/HeroPrimary/HeroPrimary'
 import HeroSecondary from '@/components/HeroSecondary/HeroSecondary'
 import PromoCard from '@/components/PromoCard/PromoCard'
