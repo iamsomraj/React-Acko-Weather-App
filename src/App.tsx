@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router'
+import { HashRouter as Router, Route, Routes } from 'react-router'
 import FooterSection from '@/components/FooterSection/FooterSection'
 import Header from '@/components/Header/Header'
 import data from '@/data'
