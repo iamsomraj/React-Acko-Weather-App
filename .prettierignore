@@ -1,0 +1,5 @@
+dist
+coverage
+bun.lock
+docs/screenshots
+public

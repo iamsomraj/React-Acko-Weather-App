@@ -1,98 +1,183 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design tokens — "calm sky".
+ * Neutral zinc surfaces, a sky-blue accent, and semantic weather tints.
+ */
+:root {
+  --radius: 0.875rem;
+
+  --background: oklch(0.985 0.004 240);
+  --foreground: oklch(0.21 0.02 255);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.02 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.02 255);
+  --primary: oklch(0.6 0.15 237);
+  --primary-foreground: oklch(0.985 0.005 240);
+  --secondary: oklch(0.96 0.01 240);
+  --secondary-foreground: oklch(0.27 0.02 255);
+  --muted: oklch(0.96 0.008 240);
+  --muted-foreground: oklch(0.52 0.02 255);
+  --accent: oklch(0.95 0.025 237);
+  --accent-foreground: oklch(0.3 0.06 245);
+  --destructive: oklch(0.58 0.22 27);
+  --border: oklch(0.91 0.01 245);
+  --input: oklch(0.91 0.01 245);
+  --ring: oklch(0.6 0.15 237);
+
+  --chart-1: oklch(0.6 0.15 237);
+  --chart-2: oklch(0.72 0.15 60);
+  --chart-3: oklch(0.65 0.13 185);
+  --chart-4: oklch(0.6 0.17 285);
+  --chart-5: oklch(0.7 0.16 15);
+
+  --temp-cold: oklch(0.62 0.14 245);
+  --temp-mild: oklch(0.72 0.13 165);
+  --temp-warm: oklch(0.76 0.15 75);
+  --temp-hot: oklch(0.64 0.2 35);
+
+  /* Hero tint stops, overridden per weather condition via [data-condition] */
+  --sky-from: oklch(0.9 0.06 230);
+  --sky-to: oklch(0.97 0.02 220);
+}
+
+.dark {
+  --background: oklch(0.16 0.015 255);
+  --foreground: oklch(0.96 0.005 240);
+  --card: oklch(0.2 0.018 255);
+  --card-foreground: oklch(0.96 0.005 240);
+  --popover: oklch(0.2 0.018 255);
+  --popover-foreground: oklch(0.96 0.005 240);
+  --primary: oklch(0.72 0.13 233);
+  --primary-foreground: oklch(0.18 0.03 250);
+  --secondary: oklch(0.26 0.02 255);
+  --secondary-foreground: oklch(0.96 0.005 240);
+  --muted: oklch(0.25 0.018 255);
+  --muted-foreground: oklch(0.7 0.02 250);
+  --accent: oklch(0.28 0.035 245);
+  --accent-foreground: oklch(0.94 0.02 235);
+  --destructive: oklch(0.68 0.19 22);
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 13%);
+  --ring: oklch(0.72 0.13 233);
+
+  --chart-1: oklch(0.72 0.13 233);
+  --chart-2: oklch(0.78 0.14 65);
+  --chart-3: oklch(0.72 0.12 185);
+  --chart-4: oklch(0.7 0.15 285);
+  --chart-5: oklch(0.72 0.16 15);
+
+  --sky-from: oklch(0.3 0.06 250);
+  --sky-to: oklch(0.18 0.02 255);
+}
+
+/* Condition-aware hero gradients */
+[data-condition='clear'] {
+  --sky-from: oklch(0.86 0.09 230);
+  --sky-to: oklch(0.95 0.05 85);
+}
+[data-condition='clouds'] {
+  --sky-from: oklch(0.88 0.02 240);
+  --sky-to: oklch(0.96 0.01 240);
+}
+[data-condition='rain'],
+[data-condition='drizzle'] {
+  --sky-from: oklch(0.78 0.05 245);
+  --sky-to: oklch(0.92 0.02 240);
+}
+[data-condition='thunderstorm'] {
+  --sky-from: oklch(0.7 0.06 280);
+  --sky-to: oklch(0.88 0.03 260);
+}
+[data-condition='snow'] {
+  --sky-from: oklch(0.94 0.02 230);
+  --sky-to: oklch(0.99 0.005 230);
+}
+[data-condition='atmosphere'] {
+  --sky-from: oklch(0.88 0.015 80);
+  --sky-to: oklch(0.95 0.01 80);
+}
+.dark [data-condition='clear'] {
+  --sky-from: oklch(0.34 0.08 245);
+  --sky-to: oklch(0.22 0.03 260);
+}
+.dark [data-condition='clouds'],
+.dark [data-condition='atmosphere'] {
+  --sky-from: oklch(0.3 0.02 250);
+  --sky-to: oklch(0.2 0.015 255);
+}
+.dark [data-condition='rain'],
+.dark [data-condition='drizzle'] {
+  --sky-from: oklch(0.3 0.05 245);
+  --sky-to: oklch(0.19 0.02 255);
+}
+.dark [data-condition='thunderstorm'] {
+  --sky-from: oklch(0.3 0.07 285);
+  --sky-to: oklch(0.18 0.03 270);
+}
+.dark [data-condition='snow'] {
+  --sky-from: oklch(0.36 0.03 235);
+  --sky-to: oklch(0.22 0.015 250);
+}
+
+@theme inline {
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 10px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-temp-cold: var(--temp-cold);
+  --color-temp-mild: var(--temp-mild);
+  --color-temp-warm: var(--temp-warm);
+  --color-temp-hot: var(--temp-hot);
+  --color-sky-from: var(--sky-from);
+  --color-sky-to: var(--sky-to);
+}
 
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 192 84% 45%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 192 84% 45%;
-    --radius: 0.75rem;
-    --warning: 38 92% 50%;
-    --warning-foreground: 48 96% 89%;
-    --success: 142 71% 45%;
-    --success-foreground: 210 40% 98%;
-    --info: 217 91% 60%;
-    --info-foreground: 210 40% 98%;
+  * {
+    @apply border-border outline-ring/50;
   }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 192 84% 45%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 192 84% 45%;
-    --warning: 38 92% 50%;
-    --warning-foreground: 48 96% 89%;
-    --success: 142 71% 45%;
-    --success-foreground: 210 40% 98%;
-    --info: 217 91% 60%;
-    --info-foreground: 210 40% 98%;
+  html {
+    @apply scroll-smooth;
   }
-
-  /* Focus ring styles for better accessibility */
-  *:focus-visible {
-    outline: 2px solid hsl(var(--ring));
-    outline-offset: 2px;
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    font-feature-settings: 'ss01', 'cv11';
   }
-
-  /* Screen reader only text */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-  }
-
-  /* High contrast mode improvements */
-  @media (prefers-contrast: high) {
-    :root {
-      --border: 0 0% 0%;
-      --ring: 0 0% 0%;
-    }
-
-    .dark {
-      --border: 0 0% 100%;
-      --ring: 0 0% 100%;
-    }
-  }
-
-  /* Reduced motion support */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -105,11 +190,10 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+@utility glass {
+  @apply border border-border/60 bg-card/70 shadow-sm backdrop-blur-xl;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
 }

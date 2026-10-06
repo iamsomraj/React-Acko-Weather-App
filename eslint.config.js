@@ -1,77 +1,42 @@
 import js from '@eslint/js'
-import tseslint from '@typescript-eslint/eslint-plugin'
-import tsparser from '@typescript-eslint/parser'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import { defineConfig, globalIgnores } from 'eslint/config'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
 
-export default [
-  {
-    ignores: [
-      'dist/**/*',
-      'node_modules/**/*',
-      'coverage/**/*',
-      '.vite/**/*',
-      '*.config.js',
-      '*.config.ts',
-      'bun.lockb',
-    ],
-  },
-  {
-    files: ['**/*.js'],
-    ...js.configs.recommended,
-    languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      globals: {
-        console: 'readonly',
-        process: 'readonly',
-        Buffer: 'readonly',
-        global: 'readonly',
-        __dirname: 'readonly',
-        __filename: 'readonly',
-        exports: 'writable',
-        module: 'writable',
-        require: 'readonly',
-        window: 'readonly',
-        document: 'readonly',
-      },
-    },
-    rules: {
-      'no-unused-vars': 'warn',
-      'no-console': 'warn',
-    },
-  },
+export default defineConfig([
+  globalIgnores(['dist', 'coverage', 'docs']),
   {
     files: ['**/*.{ts,tsx}'],
-    plugins: {
-      '@typescript-eslint': tseslint,
-    },
+    extends: [
+      js.configs.recommended,
+      tseslint.configs.recommended,
+      reactHooks.configs.flat['recommended-latest'],
+      reactRefresh.configs.vite,
+    ],
     languageOptions: {
-      parser: tsparser,
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-      globals: {
-        console: 'readonly',
-        process: 'readonly',
-        Buffer: 'readonly',
-        global: 'readonly',
-        __dirname: 'readonly',
-        __filename: 'readonly',
-        exports: 'writable',
-        module: 'writable',
-        require: 'readonly',
-        window: 'readonly',
-        document: 'readonly',
-        React: 'readonly',
-      },
+      ecmaVersion: 2023,
+      globals: globals.browser,
     },
     rules: {
-      '@typescript-eslint/no-unused-vars': 'warn',
-      '@typescript-eslint/no-explicit-any': 'warn',
-      'no-console': 'warn',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
     },
   },
-]
+  {
+    // shadcn primitives export variants alongside components
+    files: [
+      'src/components/ui/**/*.tsx',
+      'src/providers/**/*.tsx',
+      'src/test/**/*.tsx',
+    ],
+    rules: { 'react-refresh/only-export-components': 'off' },
+  },
+  {
+    files: ['scripts/**/*.ts', 'vite.config.ts'],
+    languageOptions: { globals: globals.node },
+  },
+])
