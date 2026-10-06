@@ -1,31 +1,48 @@
-import { defineConfig } from 'vite'
+import { fileURLToPath, URL } from 'node:url'
+import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
-import { resolve } from 'path'
+import { defineConfig } from 'vitest/config'
 
-// https://vitejs.dev/config/
+// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    open: true,
-  },
-  build: {
-    outDir: 'dist',
-    sourcemap: true,
-  },
-  base: '/React-Acko-Weather-App/',
+  plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src'),
-      '@/components': resolve(__dirname, './src/components'),
-      '@/hooks': resolve(__dirname, './src/hooks'),
-      '@/state': resolve(__dirname, './src/state'),
-      '@/types': resolve(__dirname, './src/types'),
-      '@/utils': resolve(__dirname, './src/utils'),
-      '@/util': resolve(__dirname, './src/util'),
-      '@/config': resolve(__dirname, './src/config'),
-      '@/data': resolve(__dirname, './src/data'),
-      '@/containers': resolve(__dirname, './src/containers'),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+  server: {
+    port: 3000,
+  },
+  build: {
+    sourcemap: true,
+    rolldownOptions: {
+      output: {
+        // Long-lived vendor chunks so app deploys don't bust framework caches.
+        codeSplitting: {
+          groups: [
+            {
+              name: 'react',
+              test: /node_modules[\\/](react|react-dom|scheduler)[\\/]/,
+            },
+            { name: 'router', test: /node_modules[\\/]react-router/ },
+            { name: 'query', test: /node_modules[\\/]@tanstack/ },
+            {
+              name: 'ui',
+              test: /node_modules[\\/](@radix-ui|radix-ui|@floating-ui|cmdk|sonner)/,
+            },
+          ],
+        },
+      },
+    },
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/test/setup.ts'],
+    css: false,
+    env: {
+      VITE_OPENWEATHER_API_KEY: 'test-key',
     },
   },
 })

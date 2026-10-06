@@ -1,50 +1,29 @@
-import { HashRouter as Router, Route, Routes } from 'react-router'
-import FooterSection from '@/components/FooterSection/FooterSection'
-import Header from '@/components/Header/Header'
-import data from '@/data'
+import { lazy } from 'react'
+import { Navigate, Route, Routes } from 'react-router'
+import { RootLayout } from '@/components/layout/RootLayout'
+import { routes } from '@/lib/routes'
+import HomePage from '@/pages/HomePage'
 
-function App() {
-  const BrandComponent = data.brand.container
+const WeatherPage = lazy(() => import('@/pages/WeatherPage'))
+const AboutPage = lazy(() => import('@/pages/AboutPage'))
+const PrivacyPage = lazy(() => import('@/pages/PrivacyPage'))
+const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'))
 
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50 text-foreground antialiased">
-      <Router>
-        {/* Skip to main content link for screen readers */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-        >
-          Skip to main content
-        </a>
-
-        <Header />
-
-        <main
-          id="main-content"
-          className="focus:outline-none"
-          tabIndex={-1}
-          role="main"
-          aria-label="Main content"
-        >
-          <Routes>
-            <Route path={data.brand.path} element={<BrandComponent />} />
-            {data.navLinks.map((link) => {
-              const LinkComponent = link.container
-              return (
-                <Route
-                  key={link.path + link.text}
-                  path={link.path}
-                  element={<LinkComponent />}
-                />
-              )
-            })}
-          </Routes>
-        </main>
-
-        <FooterSection />
-      </Router>
-    </div>
+    <RootLayout>
+      <Routes>
+        <Route path={routes.home} element={<HomePage />} />
+        <Route path={routes.weather} element={<WeatherPage />} />
+        <Route path={routes.about} element={<AboutPage />} />
+        <Route path={routes.privacy} element={<PrivacyPage />} />
+        {/* Legacy v1 route */}
+        <Route
+          path="/weather-forecast"
+          element={<Navigate to={routes.weather} replace />}
+        />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </RootLayout>
   )
 }
-
-export default App

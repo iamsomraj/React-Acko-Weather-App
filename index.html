@@ -2,19 +2,97 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#14b8a6" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>WeatherNow — Weather forecasts, beautifully clear</title>
     <meta
       name="description"
-      content="Modern weather app built with React, TypeScript, and Vite"
+      content="Search any city for current conditions, a 48-hour chart, 5-day outlook and air quality. Fast, free and beautifully clear."
     />
-    <link rel="apple-touch-icon" href="/logo192.png" />
-    <link rel="manifest" href="/manifest.json" />
-    <title>🍃 Acko Weather</title>
+    <meta
+      name="keywords"
+      content="weather, forecast, 5 day forecast, hourly weather, air quality, temperature, weather app"
+    />
+    <meta name="author" content="Somraj Mukherjee" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#f7f9fc"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#141821"
+    />
+    <meta name="color-scheme" content="light dark" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="WeatherNow" />
+    <meta
+      property="og:title"
+      content="WeatherNow — Weather forecasts, beautifully clear"
+    />
+    <meta
+      property="og:description"
+      content="Current conditions, 48-hour charts, a 5-day outlook and air quality for any city."
+    />
+    <meta
+      property="og:url"
+      content="https://react-acko-weather-app.vercel.app/"
+    />
+    <meta
+      property="og:image"
+      content="https://react-acko-weather-app.vercel.app/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="WeatherNow forecast dashboard" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://react-acko-weather-app.vercel.app/og-image.png"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "WeatherNow",
+        "url": "https://react-acko-weather-app.vercel.app/",
+        "applicationCategory": "WeatherApplication",
+        "operatingSystem": "Any",
+        "description": "Current conditions, 48-hour charts, a 5-day outlook and air quality for any city.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@type": "Person", "name": "Somraj Mukherjee" }
+      }
+    </script>
+
+    <!-- Apply the saved theme before first paint to avoid a flash -->
+    <script>
+      try {
+        var t = JSON.parse(
+          localStorage.getItem('weathernow:theme') || '"system"'
+        )
+        var d =
+          t === 'dark' ||
+          (t === 'system' && matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.classList.toggle('dark', d)
+        document.documentElement.style.colorScheme = d ? 'dark' : 'light'
+      } catch (e) {}
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript
+      >WeatherNow needs JavaScript enabled to load live forecasts.</noscript
+    >
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
