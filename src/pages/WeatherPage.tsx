@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { CloudSun } from 'lucide-react'
 import { useSearchParams } from 'react-router'
 import { Seo } from '@/components/layout/Seo'
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
   AirQualityCard,
@@ -140,17 +141,23 @@ function WeatherDashboard({ location }: { location: Location }) {
           Hourly details
         </h2>
         <Tabs value={activeDate} onValueChange={setSelectedDate}>
-          <TabsList className="h-auto max-w-full flex-wrap justify-start">
-            {daily.map((day) => (
-              <TabsTrigger
-                key={day.date}
-                value={day.date}
-                className="flex-none"
-              >
-                {formatDayLabel(day.date, timezoneOffset)}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+          {/* One scrollable row: TabsList has a fixed height, so wrapping overflows it. */}
+          <ScrollArea className="w-full">
+            <div className="pb-2.5">
+              <TabsList>
+                {daily.map((day) => (
+                  <TabsTrigger
+                    key={day.date}
+                    value={day.date}
+                    className="flex-none px-3"
+                  >
+                    {formatDayLabel(day.date, timezoneOffset)}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
+            <ScrollBar orientation="horizontal" />
+          </ScrollArea>
           {daily.map((day) => (
             <TabsContent key={day.date} value={day.date} className="mt-2">
               <HourlyDetailTable
