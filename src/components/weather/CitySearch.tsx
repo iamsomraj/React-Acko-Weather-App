@@ -81,6 +81,10 @@ export function CitySearch({
       onKeyDown={(event) => event.key === 'Escape' && setOpen(false)}
       className={cn(
         'relative overflow-visible rounded-xl glass',
+        // `glass` (backdrop-filter) creates a stacking context, so the dropdown's
+        // z-index only applies inside it. Lift the whole search above later
+        // siblings (e.g. the popular-city chips) while the list is open.
+        open && 'z-30',
         size === 'lg' && 'rounded-2xl shadow-lg shadow-sky-900/5',
         '[&_[data-slot=command-input-wrapper]]:border-0',
         size === 'lg' &&
@@ -112,7 +116,7 @@ export function CitySearch({
       {open && (
         <CommandList
           label="Locations"
-          className="absolute top-[calc(100%+0.5rem)] right-0 left-0 z-50 max-h-80 rounded-xl glass bg-popover/95 p-1 shadow-xl"
+          className="absolute top-[calc(100%+0.5rem)] right-0 left-0 z-50 max-h-80 rounded-xl border bg-popover p-1 text-popover-foreground shadow-xl"
           onMouseDown={(event) => event.preventDefault()}
         >
           <CommandGroup>
