@@ -34,7 +34,9 @@ export default function HomePage() {
         path="/"
         description="Search any city for current conditions, a 48-hour chart, 5-day outlook and air quality. Fast, free and beautifully clear."
       />
-      <section className="relative isolate overflow-hidden">
+      {/* No overflow-hidden: it would clip the search dropdown. z-10 keeps the
+          open list above the feature cards (glass makes each a stacking context). */}
+      <section className="relative isolate z-10">
         <div
           aria-hidden
           className="absolute inset-0 -z-10 bg-[radial-gradient(60rem_30rem_at_50%_-10%,var(--sky-from),transparent_70%)]"
