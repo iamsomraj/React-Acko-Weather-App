@@ -132,7 +132,7 @@ function WeatherDashboard({ location }: { location: Location }) {
       <section
         id="hourly-details"
         aria-labelledby="hourly-heading"
-        className="scroll-mt-24 space-y-4"
+        className="space-y-4"
       >
         <h2
           id="hourly-heading"
@@ -181,7 +181,7 @@ export default function WeatherPage() {
   )
 
   return (
-    <div className="mx-auto max-w-6xl space-y-6 px-4 py-6 sm:px-6 sm:py-8">
+    <div className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:px-6 sm:py-10">
       {location ? (
         <>
           <CitySearch className="mx-auto max-w-xl" />

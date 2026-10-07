@@ -13,6 +13,8 @@ globalThis.ResizeObserver ??=
 Element.prototype.scrollIntoView ??= vi.fn()
 Element.prototype.hasPointerCapture ??= vi.fn(() => false)
 Element.prototype.releasePointerCapture ??= vi.fn()
+// jsdom defines scrollTo but only logs "not implemented"
+window.scrollTo = vi.fn()
 
 if (!window.matchMedia) {
   window.matchMedia = vi.fn().mockImplementation((query: string) => ({

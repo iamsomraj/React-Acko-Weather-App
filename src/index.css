@@ -172,7 +172,8 @@
     @apply border-border outline-ring/50;
   }
   html {
-    @apply scroll-smooth;
+    /* Keep focused inputs and scroll targets clear of the sticky header. */
+    @apply scroll-pt-20 scroll-smooth;
   }
   body {
     @apply bg-background font-sans text-foreground antialiased;
