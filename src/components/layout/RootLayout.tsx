@@ -1,4 +1,4 @@
-import { Suspense, type ReactNode } from 'react'
+import { Suspense, useEffect, type ReactNode } from 'react'
 import { useLocation } from 'react-router'
 import { Skeleton } from '@/components/ui/skeleton'
 import { ErrorState } from '@/components/weather/ErrorState'
@@ -9,7 +9,7 @@ import { SiteHeader } from './SiteHeader'
 function PageFallback() {
   return (
     <div
-      className="mx-auto max-w-6xl space-y-6 px-4 py-10 sm:px-6"
+      className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:px-6 sm:py-10"
       aria-busy="true"
     >
       <Skeleton className="h-10 w-64" />
@@ -20,6 +20,12 @@ function PageFallback() {
 
 export function RootLayout({ children }: { children: ReactNode }) {
   const location = useLocation()
+
+  // Start each new page at the top; otherwise a scrolled-down page hands its
+  // offset to the next one and the top content sits under the sticky header.
+  useEffect(() => {
+    if (!location.hash) window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [location.pathname, location.search, location.hash])
 
   return (
     <div className="flex min-h-dvh flex-col">
